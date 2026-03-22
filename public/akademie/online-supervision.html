@@ -3,29 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Systemisch Online Supervisieren und Coachen | ISH Akademie</title>
-  <meta name="description" content="Spezialisierung für erfahrene Coaches: Systemisch Online Supervisieren und Coachen. Professionelle Beratungsprozesse im digitalen Raum gestalten. ISH Akademie." />
+  <title>Gestaltungskunst – Online-Supervision und Beratung | ISH Akademie</title>
+  <meta name="description" content="Weiterbildung für Online-Supervision und Beratung. 4 Module, vollständig online. Virtuelle Beratungsräume bewusst gestalten – mit KI, Resonanz und Methodik." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE-SPECIFIC ───────────────────────────────── */
+
+    /* Override: no purple on this page */
+    .text-teal { color: var(--ish-teal); }
+
+    /* Hero checklist (light hero bg) */
+    .hero__inline-check {
+      list-style: none; padding: 0; margin: 1.25rem 0 1rem;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .hero__inline-check li {
+      display: flex; align-items: center; gap: .55rem;
+      font-size: .92rem; color: var(--ish-dark);
+    }
+    .hero__inline-check li svg { stroke: var(--ish-teal); flex-shrink: 0; }
+    .hero__inline-quote {
+      font-size: .88rem; color: #6b7d8e; font-style: italic;
+      border-left: 2px solid var(--ish-teal); padding-left: .85rem; margin: 0 0 1.25rem;
+    }
+    .hero__visual--img { display: flex; align-items: stretch; }
+    .hero__gruppe-img { width: 100%; height: 460px; object-fit: cover; border-radius: 16px; display: block; }
+
+    /* ── Fragen section ──────────────────────────────── */
+    .fragen-section {
+      padding: 4rem 0 3.5rem;
+      background: #fff;
+    }
+    .fragen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 640px) { .fragen-grid { grid-template-columns: 1fr; } }
+    .frage-card {
+      background: #f4f8fa;
+      border-radius: 14px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--ish-teal);
+    }
+    .frage-card h3 {
+      font-size: .95rem; font-weight: 700; color: var(--ish-dark);
+      margin: 0 0 .5rem;
+    }
+    .frage-card p {
+      font-size: .86rem; color: #5a6e7e; line-height: 1.6; margin: 0;
+    }
+
+    /* ── Module section (white bg, like Grundkurs) ───── */
+    .module-section {
+      background: #fff;
+      padding: 4rem 0 3rem;
+    }
+
+    /* ── Preise ──────────────────────────────────────── */
+    .preise-section {
+      padding: 4rem 0 3.5rem;
+      background: var(--ish-gray-50);
+    }
+    .preise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 640px;
+      margin: 2rem auto 0;
+    }
+    @media (max-width: 560px) { .preise-grid { grid-template-columns: 1fr; } }
+    .preis-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e3eaf0;
+      padding: 1.75rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .preis-card--highlight {
+      background: var(--ish-dark);
+      border-color: var(--ish-dark);
+    }
+    .preis-card__label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: #8a9aaa; margin-bottom: .5rem; display: block;
+    }
+    .preis-card--highlight .preis-card__label { color: rgba(255,255,255,.5); }
+    .preis-card__amount {
+      font-family: var(--font-head); font-size: 2.2rem; font-weight: 900;
+      color: var(--ish-dark); line-height: 1;
+    }
+    .preis-card--highlight .preis-card__amount { color: #fff; }
+    .preis-card__unit {
+      font-size: .8rem; font-weight: 400; color: #8a9aaa; display: block; margin-top: .25rem;
+    }
+    .preis-card--highlight .preis-card__unit { color: rgba(255,255,255,.5); }
+    .preis-card__note {
+      font-size: .75rem; color: var(--ish-teal); margin-top: .6rem; display: block;
+    }
+
+    /* ── Referent ─────────────────────────────────────── */
+    .referent-section {
+      padding: 3.5rem 0;
+      background: #fff;
+    }
+    .referent-card {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      background: #f4f8fa;
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    @media (max-width: 640px) { .referent-card { flex-direction: column; } }
+    .referent-card__photo {
+      width: 140px; height: 140px; border-radius: 50%; flex-shrink: 0;
+      object-fit: cover; object-position: top center;
+      box-shadow: 0 8px 28px rgba(0,0,0,.12);
+    }
+    .referent-card__info { flex: 1; }
+    .referent-card__name {
+      font-family: var(--font-head); font-size: 1.3rem; font-weight: 700;
+      color: var(--ish-dark); margin: 0 0 .25rem;
+    }
+    .referent-card__role {
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--ish-teal); margin-bottom: 1rem; display: block;
+    }
+    .referent-card__bio {
+      font-size: .9rem; color: #4a5a6a; line-height: 1.65; margin: 0 0 .75rem;
+    }
+    .referent-card__note {
+      font-size: .82rem; color: #7a8f9a; font-style: italic;
+      border-left: 2px solid var(--ish-teal); padding-left: .75rem; margin: .75rem 0 0;
+    }
+
+    /* ── Anmeldung / Interest ─────────────────────────── */
+    .interest-section {
+      padding: 4rem 0;
+      background: var(--ish-dark);
+    }
+    .interest-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .interest-inner h2 { color: #fff; margin-bottom: .75rem; }
+    .interest-inner p { color: rgba(255,255,255,.65); margin-bottom: 2rem; line-height: 1.6; }
+
+    /* ── Coachingspace note ───────────────────────────── */
+    .coachingspace-note {
+      background: rgba(0,170,162,.08);
+      border: 1.5px solid rgba(0,170,162,.25);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .85rem;
+      color: #3a5a5a;
+      line-height: 1.5;
+      margin-top: 1.5rem;
+    }
+    .coachingspace-note svg { stroke: var(--ish-teal); flex-shrink: 0; margin-top: .1rem; }
+
+    /* ── Register form (reuse from other pages) ───────── */
+    .register { padding: 0 0 4rem; background: var(--ish-dark); }
+
+    /* ── Sticky CTA ───────────────────────────────────── */
+    .sticky-cta { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 8000; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s, transform .3s; }
+    .sticky-cta.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .sticky-cta__btn { display: flex; align-items: center; gap: .55rem; background: var(--ish-teal); color: #fff; font-size: .9rem; font-weight: 700; padding: .8rem 1.4rem; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 28px rgba(0,170,162,.4); transition: background .2s, transform .2s; white-space: nowrap; }
+    .sticky-cta__btn:hover { background: #009990; transform: translateY(-2px); }
+
+    /* ── Mod accordion (reuse white style from Grundkurs) */
+    .mod-accordion { border-radius: 14px; overflow: hidden; margin-bottom: 1rem; border: 1px solid #e3eaf0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .mod-accordion__trigger { width: 100%; background: #fff; border: none; border-left: 4px solid var(--ish-teal); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.25rem; cursor: pointer; text-align: left; position: relative; overflow: hidden; transition: background .2s; }
+    .mod-accordion__trigger:hover { background: #f4f8fa; }
+    .mod-accordion__num { font-family: var(--font-head); font-size: 1.6rem; font-weight: 900; color: var(--ish-teal); line-height: 1; min-width: 2.5rem; flex-shrink: 0; }
+    .mod-accordion__summary { flex: 1; }
+    .mod-accordion__summary h3 { font-size: 1rem; font-weight: 700; color: var(--ish-dark); margin: 0 0 .4rem; }
+    .mod-accordion__tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .mod-accordion__chevron { flex-shrink: 0; transition: transform .25s; color: #a0aab4; }
+    .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron { transform: rotate(180deg); }
+    .mod-accordion__panel { background: #f7fafc; border-top: 1px solid #e3eaf0; padding: 1.75rem 2rem; }
+    .mod-panel__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .mod-panel__list li { font-size: .88rem; color: #4a5a6a; line-height: 1.6; padding-left: 1.1rem; position: relative; }
+    .mod-panel__list li::before { content: '•'; position: absolute; left: 0; color: var(--ish-teal); }
+    .mod-panel__date { display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 700; color: var(--ish-teal); background: rgba(0,170,162,.08); border-radius: 6px; padding: .25rem .6rem; margin-bottom: 1rem; }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#" class="nav__logo" aria-label="ISH Akademie">
-        <img src="Akademie.png" alt="ISH Akademie" class="logo-img" />
-      </a>
+      <a href="#" class="nav__logo" aria-label="ISH Akademie"></a>
       <a href="index.html" class="nav__back">← Alle Weiterbildungen</a>
       <nav class="nav__links" aria-label="Seitennavigation">
-        <a href="#focus">Zielgruppe</a>
-        <a href="#inhalte">Inhalte</a>
-        <a href="#stufen">Kursstufen</a>
-        <a href="#register">Anmeldung</a>
+        <a href="#fragen">Zentrale Fragen</a>
+        <a href="#module">Module</a>
+        <a href="#preise">Preise</a>
+        <a href="#register">Interesse melden</a>
       </nav>
-      <a href="#register" class="btn btn--primary nav__cta">Jetzt anmelden</a>
+      <a href="#register" class="btn btn--primary nav__cta">Interesse melden</a>
       <button class="nav__burger" aria-label="Menü" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -42,396 +228,382 @@
       <div class="hero__content">
         <div class="hero__badges">
           <span class="badge badge--akademie">ISH Akademie</span>
-          <span class="badge badge--outline">Für erfahrene Coaches</span>
-          <span class="badge badge--outline">Digital</span>
+          <span class="badge badge--outline">4 Module · Online</span>
+          <span class="badge badge--outline">Steuerbefreit</span>
         </div>
         <h1 class="hero__headline">
-          Digital<br />
-          <span class="text-teal">beraten.</span>
+          Gestaltungskunst<br />
+          <span class="text-teal">Online-Supervision.</span>
         </h1>
         <p class="hero__sub">
-          Professionelle Beratungsprozesse im digitalen Raum gestalten – Beziehung, Resonanz und Prozessqualität auch online tragfähig machen.
+          Virtuelle Beratungsräume sind längst Teil professioneller Supervisionspraxis. Diese Weiterbildung eröffnet einen Reflexions‑ und Lernraum für Supervisor:innen, Coaches und Beratende, die ihre Arbeit im digitalen Kontext bewusster gestalten möchten.
         </p>
+        <ul class="hero__inline-check">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Vollständig online – Fr 16:30–18:30 · Sa 09:30–17:00</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modular buchbar oder als Gesamtpaket</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Resonanz, Beziehungsgestaltung &amp; KI im Fokus</li>
+        </ul>
+        <p class="hero__inline-quote">„Online-Supervision nicht als technische Lösung, sondern als eigenständigen Begegnungsraum verstehen."</p>
         <div class="hero__meta">
           <div class="hero__meta-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2"/></svg>
-            <span><strong>100% Online</strong></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>4 Module · Vollständig online</span>
           </div>
           <div class="hero__meta-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="19" x2="23" y2="19"/></svg>
-            <span>Für <strong>ausgebildete Coaches</strong></span>
-          </div>
-          <div class="hero__meta-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span><strong>coachingspace</strong>-Integration</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span>Modular oder als Gesamtpaket</span>
           </div>
         </div>
         <div class="hero__actions">
-          <a href="#register" class="btn btn--primary">Jetzt anmelden</a>
-          <a href="#focus" class="btn btn--outline">Mehr erfahren</a>
+          <a href="#module" class="btn btn--primary">Zu den Modulen</a>
+          <a href="#fragen" class="btn btn--outline">Zentrale Fragen</a>
         </div>
       </div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__sq-wrap">
-          <div class="hero__sq-main">
-            <div class="hero__card-body">
-              <div class="hero__stat">
-                <span class="hero__stat-num">9</span>
-                <span class="hero__stat-label">Kernthemen</span>
-              </div>
-              <div class="hero__stat-divider"></div>
-              <div class="hero__stat">
-                <span class="hero__stat-num">100%</span>
-                <span class="hero__stat-label">Online</span>
-              </div>
-              <div class="hero__stat-divider"></div>
-              <div class="hero__stat">
-                <span class="hero__stat-num">1</span>
-                <span class="hero__stat-label">Spezialisierung</span>
-              </div>
-            </div>
-            <div class="hero__sq-dock"></div>
-          </div>
-          <div class="hero__sq-outline"></div>
-          <div class="ish-textbox hero__quote-box">
-            <p>„Beziehung, Resonanz und Prozessqualität – auch online tragfähig und professionell."</p>
-          </div>
-        </div>
+      <div class="hero__visual hero__visual--img">
+        <img src="Benjamin-Lambeck.webp" alt="Benjamin Lambeck – Referent Online-Supervision" class="hero__gruppe-img" />
       </div>
     </div>
 
     <div class="hero__scroll">
-      <a href="#focus" aria-label="Nach unten scrollen">
+      <a href="#fragen" aria-label="Nach unten scrollen">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- FOKUS / ZIELGRUPPE -->
-  <section class="focus" id="focus">
-    <div class="focus__intro">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Für wen ist diese Weiterbildung?</span>
-          <h2>Professionell beraten – auch digital.</h2>
-          <p class="section-intro">Diese Spezialisierung richtet sich an Menschen mit Erfahrung in Coaching, Supervision oder Beratung, die ihre Arbeit im digitalen Raum auf ein neues professionelles Niveau heben wollen.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="focus__grid">
-
-        <div class="focus-card focus-card--1">
-          <div class="focus-card__sq" aria-hidden="true"></div>
-          <div class="focus-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="19" x2="23" y2="19"/></svg>
-          </div>
-          <h3>Ausgebildete Coaches</h3>
-          <p>Sie haben eine Coaching-Ausbildung absolviert und möchten Ihre Praxis professionell in den digitalen Raum erweitern – mit bewährten Methoden und neuen Online-Formaten.</p>
-          <div class="focus-card__keywords">
-            <span>Online-Coaching</span>
-            <span>Digitale Prozesse</span>
-            <span>Methodenerweiterung</span>
-          </div>
-        </div>
-
-        <div class="focus-card focus-card--2">
-          <div class="focus-card__sq" aria-hidden="true"></div>
-          <div class="focus-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <h3>Supervisor:innen</h3>
-          <p>Gestalten Sie Supervisionsprozesse im digitalen Raum qualitativ hochwertig – Gruppenarbeit, Einzelbegleitung und Fallarbeit auch online professionell strukturieren.</p>
-          <div class="focus-card__keywords">
-            <span>Online-Supervision</span>
-            <span>Digitale Gruppenarbeit</span>
-            <span>Prozessqualität</span>
-          </div>
-        </div>
-
-        <div class="focus-card focus-card--3">
-          <div class="focus-card__sq" aria-hidden="true"></div>
-          <div class="focus-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <h3>Berater:innen</h3>
-          <p>Erweitern Sie Ihr Beratungsportfolio um professionelle Online-Formate – von schriftbasierter Beratung bis zu virtuellen Aufstellungen und digitalen Interventionen.</p>
-          <div class="focus-card__keywords">
-            <span>Online-Beratung</span>
-            <span>Digitale Interventionen</span>
-            <span>Virtuelle Formate</span>
-          </div>
-        </div>
-
-        <div class="focus-card focus-card--4">
-          <div class="focus-card__sq" aria-hidden="true"></div>
-          <div class="focus-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <h3>Fachkräfte im Bildungskontext</h3>
-          <p>Schulleitungen, Schulentwicklungsberater:innen und Fachkräfte, die Begleit- und Beratungsprozesse im digitalen Raum professionell und wirksam gestalten möchten.</p>
-          <div class="focus-card__keywords">
-            <span>Bildungsberatung digital</span>
-            <span>Schulentwicklung online</span>
-            <span>Digitale Begleitung</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="focus__statement">
-        <div class="focus__statement-sq" aria-hidden="true"></div>
-        <blockquote>
-          <p>„Der digitale Raum ist kein Notbehelf – er ist ein eigenständiges Beratungsformat mit eigenen Regeln, Möglichkeiten und Qualitätsstandards."</p>
-          <cite>ISH Akademie · Systemisch Online Supervisieren und Coachen</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- INHALTE -->
-  <section class="curriculum" id="inhalte">
-    <div class="container">
-      <div class="section-header section-header--light">
-        <span class="section-tag section-tag--light">Alle Themen</span>
-        <h2>Seminarinhalte.</h2>
-        <p class="section-intro">Neun praxisnahe Themen rund um professionelle Beratung im digitalen Raum.</p>
-      </div>
-      <div class="curriculum__grid">
-        <div class="accordion__col">
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              1. Online Aufstellungen und visuelle Methoden im digitalen Raum
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Systemische Aufstellungen und visuelle Interventionstechniken für den digitalen Raum: Wie lassen sich räumliche und relationale Methoden online übertragen und wirkungsvoll einsetzen?</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              2. Arbeit mit dem Inneren Team im Online Setting
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Das Modell des Inneren Teams nach Schulz von Thun im Online-Coaching einsetzen: Digitale Visualisierungen, virtuelle Stuhlarbeit und Tools für die innere Teamarbeit am Bildschirm.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              3. Gestaltung von Beziehung und Resonanz in digitalen Formaten
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Tragfähige Beziehung auch hinter dem Bildschirm aufbauen: Körpersprache, Stimme und Präsenz in der Kamera. Wie Resonanz und echte Verbindung im digitalen Raum entstehen und gefördert werden.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              4. Schriftbasierte Online Beratung
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Asynchrone Beratung per Text: Chancen und Besonderheiten schriftbasierter Formate. Sprachliche Präzision, Timing und therapeutische Wirkung des geschriebenen Wortes in der Beratungsbeziehung.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              5. Datenschutz und professionelle Rahmung
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Rechtliche Grundlagen und professionelle Standards für Online-Beratung: DSGVO-konforme Plattformen, sichere Kommunikation und die ethische Rahmung digitaler Beratungsformate.</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion__col">
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              6. Einsatzmöglichkeiten von künstlicher Intelligenz in Coaching und Supervision
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>KI als Werkzeug in der Beratungspraxis: Vorbereitung, Reflexion und Dokumentation unterstützen. Chancen und Grenzen von KI-gestützten Tools – und wie Coaches professionell damit umgehen.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              7. Arbeit mit der Plattform coachingspace
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Praxiseinführung in die spezialisierte Online-Beratungsplattform coachingspace: Funktionen, Einsatzmöglichkeiten und Integration in den eigenen Beratungsalltag.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              8. Stufenmodell professioneller Online Intervention
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Ein Rahmenmodell für die Qualitätsstufen digitaler Intervention: Von einfachen Online-Gesprächen bis zu komplexen virtuellen Beratungsprozessen – strukturiert und professionell begleiten.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-item__btn" aria-expanded="false">
-              9. Theorie der drei Gestaltungsräume
-              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <div class="accordion-item__body">
-              <p>Theoretisches Fundament für Online-Beratung: Die drei Gestaltungsräume als Modell zum Verständnis der besonderen Dynamiken und Möglichkeiten digitaler Beratungsformate.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KURSSTUFEN -->
-  <section class="target" id="stufen">
+  <!-- ZENTRALE FRAGEN -->
+  <section class="fragen-section" id="fragen">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Aufbau</span>
-        <h2>Kursstufen.</h2>
-        <p class="section-intro">Eine spezialisierte Qualifizierung für erfahrene Berater:innen im digitalen Raum.</p>
+        <span class="section-tag">Thematischer Rahmen</span>
+        <h2>Zentrale Fragen der Weiterbildung.</h2>
+        <p class="section-intro">Die Weiterbildung lädt dazu ein, Online‑Supervision nicht nur als technische Lösung, sondern als eigenständigen Begegnungsraum zu verstehen.</p>
       </div>
-      <div class="produkt-detail__inner" style="justify-content: center;">
-        <div class="produkt-detail__col">
-          <div class="produkt-block">
-            <div class="stufen">
-              <div class="stufe stufe--single">
-                <div class="stufe__label">Spezialisierung</div>
-                <div class="stufe__title">Systemisch Online Supervisieren &amp; Coachen</div>
-                <p>Spezialisierte Qualifizierung für erfahrene Coaches und Supervisor:innen mit Fokus auf professionelle Arbeit im digitalen Raum und direkter Anwendung digitaler Methoden und Tools.</p>
-                <ul class="produkt-list" style="margin-top: 0.75rem;">
-                  <li>Voraussetzung: abgeschlossene Coaching- oder Supervisionsausbildung</li>
-                  <li>Vollständig online durchführbar</li>
-                  <li>Zertifikat der ISH Akademie</li>
-                  <li>coachingspace-Zugang inklusive</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      <div class="fragen-grid">
+        <div class="frage-card">
+          <h3>Resonanz im virtuellen Raum</h3>
+          <p>Wie kann in Online‑Supervision Resonanz entstehen, obwohl sich die Beteiligten nicht im selben physischen Raum befinden? Welche Formen von Aufmerksamkeit und Präsenz unterstützen eine lebendige Zusammenarbeit?</p>
+        </div>
+        <div class="frage-card">
+          <h3>Professionelle Beziehung gestalten</h3>
+          <p>Wie verändert sich Beziehungsgestaltung im virtuellen Setting? Welche Möglichkeiten gibt es, Vertrauen und Arbeitsfähigkeit auch über digitale Medien hinweg aufzubauen?</p>
+        </div>
+        <div class="frage-card">
+          <h3>Gruppendynamik online wahrnehmen</h3>
+          <p>Wie lassen sich Dynamiken in Teams und Gruppen auch im digitalen Raum beobachten, spiegeln und für den Beratungsprozess nutzbar machen?</p>
+        </div>
+        <div class="frage-card">
+          <h3>Rahmen und Prozessführung</h3>
+          <p>Welche Strukturen und Absprachen unterstützen Orientierung und Arbeitsfähigkeit in der Online‑Supervision?</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ANMELDUNG -->
-  <section class="register" id="register">
-    <div class="register__deco" aria-hidden="true">
-      <div class="register__sq register__sq--1"></div>
-      <div class="register__sq register__sq--2"></div>
-    </div>
-    <div class="container register__inner">
-      <div class="register__text">
-        <span class="section-tag">Jetzt sichern</span>
-        <h2>Starten Sie mit<br /><span class="text-teal">Digital beraten.</span></h2>
-        <p>Sichern Sie sich Ihren Platz. Die Teilnehmerzahl ist begrenzt – für intensive Lernprozesse auf Augenhöhe.</p>
-
-        <div class="pricing">
-          <div class="pricing__card pricing__card--main">
-            <div class="pricing__label">Kursgebühr</div>
-            <div class="pricing__amount" style="font-size: 2rem;">auf Anfrage</div>
-            <div class="pricing__note">Spezialisierung Systemisch Online Supervisieren &amp; Coachen</div>
-          </div>
-        </div>
-
-        <ul class="register__features">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Zertifikat „Systemisch Online Supervisieren &amp; Coachen" der ISH Akademie</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100% Online – ortsunabhängig und flexibel</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>coachingspace-Integration inklusive</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Erfahrenes Trainer:innen-Team mit Digital-Expertise</li>
-        </ul>
+  <!-- MODULE -->
+  <section class="module-section" id="module">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Curriculum · 4 Module</span>
+        <h2>Die vier Module.</h2>
+        <p class="section-intro">Aufeinander aufbauend – jedes Modul verbindet fachlichen Input, gemeinsame Reflexion sowie praktische Übungen zur Gestaltung virtueller Beratungsräume.</p>
       </div>
 
-      <form class="register__form" novalidate>
-        <h3>Anmeldung &amp; Anfrage</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="reg-firstname">Vorname *</label>
-            <input type="text" id="reg-firstname" name="firstname" placeholder="Vorname" required />
+      <div class="modules__list" style="margin-top:2rem;">
+
+        <!-- MODUL 1 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-01">
+            <span class="mod-accordion__num">01</span>
+            <div class="mod-accordion__summary">
+              <h3>Dynamiken virtueller Begegnungen</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">18.–19. Sep · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="panel-01" hidden>
+            <div class="mod-panel__date">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Fr 18. Sep 16:30–18:30 · Sa 19. Sep 09:30–17:00
+            </div>
+            <ul class="mod-panel__list">
+              <li>Online‑Supervision im Vergleich zu analoger Supervision: Was verändert sich durch das Medium?</li>
+              <li>Kommunikationsphänomene: Resonanz, Kanalreduktion, Beichtstuhleffekt und ihre Wirkung auf Beratungsprozesse</li>
+              <li>Rahmenbedingungen digitaler Supervisionsprozesse: Setting, Struktur und Kontraktgestaltung</li>
+              <li>Reflexion eigener Erfahrungen mit digitalen Beratungsräumen</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MODUL 2 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-02">
+            <span class="mod-accordion__num">02</span>
+            <div class="mod-accordion__summary">
+              <h3>Möglichkeiten digitaler Supervisionsräume</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">13.–14. Nov · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="panel-02" hidden>
+            <div class="mod-panel__date">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Fr 13. Nov 16:30–18:30 · Sa 14. Nov 09:30–17:00
+            </div>
+            <ul class="mod-panel__list">
+              <li>Stufenmodell digitaler Supervisionsräume und unterschiedliche Formate</li>
+              <li>Online‑Aufstellungen und virtuelle Arbeitsformen in Einzel‑ und Gruppensettings</li>
+              <li>Schriftbasierte Beratungsformate (Chat, Mail, Messenger) und ihre spezifische Prozesslogik</li>
+              <li>Methodische Möglichkeiten der Visualisierung im virtuellen Raum</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MODUL 3 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-03">
+            <span class="mod-accordion__num">03</span>
+            <div class="mod-accordion__summary">
+              <h3>KI als Ressource im Beratungsprozess</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">11.–12. Dez · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="panel-03" hidden>
+            <div class="mod-panel__date">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Fr 11. Dez 16:30–18:30 · Sa 12. Dez 09:30–17:00
+            </div>
+            <ul class="mod-panel__list">
+              <li>KI als Reflexions‑ und Strukturierungswerkzeug für Supervisor:innen</li>
+              <li>Mögliche Rollen von KI im Beratungs‑ und Supervisionskontext</li>
+              <li>Chancen und Grenzen beim professionellen Einsatz künstlicher Intelligenz</li>
+              <li>Praxisbeispiele für die Nutzung von KI vor, während und nach Beratungsprozessen</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MODUL 4 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-04">
+            <span class="mod-accordion__num">04</span>
+            <div class="mod-accordion__summary">
+              <h3>Professionelle Online-Supervision gestalten</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">22.–23. Jan · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="panel-04" hidden>
+            <div class="mod-panel__date">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Fr 22. Jan 16:30–18:30 · Sa 23. Jan 09:30–17:00
+            </div>
+            <ul class="mod-panel__list">
+              <li>Einzel‑, Gruppen‑ und Teamsupervision im virtuellen Raum</li>
+              <li>Resonanz und Beziehungsgestaltung trotz räumlicher Distanz</li>
+              <li>Gestaltung von Übergängen zwischen analoger und digitaler Beratung</li>
+              <li>Abschluss, Transfer in die eigene Praxis und Präsentationen</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Teilnahme-Hinweis -->
+      <div style="margin-top:1.5rem;background:#f0f8f8;border:1.5px solid #b8e0dd;border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:.75rem;font-size:.87rem;color:#3a5a5a;line-height:1.5;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--ish-teal);flex-shrink:0;margin-top:.1rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Die Weiterbildung kann sowohl vollständig als auch modular besucht werden. Dadurch besteht die Möglichkeit, einzelne Themenbereiche gezielt zu vertiefen.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section class="preise-section" id="preise">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Teilnahme &amp; Preise</span>
+        <h2>Modular oder als Gesamtpaket.</h2>
+      </div>
+      <div class="preise-grid">
+        <div class="preis-card">
+          <span class="preis-card__label">Einzelmodul</span>
+          <div class="preis-card__amount">450</div>
+          <span class="preis-card__unit">€ pro Modul</span>
+          <span class="preis-card__note">steuerbefreit</span>
+        </div>
+        <div class="preis-card preis-card--highlight">
+          <span class="preis-card__label">Komplette Weiterbildung</span>
+          <div class="preis-card__amount">1.600</div>
+          <span class="preis-card__unit" style="color:rgba(255,255,255,.5);">€ alle 4 Module</span>
+          <span class="preis-card__note" style="color:var(--ish-teal);">steuerbefreit · günstiger als 4 × 450 €</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="#register" class="btn btn--primary">Interesse melden</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENT -->
+  <section class="referent-section" id="referent">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:2rem;">
+        <span class="section-tag">Ihr Referent</span>
+        <h2>Benjamin Lambeck.</h2>
+      </div>
+      <div class="referent-card">
+        <img src="Benjamin-Lambeck.webp" alt="Benjamin Lambeck" class="referent-card__photo" />
+        <div class="referent-card__info">
+          <h3 class="referent-card__name">Benjamin Lambeck</h3>
+          <span class="referent-card__role">Referent · ISH Akademie</span>
+          <p class="referent-card__bio">
+            KI‑Experte in KMUs, Ideengeber und Geschäftsführer von coachingspace. Als Lehrender der früheren Zusatzqualifizierung Online‑Supervision hat er über mehrere Jahre Supervisor:innen und Coaches in der Gestaltung digitaler Beratungsprozesse begleitet.
+          </p>
+          <p class="referent-card__bio">
+            Die vorliegende Weiterbildung führt diese Erfahrungen weiter und verbindet sie mit aktuellen Entwicklungen rund um digitale Beratung und künstliche Intelligenz.
+          </p>
+          <p class="referent-card__note">
+            Alle Module können bei coachingspace für die Qualifizierung „Systemische:r Online‑Expert:in" anerkannt werden.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEREST / REGISTER -->
+  <section class="interest-section" id="register">
+    <div class="container">
+      <div class="interest-inner">
+        <span class="section-tag" style="color:rgba(255,255,255,.5);">Interesse &amp; Anfrage</span>
+        <h2>Interesse?</h2>
+        <p>Bei Interesse oder Fragen zur Weiterbildung senden Sie gerne eine Anfrage. Wir informieren Sie über Termine, organisatorische Details und Anmeldemöglichkeiten.</p>
+
+        <form class="register__form" novalidate style="text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-firstname">Vorname *</label>
+              <input type="text" id="reg-firstname" name="firstname" placeholder="Vorname" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-lastname">Nachname *</label>
+              <input type="text" id="reg-lastname" name="lastname" placeholder="Nachname" required />
+            </div>
           </div>
           <div class="form-group">
-            <label for="reg-lastname">Nachname *</label>
-            <input type="text" id="reg-lastname" name="lastname" placeholder="Nachname" required />
+            <label for="reg-email">E-Mail-Adresse *</label>
+            <input type="email" id="reg-email" name="email" placeholder="ihre@email.de" required />
           </div>
-        </div>
-        <div class="form-group">
-          <label for="reg-email">E-Mail-Adresse *</label>
-          <input type="email" id="reg-email" name="email" placeholder="ihre@email.de" required />
-        </div>
-        <div class="form-group">
-          <label for="reg-role">Ich bin / ich arbeite als</label>
-          <select id="reg-role" name="role">
-            <option value="">Bitte wählen...</option>
-            <option>Coach (ausgebildet)</option>
-            <option>Supervisor:in</option>
-            <option>Berater:in</option>
-            <option>Schulentwicklungsberater:in / Fortbildungsmoderator:in</option>
-            <option>Sonstige Fachkraft im Bildungskontext</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="reg-background">Meine Coaching-/Beratungsausbildung</label>
-          <input type="text" id="reg-background" name="background" placeholder="z.B. Systemischer Coach (SG), 2022" />
-        </div>
-        <div class="form-group">
-          <label for="reg-message">Fragen oder Anmerkungen</label>
-          <textarea id="reg-message" name="message" rows="4" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
-        </div>
-        <div class="form-group form-group--check">
-          <label class="checkbox-label">
-            <input type="checkbox" name="privacy" required />
-            <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme zu. *</span>
-          </label>
-        </div>
-        <button type="submit" class="btn btn--primary btn--full">Jetzt anfragen</button>
-        <p class="form-note">* Pflichtfelder. Wir melden uns innerhalb von 2 Werktagen.</p>
-      </form>
+          <div class="form-group">
+            <label for="reg-interesse">Ich interessiere mich für</label>
+            <select id="reg-interesse" name="interesse">
+              <option value="">Bitte wählen...</option>
+              <option>Gesamte Weiterbildung (1.600 €)</option>
+              <option>Modul 1 – Dynamiken virtueller Begegnungen (450 €)</option>
+              <option>Modul 2 – Möglichkeiten digitaler Supervisionsräume (450 €)</option>
+              <option>Modul 3 – KI als Ressource im Beratungsprozess (450 €)</option>
+              <option>Modul 4 – Professionelle Online-Supervision gestalten (450 €)</option>
+              <option>Noch unentschieden – bitte informieren</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="reg-message">Fragen oder Anmerkungen</label>
+            <textarea id="reg-message" name="message" rows="4" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Anfrage senden →</button>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.75rem;text-align:center;">Steuerbefreit · Wir melden uns innerhalb von 2 Werktagen.</p>
+        </form>
+
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <img src="Akademie.png" alt="ISH Akademie" class="logo-img logo-img--footer" />
-        <p>Systemisch Bildung gestalten.<br />ISH Akademie – Teil der ISH Gruppe.</p>
+    <div class="footer__top">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <p class="footer__tagline">ISH Akademie – systemische Weiterbildung für den Bildungsbereich.</p>
+          <a href="mailto:akademie@ish-gruppe.de" class="footer__mail">akademie@ish-gruppe.de</a>
+        </div>
+        <nav class="footer__nav">
+          <div class="footer__col">
+            <strong>Weiterbildungen</strong>
+            <a href="systemischer-coach.html">Systemisch Coachen</a>
+            <a href="systemische-moderation.html">Systemisch Moderieren</a>
+            <a href="online-supervision.html">Online-Supervision</a>
+          </div>
+          <div class="footer__col">
+            <strong>ISH Gruppe</strong>
+            <a href="#">ISH Gruppe</a>
+            <a href="#">ISH Campus</a>
+            <a href="#">ISH Schule</a>
+          </div>
+          <div class="footer__col">
+            <strong>Rechtliches</strong>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+            <a href="#">AGB</a>
+          </div>
+        </nav>
       </div>
-      <nav class="footer__nav" aria-label="Footer Navigation">
-        <div class="footer__col">
-          <strong>Kurs</strong>
-          <a href="#focus">Zielgruppe</a>
-          <a href="#inhalte">Seminarinhalte</a>
-          <a href="#stufen">Kursstufen</a>
-          <a href="#register">Anmeldung</a>
-        </div>
-        <div class="footer__col">
-          <strong>ISH Gruppe</strong>
-          <a href="#">ISH Gruppe</a>
-          <a href="#">ISH Campus</a>
-          <a href="#">ISH Schule</a>
-          <a href="#">ISH Manufaktur</a>
-        </div>
-        <div class="footer__col">
-          <strong>Rechtliches</strong>
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
-          <a href="#">AGB</a>
-        </div>
-      </nav>
     </div>
     <div class="footer__bottom">
       <div class="container">
         <span>&copy; 2024 ISH Akademie · ISH Gruppe. Alle Rechte vorbehalten.</span>
-        <span>Design gemäß ISH Brand Styleguide 2022</span>
       </div>
     </div>
   </footer>
 
+  <!-- STICKY CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="#register" class="sticky-cta__btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Interesse melden
+    </a>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // Sticky CTA
+    (function(){
+      const cta = document.getElementById('stickyCta');
+      const hero = document.querySelector('.hero');
+      if (!cta || !hero) return;
+      function update(){ cta.classList.toggle('is-visible', hero.getBoundingClientRect().bottom < 0); }
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+
+    // Accordion
+    document.querySelectorAll('.mod-accordion__trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+      });
+    });
+
+    // Form submit
+    document.querySelector('.register__form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const btn = this.querySelector('[type=submit]');
+      btn.textContent = '✓ Anfrage gesendet – wir melden uns bald!';
+      btn.disabled = true;
+    });
+  </script>
 </body>
 </html>
