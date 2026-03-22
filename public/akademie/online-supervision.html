@@ -181,21 +181,68 @@
     .sticky-cta__btn { display: flex; align-items: center; gap: .55rem; background: var(--ish-teal); color: #fff; font-size: .9rem; font-weight: 700; padding: .8rem 1.4rem; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 28px rgba(0,170,162,.4); transition: background .2s, transform .2s; white-space: nowrap; }
     .sticky-cta__btn:hover { background: #009990; transform: translateY(-2px); }
 
-    /* ── Mod accordion (reuse white style from Grundkurs) */
+    /* ── Mod accordion (3-Spalten-Layout wie Coach-Seite) */
     .mod-accordion { border-radius: 14px; overflow: hidden; margin-bottom: 1rem; border: 1px solid #e3eaf0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
     .mod-accordion__trigger { width: 100%; background: #fff; border: none; border-left: 4px solid var(--ish-teal); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.25rem; cursor: pointer; text-align: left; position: relative; overflow: hidden; transition: background .2s; }
     .mod-accordion__trigger:hover { background: #f4f8fa; }
+    .mod-accordion__bg-num { position: absolute; right: 3.5rem; top: 50%; transform: translateY(-50%); font-family: var(--font-head); font-size: 5rem; font-weight: 900; color: rgba(0,170,162,.06); line-height: 1; pointer-events: none; user-select: none; }
     .mod-accordion__num { font-family: var(--font-head); font-size: 1.6rem; font-weight: 900; color: var(--ish-teal); line-height: 1; min-width: 2.5rem; flex-shrink: 0; }
     .mod-accordion__summary { flex: 1; }
     .mod-accordion__summary h3 { font-size: 1rem; font-weight: 700; color: var(--ish-dark); margin: 0 0 .4rem; }
     .mod-accordion__tags { display: flex; gap: .4rem; flex-wrap: wrap; }
     .mod-accordion__chevron { flex-shrink: 0; transition: transform .25s; color: #a0aab4; }
-    .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron { transform: rotate(180deg); }
-    .mod-accordion__panel { background: #f7fafc; border-top: 1px solid #e3eaf0; padding: 1.75rem 2rem; }
-    .mod-panel__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
-    .mod-panel__list li { font-size: .88rem; color: #4a5a6a; line-height: 1.6; padding-left: 1.1rem; position: relative; }
-    .mod-panel__list li::before { content: '•'; position: absolute; left: 0; color: var(--ish-teal); }
-    .mod-panel__date { display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 700; color: var(--ish-teal); background: rgba(0,170,162,.08); border-radius: 6px; padding: .25rem .6rem; margin-bottom: 1rem; }
+    .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron { transform: rotate(180deg); color: var(--ish-teal); }
+    .mod-accordion__panel { background: #fff; }
+    .mod-panel__cols { display: grid; grid-template-columns: 1.1fr 1.1fr .9fr; border-top: 1px solid #e3eaf0; }
+    .mod-panel__col { padding: 1.75rem 1.6rem; border-right: 1px solid #e3eaf0; }
+    .mod-panel__col:last-child { border-right: none; }
+    .mod-panel__label { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--ish-teal); margin-bottom: 1rem; }
+    .mod-panel__check-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .7rem; }
+    .mod-panel__check-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .87rem; color: #3a4a5a; line-height: 1.5; }
+    .mod-panel__check-list li::before { content: '✓'; color: var(--ish-teal); font-weight: 700; flex-shrink: 0; }
+    .mod-panel__arrow-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .6rem; }
+    .mod-panel__arrow-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .87rem; color: #3a4a5a; line-height: 1.5; }
+    .mod-panel__arrow-list li::before { content: '→'; color: var(--ish-dark); font-weight: 600; flex-shrink: 0; }
+    .mod-panel__format-block { display: flex; flex-direction: column; gap: 1.1rem; }
+    .mod-panel__format-item { padding-left: .85rem; border-left: 3px solid var(--ish-teal); }
+    .mod-panel__format-item .fmt-label { display: block; font-size: .64rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #8a9aaa; margin-bottom: .2rem; }
+    .mod-panel__format-item strong { display: block; font-size: .9rem; font-weight: 700; color: var(--ish-dark); margin-bottom: .1rem; }
+    .mod-panel__format-item span { font-size: .81rem; color: #6b7d8e; }
+    @media (max-width: 900px) {
+      .mod-panel__cols { grid-template-columns: 1fr; }
+      .mod-panel__col { border-right: none; border-bottom: 1px solid #e3eaf0; }
+      .mod-panel__col:last-child { border-bottom: none; }
+      .mod-accordion__trigger { padding: 1.25rem 1.25rem; gap: 1rem; }
+      .mod-accordion__bg-num { display: none; }
+    }
+
+    /* ── Termine Sektion ──────────────────────────────── */
+    .sv-termine { margin-top: 2.5rem; background: #f4f8fa; border-radius: 16px; padding: 2rem; border: 1px solid #e3eaf0; }
+    .sv-termine__title { font-size: 1.1rem; font-weight: 700; color: var(--ish-dark); margin: 0 0 1.25rem; }
+    .sv-termine__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    @media (max-width: 640px) { .sv-termine__grid { grid-template-columns: 1fr; } }
+    .sv-termin-block { background: #fff; border-radius: 12px; border: 1px solid #e3eaf0; padding: 1.1rem; }
+    .sv-termin-block__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .85rem; padding-bottom: .65rem; border-bottom: 1px solid #e8eff5; }
+    .sv-termin-block__label { font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ish-teal); }
+    .sv-termin-block__dates { font-size: .8rem; color: #7a8fa0; }
+    .sv-termin-item { display: flex; align-items: flex-start; gap: .85rem; padding: .6rem .5rem; border-radius: 8px; }
+    .sv-termin-item + .sv-termin-item { border-top: 1px solid #f0f4f8; }
+    .sv-termin-item__num { font-size: .72rem; font-weight: 800; letter-spacing: .04em; color: var(--ish-teal); min-width: 28px; padding-top: .1rem; }
+    .sv-termin-item div { display: flex; flex-direction: column; gap: .15rem; }
+    .sv-termin-item strong { font-size: .88rem; color: var(--ish-dark); }
+    .sv-termin-item span { font-size: .79rem; color: #7a8fa0; }
+    .sv-termine__cta { margin-top: 1.25rem; text-align: center; }
+
+    /* ── Buchungskarten ───────────────────────────────── */
+    .sv-buchung-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+    @media (max-width: 768px) { .sv-buchung-grid { grid-template-columns: 1fr; } }
+    .sv-buchung-card { background: #fff; border: 1.5px solid #e3eaf0; border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; gap: .6rem; }
+    .sv-buchung-card--highlight { border-color: var(--ish-teal); box-shadow: 0 4px 20px rgba(0,170,162,.12); }
+    .sv-buchung-card__badge { font-size: .62rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--ish-teal); }
+    .sv-buchung-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--ish-dark); margin: 0; }
+    .sv-buchung-card p { font-size: .85rem; color: #5a6e7e; line-height: 1.55; margin: 0; flex: 1; }
+    .sv-buchung-card__price { font-family: var(--font-head); font-size: 1.8rem; font-weight: 900; color: var(--ish-dark); line-height: 1; }
+    .sv-buchung-card__price span { font-size: .78rem; font-weight: 400; color: #8a9aaa; }
   </style>
 </head>
 <body>
@@ -315,125 +362,306 @@
         <!-- MODUL 1 -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-01">
+            <span class="mod-accordion__bg-num" aria-hidden="true">01</span>
             <span class="mod-accordion__num">01</span>
             <div class="mod-accordion__summary">
               <h3>Dynamiken virtueller Begegnungen</h3>
               <div class="mod-accordion__tags">
                 <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
               </div>
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="mod-accordion__panel" id="panel-01" hidden>
-            <ul class="mod-panel__list">
-              <li>Online‑Supervision im Vergleich zu analoger Supervision: Was verändert sich durch das Medium?</li>
-              <li>Kommunikationsphänomene: Resonanz, Kanalreduktion, Beichtstuhleffekt und ihre Wirkung auf Beratungsprozesse</li>
-              <li>Rahmenbedingungen digitaler Supervisionsprozesse: Setting, Struktur und Kontraktgestaltung</li>
-              <li>Reflexion eigener Erfahrungen mit digitalen Beratungsräumen</li>
-            </ul>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Besonderheiten virtueller Begegnungen wahrnehmen und benennen</li>
+                  <li>Kommunikationsphänomene wie Resonanz und Kanalreduktion erkennen</li>
+                  <li>Den eigenen digitalen Beratungsraum bewusst rahmen und strukturieren</li>
+                  <li>Rahmenbedingungen für Online-Supervision professionell gestalten</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Online-Supervision vs. analoge Supervision – was verändert das Medium?</li>
+                  <li>Resonanz, Kanalreduktion und Beichtstuhleffekt im digitalen Kontext</li>
+                  <li>Setting, Struktur und Kontraktgestaltung in der Online-Supervision</li>
+                  <li>Reflexion eigener Erfahrungen mit digitalen Beratungsräumen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online</strong>
+                    <span>Fr 16:30–18:30 · Sa 09:30–17:00</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- MODUL 2 -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-02">
+            <span class="mod-accordion__bg-num" aria-hidden="true">02</span>
             <span class="mod-accordion__num">02</span>
             <div class="mod-accordion__summary">
               <h3>Möglichkeiten digitaler Supervisionsräume</h3>
               <div class="mod-accordion__tags">
                 <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
               </div>
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="mod-accordion__panel" id="panel-02" hidden>
-            <ul class="mod-panel__list">
-              <li>Stufenmodell digitaler Supervisionsräume und unterschiedliche Formate</li>
-              <li>Online‑Aufstellungen und virtuelle Arbeitsformen in Einzel‑ und Gruppensettings</li>
-              <li>Schriftbasierte Beratungsformate (Chat, Mail, Messenger) und ihre spezifische Prozesslogik</li>
-              <li>Methodische Möglichkeiten der Visualisierung im virtuellen Raum</li>
-            </ul>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Unterschiedliche Formate digitaler Supervision kennen und einordnen</li>
+                  <li>Online-Aufstellungen und virtuelle Arbeitsformen sicher einsetzen</li>
+                  <li>Schriftbasierte Beratungsformate professionell nutzen</li>
+                  <li>Visualisierungsmöglichkeiten im virtuellen Raum anwenden</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Stufenmodell digitaler Supervisionsräume und Formate</li>
+                  <li>Online-Aufstellungen in Einzel- und Gruppensettings</li>
+                  <li>Chat, Mail, Messenger – Prozesslogik schriftbasierter Beratung</li>
+                  <li>Visualisierung und kollaborative Tools im virtuellen Raum</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online</strong>
+                    <span>Fr 16:30–18:30 · Sa 09:30–17:00</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- MODUL 3 -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-03">
+            <span class="mod-accordion__bg-num" aria-hidden="true">03</span>
             <span class="mod-accordion__num">03</span>
             <div class="mod-accordion__summary">
               <h3>KI als Ressource im Beratungsprozess</h3>
               <div class="mod-accordion__tags">
                 <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
               </div>
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="mod-accordion__panel" id="panel-03" hidden>
-            <ul class="mod-panel__list">
-              <li>KI als Reflexions‑ und Strukturierungswerkzeug für Supervisor:innen</li>
-              <li>Mögliche Rollen von KI im Beratungs‑ und Supervisionskontext</li>
-              <li>Chancen und Grenzen beim professionellen Einsatz künstlicher Intelligenz</li>
-              <li>Praxisbeispiele für die Nutzung von KI vor, während und nach Beratungsprozessen</li>
-            </ul>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Mögliche Rollen von KI im Supervisionskontext einschätzen</li>
+                  <li>KI als Reflexions- und Strukturierungswerkzeug nutzbar machen</li>
+                  <li>Chancen und Grenzen künstlicher Intelligenz in der Beratung beurteilen</li>
+                  <li>Eigene ethische Haltung zum KI-Einsatz entwickeln</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>KI als Reflexions- und Strukturierungswerkzeug für Supervisor:innen</li>
+                  <li>Mögliche Rollen von KI im Beratungs- und Supervisionskontext</li>
+                  <li>Chancen und Grenzen beim professionellen KI-Einsatz</li>
+                  <li>Praxisbeispiele: KI vor, während und nach Beratungsprozessen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online</strong>
+                    <span>Fr 16:30–18:30 · Sa 09:30–17:00</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- MODUL 4 -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="panel-04">
+            <span class="mod-accordion__bg-num" aria-hidden="true">04</span>
             <span class="mod-accordion__num">04</span>
             <div class="mod-accordion__summary">
               <h3>Professionelle Online-Supervision gestalten</h3>
               <div class="mod-accordion__tags">
                 <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
               </div>
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="mod-accordion__panel" id="panel-04" hidden>
-            <ul class="mod-panel__list">
-              <li>Einzel‑, Gruppen‑ und Teamsupervision im virtuellen Raum</li>
-              <li>Resonanz und Beziehungsgestaltung trotz räumlicher Distanz</li>
-              <li>Gestaltung von Übergängen zwischen analoger und digitaler Beratung</li>
-              <li>Abschluss, Transfer in die eigene Praxis und Präsentationen</li>
-            </ul>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Einzel-, Gruppen- und Teamsupervision online souverän gestalten</li>
+                  <li>Resonanz und Beziehung trotz räumlicher Distanz aufbauen</li>
+                  <li>Übergänge zwischen analoger und digitaler Beratung gestalten</li>
+                  <li>Eigene Praxis transferieren und im Abschluss präsentieren</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Einzel-, Gruppen- und Teamsupervision im virtuellen Raum</li>
+                  <li>Resonanz und Beziehungsgestaltung trotz räumlicher Distanz</li>
+                  <li>Gestaltung von Übergängen zwischen analoger und digitaler Beratung</li>
+                  <li>Abschluss, Transfer in die eigene Praxis und Kurzpräsentationen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online</strong>
+                    <span>Fr 16:30–18:30 · Sa 09:30–17:00</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
 
+      <!-- TERMINE -->
+      <div class="sv-termine">
+        <h3 class="sv-termine__title">Termine · Nächster Durchgang</h3>
+        <div class="sv-termine__grid">
+          <div class="sv-termin-block">
+            <div class="sv-termin-block__header">
+              <span class="sv-termin-block__label">Kurs 26_SV</span>
+              <span class="sv-termin-block__dates">Okt 2026 – Mai 2027</span>
+            </div>
+            <div class="sv-termin-item">
+              <span class="sv-termin-item__num">01</span>
+              <div>
+                <strong>Dynamiken virtueller Begegnungen</strong>
+                <span>Fr 09.10. + Sa 10.10.2026</span>
+              </div>
+            </div>
+            <div class="sv-termin-item">
+              <span class="sv-termin-item__num">02</span>
+              <div>
+                <strong>Möglichkeiten digitaler Supervisionsräume</strong>
+                <span>Fr 13.11. + Sa 14.11.2026</span>
+              </div>
+            </div>
+            <div class="sv-termin-item">
+              <span class="sv-termin-item__num">03</span>
+              <div>
+                <strong>KI als Ressource im Beratungsprozess</strong>
+                <span>Fr 23.01. + Sa 24.01.2027</span>
+              </div>
+            </div>
+            <div class="sv-termin-item">
+              <span class="sv-termin-item__num">04</span>
+              <div>
+                <strong>Professionelle Online-Supervision gestalten</strong>
+                <span>Fr 07.05. + Sa 08.05.2027</span>
+              </div>
+            </div>
+          </div>
+          <div class="sv-termin-block" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#f0f8f8;border-style:dashed;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="stroke:var(--ish-teal);margin-bottom:.75rem;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <p style="font-size:.9rem;font-weight:700;color:var(--ish-dark);margin:0 0 .35rem;">Weitere Termine folgen</p>
+            <p style="font-size:.82rem;color:#6b7d8e;margin:0 0 1rem;">Tragen Sie sich jetzt ein – wir informieren Sie über neue Durchgänge.</p>
+            <a href="#register" class="btn btn--primary" style="font-size:.85rem;padding:.6rem 1.2rem;">Jetzt anmelden</a>
+          </div>
+        </div>
+        <div class="sv-termine__cta">
+          <p style="font-size:.82rem;color:#7a8fa0;margin:0;">Alle Module können einzeln gebucht werden · steuerbefreit · vollständig online</p>
+        </div>
+      </div>
+
       <!-- Teilnahme-Hinweis -->
       <div style="margin-top:1.5rem;background:#f0f8f8;border:1.5px solid #b8e0dd;border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:.75rem;font-size:.87rem;color:#3a5a5a;line-height:1.5;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--ish-teal);flex-shrink:0;margin-top:.1rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span>Die Weiterbildung kann sowohl vollständig als auch modular besucht werden. Dadurch besteht die Möglichkeit, einzelne Themenbereiche gezielt zu vertiefen.</span>
+        <span>Die Weiterbildung kann sowohl vollständig als auch modular besucht werden. Dadurch besteht die Möglichkeit, einzelne Themenbereiche gezielt zu vertiefen. Alle Module können bei coachingspace für die Qualifizierung „Systemische:r Online-Expert:in" anerkannt werden.</span>
       </div>
 
     </div>
   </section>
 
-  <!-- PREISE -->
+  <!-- PREISE & ANMELDUNG -->
   <section class="preise-section" id="preise">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Teilnahme &amp; Preise</span>
+        <span class="section-tag">Anmeldung &amp; Preise</span>
         <h2>Modular oder als Gesamtpaket.</h2>
+        <p class="section-intro">Alle Module können einzeln gebucht werden. Das Gesamtpaket ist günstiger als vier Einzelmodule.</p>
       </div>
-      <div class="preise-grid">
-        <div class="preis-card">
-          <span class="preis-card__label">Einzelmodul</span>
-          <div class="preis-card__amount">690</div>
-          <span class="preis-card__unit">€ pro Modul</span>
-          <span class="preis-card__note">steuerbefreit</span>
+
+      <div class="sv-buchung-grid">
+        <div class="sv-buchung-card">
+          <span class="sv-buchung-card__badge">Einzelmodul</span>
+          <h3>Modul nach Wahl</h3>
+          <p>Wählen Sie eines der vier Module und vertiefen Sie gezielt Ihr Thema – flexibel buchbar, auch wenn Sie die anderen Module bereits belegt haben.</p>
+          <div class="sv-buchung-card__price">690 <span>€ umsatzsteuerbefreit</span></div>
+          <button class="btn sv-buchung-card__btn" data-option="Einzelmodul" style="width:100%;justify-content:center;margin-top:.5rem;">Modul buchen</button>
         </div>
-        <div class="preis-card preis-card--highlight">
-          <span class="preis-card__label">Komplette Weiterbildung</span>
-          <div class="preis-card__amount">1.900</div>
-          <span class="preis-card__unit" style="color:rgba(255,255,255,.5);">€ alle 4 Module</span>
-          <span class="preis-card__note" style="color:var(--ish-teal);">steuerbefreit · günstiger als 4 × 690 €</span>
+
+        <div class="sv-buchung-card sv-buchung-card--highlight">
+          <span class="sv-buchung-card__badge">Gesamtpaket · Vorteilspreis</span>
+          <h3>Alle 4 Module</h3>
+          <p>Die vollständige Weiterbildung in einem Paket – alle vier Module, vollständig online. Günstiger als vier Einzelbuchungen.</p>
+          <div class="sv-buchung-card__price">1.900 <span>€ umsatzsteuerbefreit</span></div>
+          <button class="btn btn--primary sv-buchung-card__btn" data-option="Gesamtpaket (alle 4 Module)" style="width:100%;justify-content:center;margin-top:.5rem;">Gesamtpaket buchen</button>
         </div>
-      </div>
-      <div style="text-align:center;margin-top:2rem;">
-        <a href="#register" class="btn btn--primary">Interesse melden</a>
+
+        <div class="sv-buchung-card" style="background:#f4f8fa;">
+          <span class="sv-buchung-card__badge">Hinweis</span>
+          <h3>Anerkennung möglich</h3>
+          <p>Alle Module können bei coachingspace für die Qualifizierung „Systemische:r Online-Expert:in" anerkannt werden. Sprechen Sie uns gerne an.</p>
+          <div style="margin-top:auto;padding-top:1rem;">
+            <a href="#register" class="btn btn--outline" style="width:100%;justify-content:center;display:flex;">Mehr erfahren</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -464,15 +692,18 @@
     </div>
   </section>
 
-  <!-- INTEREST / REGISTER -->
+  <!-- ANMELDUNG -->
   <section class="interest-section" id="register">
     <div class="container">
       <div class="interest-inner">
-        <span class="section-tag" style="color:rgba(255,255,255,.5);">Interesse &amp; Anfrage</span>
-        <h2>Interesse?</h2>
-        <p>Bei Interesse oder Fragen zur Weiterbildung senden Sie gerne eine Anfrage. Wir informieren Sie über Termine, organisatorische Details und Anmeldemöglichkeiten.</p>
+        <span class="section-tag" style="color:rgba(255,255,255,.5);">Jetzt anmelden</span>
+        <h2>Sichern Sie Ihren Platz.</h2>
+        <p>Melden Sie sich direkt für den nächsten Durchgang an – modular oder als Gesamtpaket. Wir bestätigen Ihre Anmeldung innerhalb von 2 Werktagen.</p>
 
         <form class="register__form" novalidate style="text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;">
+          <h3 style="color:#fff;margin:0 0 .25rem;">Anmeldung &amp; Anfrage</h3>
+          <p id="sv-buchung-label" style="font-size:.85rem;color:rgba(255,255,255,.5);margin:0 0 1.5rem;min-height:1.2em;"></p>
+          <input type="hidden" id="sv-buchung" name="buchung" value="" />
           <div class="form-row">
             <div class="form-group">
               <label for="reg-firstname">Vorname *</label>
@@ -488,23 +719,41 @@
             <input type="email" id="reg-email" name="email" placeholder="ihre@email.de" required />
           </div>
           <div class="form-group">
-            <label for="reg-interesse">Ich interessiere mich für</label>
-            <select id="reg-interesse" name="interesse">
+            <label for="reg-buchung-sel">Ich möchte buchen *</label>
+            <select id="reg-buchung-sel" name="buchung_sel" required>
               <option value="">Bitte wählen...</option>
-              <option>Gesamte Weiterbildung (1.900 €)</option>
-              <option>Modul 1 – Dynamiken virtueller Begegnungen (690 €)</option>
-              <option>Modul 2 – Möglichkeiten digitaler Supervisionsräume (690 €)</option>
-              <option>Modul 3 – KI als Ressource im Beratungsprozess (690 €)</option>
-              <option>Modul 4 – Professionelle Online-Supervision gestalten (690 €)</option>
-              <option>Noch unentschieden – bitte informieren</option>
+              <option value="Gesamtpaket – alle 4 Module (1.900 €)">Gesamtpaket – alle 4 Module (1.900 €)</option>
+              <option value="Modul 1 – Dynamiken virtueller Begegnungen (690 €)">Modul 1 – Dynamiken virtueller Begegnungen (690 €)</option>
+              <option value="Modul 2 – Möglichkeiten digitaler Supervisionsräume (690 €)">Modul 2 – Möglichkeiten digitaler Supervisionsräume (690 €)</option>
+              <option value="Modul 3 – KI als Ressource im Beratungsprozess (690 €)">Modul 3 – KI als Ressource im Beratungsprozess (690 €)</option>
+              <option value="Modul 4 – Professionelle Online-Supervision gestalten (690 €)">Modul 4 – Professionelle Online-Supervision gestalten (690 €)</option>
+              <option value="Noch unentschieden – bitte informieren">Noch unentschieden – bitte informieren</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="reg-role">Ich bin / ich arbeite als</label>
+            <select id="reg-role" name="role">
+              <option value="">Bitte wählen...</option>
+              <option>Supervisor:in</option>
+              <option>Coach / Berater:in</option>
+              <option>Lehrkraft / Hochschullehrende:r</option>
+              <option>Schulleitung</option>
+              <option>Sonstige Bildungseinrichtung</option>
+              <option>Sonstiges</option>
             </select>
           </div>
           <div class="form-group">
             <label for="reg-message">Fragen oder Anmerkungen</label>
-            <textarea id="reg-message" name="message" rows="4" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
+            <textarea id="reg-message" name="message" rows="3" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
           </div>
-          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Anfrage senden →</button>
-          <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.75rem;text-align:center;">Steuerbefreit · Wir melden uns innerhalb von 2 Werktagen.</p>
+          <div class="form-group form-group--check">
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacy" required />
+              <span>Ich habe die <a href="#" style="color:rgba(255,255,255,.6);">Datenschutzerklärung</a> gelesen und stimme zu. *</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Jetzt verbindlich anmelden →</button>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.75rem;text-align:center;">* Pflichtfelder · Umsatzsteuerbefreit · Wir melden uns innerhalb von 2 Werktagen.</p>
         </form>
 
       </div>
@@ -552,7 +801,7 @@
   <div class="sticky-cta" id="stickyCta">
     <a href="#register" class="sticky-cta__btn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      Interesse melden
+      Jetzt anmelden
     </a>
   </div>
 
@@ -577,11 +826,29 @@
       });
     });
 
+    // Buchungsbuttons → Formular vorausfüllen
+    document.querySelectorAll('.sv-buchung-card__btn[data-option]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const option = btn.getAttribute('data-option');
+        const sel = document.getElementById('reg-buchung-sel');
+        const label = document.getElementById('sv-buchung-label');
+        if (sel) {
+          for (let i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value.toLowerCase().includes(option.toLowerCase())) {
+              sel.selectedIndex = i; break;
+            }
+          }
+        }
+        if (label) label.textContent = 'Ausgewählt: ' + option;
+        document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
     // Form submit
     document.querySelector('.register__form').addEventListener('submit', function(e){
       e.preventDefault();
       const btn = this.querySelector('[type=submit]');
-      btn.textContent = '✓ Anfrage gesendet – wir melden uns bald!';
+      btn.textContent = '✓ Anmeldung gesendet – wir melden uns bald!';
       btn.disabled = true;
     });
   </script>
