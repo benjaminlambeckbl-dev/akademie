@@ -7,104 +7,373 @@
   <meta name="description" content="Weiterbildung zum systemischen Moderator im Bildungskontext. Grundkurs und Aufbaukurs. Professionelle Gestaltung von Gruppen- und Entwicklungsprozessen. ISH Akademie." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 <style>
-  .grundlage-box {
-    display: flex;
-    gap: 1.25rem;
-    align-items: flex-start;
-    background: rgba(0,170,162,.08);
-    border: 1.5px solid rgba(0,170,162,.3);
-    border-left: 4px solid var(--ish-teal);
-    border-radius: 0 14px 14px 0;
-    padding: 1.5rem 1.75rem;
-    margin: 2.5rem 0 1.5rem;
-  }
-  .grundlage-box__icon {
-    color: var(--ish-teal);
-    flex-shrink: 0;
-    margin-top: .15rem;
-  }
-  .grundlage-box__content strong {
-    display: block;
-    font-family: var(--font-head);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ish-dark);
-    margin-bottom: .5rem;
-  }
-  .grundlage-box__content p {
-    font-size: .9rem;
-    color: var(--ish-gray-600);
-    line-height: 1.65;
-    margin: 0 0 .85rem;
-  }
-  .grundlage-box__link {
-    display: inline-flex;
-    align-items: center;
-    gap: .35rem;
-    font-size: .85rem;
-    font-weight: 600;
-    color: var(--ish-teal);
-    text-decoration: none;
-    transition: gap .2s;
-  }
-  .grundlage-box__link:hover { gap: .6rem; }
-
-  /* ── Stufenaufbau ───────────────────────────────── */
-  .stufen-aufbau {
+  /* ── Hero Facts Visual ─────────────────────────── */
+  .hero__facts-wrap {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    max-width: 520px;
+    gap: 1rem;
+    width: 280px;
   }
-  .stufen-aufbau .stufe {
-    border-left: 3px solid var(--ish-teal);
-    background: var(--ish-gray-50);
-    border-radius: 0 10px 10px 0;
-    padding: 1.1rem 1.4rem;
-    margin-bottom: .75rem;
-    position: relative;
+  .hero__facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
   }
-  .stufen-aufbau .stufe--next {
-    border-left-color: var(--ish-dark);
+  .hero__fact {
+    background: #fff;
+    border: 1px solid var(--ish-gray-200);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    text-align: center;
   }
-  .stufe__label {
+  .hero__fact--accent {
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    padding: 1rem 1.5rem;
+  }
+  .hero__fact--accent .hero__fact-num { color: var(--ish-teal); }
+  .hero__fact--accent .hero__fact-label { color: rgba(255,255,255,.7); }
+  .hero__fact-num {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--ish-dark);
+    line-height: 1;
+  }
+  .hero__fact--accent .hero__fact-num { font-size: 2.8rem; }
+  .hero__fact-label {
+    font-size: .78rem;
+    color: var(--ish-gray-400);
+    margin-top: .2rem;
+    line-height: 1.3;
+  }
+  /* Single logo tile — label on top, big logo below, zoom on hover */
+  .hero__fact--logo-single {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    padding: .9rem 1rem;
+    cursor: zoom-in;
+    overflow: visible;
+  }
+  .hero__fact--logo-single .hero__fact-label {
     font-size: .68rem;
     font-weight: 700;
+    letter-spacing: .06em;
     text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--ish-teal);
-    margin-bottom: .25rem;
+    text-align: center;
+    margin: 0;
+    order: -1; /* label first/above */
   }
-  .stufe--next .stufe__label { color: var(--ish-dark); }
-  .stufe__title {
-    font-family: var(--font-head);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ish-dark);
-    margin-bottom: .45rem;
+  .hero__fact--logo-single img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), filter .3s;
   }
-  .stufen-aufbau .stufe p {
-    font-size: .87rem;
-    color: var(--ish-gray-600);
-    line-height: 1.6;
-    margin: 0 0 .6rem;
+  .hero__fact--logo-single:hover img {
+    transform: scale(1.9);
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
   }
-  .stufe__link {
-    display: inline-flex;
+  /* SG logo must stay white (inverted) and gets a light glow */
+  .hero__fact--logo-single:hover .hero__fact-logo-img--sg {
+    filter: brightness(0) invert(1) drop-shadow(0 6px 20px rgba(255,255,255,.25));
+  }
+
+  /* Logos row — full width dark tile with both seals (legacy, keep for safety) */
+  .hero__fact--logos {
+    grid-column: 1 / -1;
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+    display: flex;
     align-items: center;
-    gap: .3rem;
+    justify-content: center;
+    gap: 0;
+    padding: 1rem 1.5rem;
+  }
+  .hero__fact-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    flex: 1;
+  }
+  .hero__fact-logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  .hero__fact-logo-img--sg {
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+  .hero__fact-logo-item span {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+  }
+  .hero__fact-logo-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,.12);
+    flex-shrink: 0;
+    margin: 0 .5rem;
+  }
+  /* Checklist tile — full width */
+  .hero__fact--checklist {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    padding: .9rem 1.25rem;
+    align-items: flex-start;
+  }
+  .hero__fact-check-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
     font-size: .82rem;
     font-weight: 600;
-    color: var(--ish-teal);
-    text-decoration: none;
-    transition: gap .2s;
+    color: var(--ish-dark);
   }
-  .stufe__link:hover { gap: .55rem; }
+  .hero__fact-check-item svg {
+    color: var(--ish-teal);
+    flex-shrink: 0;
+  }
+  .hero__fact-quote {
+    background: var(--ish-gray-50);
+    border-left: 3px solid var(--ish-teal);
+    border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem;
+    font-size: .82rem;
+    font-style: italic;
+    color: var(--ish-gray-600);
+    line-height: 1.6;
+  }
 
-  /* ── Promise Seal ────────────────────────────────── */
+  /* ── ZEITSTRAHL ─────────────────────────────────── */
+  .zeitstrahl {
+    padding: 3rem 0 2rem;
+  }
+  .zeitstrahl__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .zeitstrahl__header h3 {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin: .5rem 0 .4rem;
+  }
+  .zeitstrahl__subtitle {
+    font-size: .9rem;
+    color: rgba(255,255,255,.55);
+  }
+  .zeitstrahl__scroll-wrap {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .zeitstrahl__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 860px;
+    padding: 0 2rem;
+    position: relative;
+  }
+  .zeitstrahl__line {
+    position: absolute;
+    top: 45px;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: linear-gradient(to right,
+      transparent,
+      var(--ish-teal) 8%,
+      rgba(0,170,162,.4) 50%,
+      var(--ish-teal) 92%,
+      transparent
+    );
+    z-index: 0;
+  }
+
+  /* Stops */
+  .zeitstrahl__stop {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .zeitstrahl__date {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.45);
+    margin-bottom: .6rem;
+    white-space: nowrap;
+  }
+  .zeitstrahl__date--final { color: var(--ish-teal); }
+
+  /* Dots */
+  .zeitstrahl__dot {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255,255,255,.15);
+    margin-bottom: 1.25rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .zeitstrahl__dot--praesenz {
+    background: var(--ish-teal);
+    border-color: var(--ish-teal);
+    box-shadow: 0 0 0 6px rgba(0,170,162,.2);
+  }
+  .zeitstrahl__dot--online {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.25);
+  }
+  .zeitstrahl__dot--final {
+    background: var(--ish-teal);
+    border-color: var(--ish-teal);
+    box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1);
+    color: white;
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1); }
+    50%       { box-shadow: 0 0 0 8px rgba(0,170,162,.35), 0 0 0 18px rgba(0,170,162,.08); }
+  }
+  .zeitstrahl__dot-num {
+    font-family: var(--font-head);
+    font-size: .85rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .zeitstrahl__dot--online .zeitstrahl__dot-num { color: rgba(255,255,255,.6); }
+
+  /* Phase labels between stops */
+  .zeitstrahl__phase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 57px;
+    flex-shrink: 0;
+    width: 80px;
+    position: relative;
+    z-index: 1;
+  }
+  .zeitstrahl__phase span {
+    font-size: .58rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.3);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    text-align: center;
+    line-height: 1.5;
+    background: rgba(255,255,255,.05);
+    border: 1px dashed rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: .25rem .4rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Cards */
+  .zeitstrahl__card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 148px;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+  }
+  .zeitstrahl__card--praesenz { border-top: 2.5px solid var(--ish-teal); }
+  .zeitstrahl__card--online   { border-top: 2.5px solid rgba(255,255,255,.25); }
+  .zeitstrahl__card--final {
+    border-top: 2.5px solid var(--ish-teal);
+    text-align: center;
+    background: rgba(0,170,162,.08);
+  }
+  .zeitstrahl__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .35rem;
+    margin-bottom: .6rem;
+  }
+  .zeitstrahl__format-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .62rem;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: .15rem .5rem;
+  }
+  .zeitstrahl__format-badge--praesenz { background: rgba(0,170,162,.2); color: var(--ish-teal); }
+  .zeitstrahl__format-badge--online   { background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
+  .zeitstrahl__ue-pill {
+    font-size: .62rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.45);
+    white-space: nowrap;
+  }
+  .zeitstrahl__card-title {
+    font-family: var(--font-head);
+    font-size: .82rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0 0 .35rem;
+  }
+  .zeitstrahl__card-date {
+    font-size: .68rem;
+    color: rgba(255,255,255,.4);
+    line-height: 1.4;
+    margin: 0 0 .6rem;
+  }
+  .zeitstrahl__chip-row {
+    display: flex;
+    gap: .35rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .zeitstrahl__card--final .zeitstrahl__chip-row { justify-content: center; }
+  .zeitstrahl__seal {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .75rem;
+  }
+
+  /* Promise stat cards */
   .promise__seal-display {
     display: flex;
     flex-direction: column;
@@ -142,202 +411,1585 @@
     margin-top: .2rem;
   }
 
-  /* ── Buchungsoptionen ────────────────────────────── */
-  .register__intro {
-    text-align: center;
-    max-width: 620px;
-    margin: 0 auto 3rem;
+  /* ── SG-Logo ────────────────────────────────────── */
+  .sg-logo-sm {
+    height: 40px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: .9;
   }
-  .register__intro h2 { color: var(--ish-dark); margin: .5rem 0 .75rem; }
-  .register__intro p { color: var(--ish-gray-500, #6b7d8e); font-size: .95rem; }
-  .buchung-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  .overview__icon--sg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
+  .register__trust {
+    display: flex;
+    align-items: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: .9rem 1.25rem;
+    margin-bottom: 1.5rem;
   }
-  .buchung-card {
-    background: #fff;
-    border: 1.5px solid var(--ish-gray-200);
-    border-radius: 16px;
-    padding: 1.5rem 1.35rem;
+  .register__sg-logo {
+    height: 36px;
+    width: auto;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+    opacity: .85;
+  }
+  .register__trust span {
+    font-size: .82rem;
+    color: rgba(255,255,255,.55);
+    line-height: 1.5;
+  }
+
+  /* ── Kompakte Modul-Card-Body ───────────────────── */
+  .module-card__desc {
+    font-size: .93rem;
+    color: rgba(255,255,255,.62);
+    line-height: 1.7;
+    margin-bottom: 1.1rem;
+    font-style: italic;
+  }
+  .module-card__highlights {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: .65rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,.06);
-    transition: box-shadow .2s, transform .2s;
+    gap: .6rem;
+    margin: 0;
+    padding: 0;
   }
-  .buchung-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,.1); transform: translateY(-2px); }
-  .buchung-card--sg { border-color: var(--akademie); box-shadow: 0 4px 20px rgba(120,136,254,.15); }
-  .buchung-card__badge {
+  .module-card__highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    font-size: .9rem;
+    color: rgba(255,255,255,.82);
+    line-height: 1.5;
+  }
+  .module-card__highlights li::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--ish-teal);
+    flex-shrink: 0;
+    margin-top: .42rem;
+  }
+  .module-card--final .module-card__highlights li::before {
+    background: #f9c84b;
+  }
+
+  @media (max-width: 768px) {
+    .hero__facts-wrap { width: 100%; }
+    .zeitstrahl__inner { min-width: 700px; }
+  }
+
+  /* ── Stufenübersicht ──────────────────────────── */
+  .stufen-uebersicht {
+    background: var(--ish-dark);
+    padding: 3.5rem 0;
+  }
+  .stufen-uebersicht .section-header { margin-bottom: 2.5rem; }
+  .stufen-uebersicht .section-header h2 { color: #fff; }
+  .stufen-uebersicht .section-tag { color: var(--ish-teal); }
+  .stufen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+    align-items: stretch;
+  }
+  .stufen-grid::before,
+  .stufen-grid::after {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--ish-teal);
+    z-index: 2;
+  }
+  .stufen-grid::before { left: calc(33.33% - .75rem); }
+  .stufen-grid::after  { left: calc(66.66% - .75rem); }
+  .stufen-card {
+    padding: 2rem 1.75rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    position: relative;
+  }
+  .stufen-card--entry {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .stufen-card--main {
+    background: #fff;
+    border: 2px solid var(--ish-teal);
+    box-shadow: 0 8px 40px rgba(0,170,162,.25);
+    z-index: 1;
+  }
+  .stufen-card--aufbau {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .stufen-card__badge {
     display: inline-block;
-    font-size: .62rem;
+    font-size: .68rem;
     font-weight: 700;
-    letter-spacing: .09em;
     text-transform: uppercase;
-    padding: .2rem .65rem;
+    letter-spacing: .1em;
+    padding: .2rem .7rem;
     border-radius: 20px;
     width: fit-content;
-    background: var(--ish-gray-100, #eef2f6);
-    color: var(--ish-gray-500, #6b7d8e);
   }
-  .buchung-card__badge--highlight {
-    background: rgba(120,136,254,.15);
+  .stufen-card--entry .stufen-card__badge {
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.6);
+  }
+  .stufen-card--main .stufen-card__badge {
+    background: var(--ish-teal);
+    color: #fff;
+  }
+  .stufen-card--aufbau .stufen-card__badge {
+    background: rgba(120,136,254,.2);
     color: var(--akademie);
   }
-  .buchung-card--gk .buchung-card__badge {
-    background: rgba(0,170,162,.1);
-    color: var(--ish-teal);
-  }
-  .buchung-card h3 {
+  .stufen-card h3 {
     font-family: var(--font-head);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    color: var(--ish-dark);
-    margin: 0;
     line-height: 1.25;
-  }
-  .buchung-card p {
-    font-size: .82rem;
-    color: var(--ish-gray-500, #6b7d8e);
-    line-height: 1.55;
     margin: 0;
-    flex: 1;
   }
-  .buchung-card__facts {
+  .stufen-card--entry h3,
+  .stufen-card--aufbau h3 { color: #fff; }
+  .stufen-card--main h3  { color: var(--ish-dark); }
+  .stufen-card p {
+    font-size: .87rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .stufen-card--entry p,
+  .stufen-card--aufbau p { color: rgba(255,255,255,.55); }
+  .stufen-card--main p   { color: #5a6a7a; }
+  .stufen-card__facts {
     display: flex;
-    gap: .4rem;
+    gap: .5rem;
     flex-wrap: wrap;
   }
-  .buchung-card__facts span {
-    font-size: .68rem;
+  .stufen-card__facts span {
+    font-size: .75rem;
     font-weight: 600;
-    background: var(--ish-gray-50, #f5f7f9);
-    color: var(--ish-gray-600, #4a5a68);
-    padding: .15rem .55rem;
+    padding: .2rem .65rem;
     border-radius: 20px;
   }
-  .buchung-card__price {
+  .stufen-card--entry .stufen-card__facts span,
+  .stufen-card--aufbau .stufen-card__facts span {
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.55);
+  }
+  .stufen-card--main .stufen-card__facts span {
+    background: var(--ish-gray-100, #eef2f6);
+    color: var(--ish-dark);
+  }
+  .stufen-card__zert {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 10px;
+    margin-top: auto;
+  }
+  .stufen-card--main .stufen-card__zert {
+    background: #f0fdfc;
+    border: 1px solid rgba(0,170,162,.2);
+  }
+  .stufen-card--aufbau .stufen-card__zert {
+    background: rgba(120,136,254,.08);
+    border: 1px solid rgba(120,136,254,.15);
+  }
+  .stufen-card__zert-seal {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .stufen-card__zert-text {
+    font-size: .8rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  .stufen-card--main .stufen-card__zert-text { color: var(--ish-dark); }
+  .stufen-card--aufbau .stufen-card__zert-text { color: rgba(255,255,255,.8); }
+  .stufen-card__sg-logo-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--ish-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .stufen-card__sg-logo {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: .85;
+  }
+  /* All three entry cards get uniform cert tile */
+  .stufen-card--entry .stufen-card__zert {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    justify-content: center;
+    text-align: center;
+  }
+  .stufen-card--entry .stufen-card__zert-text {
+    color: rgba(255,255,255,.5);
+    font-size: .78rem;
+    font-style: italic;
+  }
+  /* Hoverable cert tile: popup seal on hover */
+  .stufen-card__zert--hoverable {
+    cursor: zoom-in;
+    position: relative;
+    overflow: visible;
+  }
+  .stufen-card__zert-popup {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) scale(.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .32s cubic-bezier(.34,1.56,.64,1);
+    z-index: 9999;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 0 24px 80px rgba(0,0,0,.45);
+    object-fit: contain;
+  }
+  .stufen-card__zert-popup--sg {
+    background: var(--ish-dark);
+    padding: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 16px 60px rgba(0,0,0,.4), 0 0 0 3px rgba(120,136,254,.3);
+  }
+  .stufen-card__zert--hoverable:hover .stufen-card__zert-popup {
+    opacity: 0;
+    transform: translateX(-50%) scale(.3);
+  }
+  .stufen-card__sg-logo-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ish-dark);
+    border: 2px solid rgba(120,136,254,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(120,136,254,.15);
+  }
+  @media (max-width: 900px) {
+    .stufen-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .stufen-grid::before,
+    .stufen-grid::after { display: none; }
+    .stufen-card--entry { margin-right: 0; }
+    .stufen-card--aufbau { margin-left: 0; }
+  }
+
+  /* ── Focus Split (Vorschlag A) ─────────────────── */
+  .focus-split {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 3.5rem 0;
+  }
+  .focus-split__eyebrow {
+    display: block;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ish-teal);
+    margin-bottom: .75rem;
+  }
+  .focus-split__left h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--ish-dark);
+    line-height: 1.2;
+    margin: 0 0 1.1rem;
+  }
+  .focus-split__zielgruppe-img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-top: 1.75rem;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0,0,0,.1);
+  }
+  .focus-split__intro {
+    color: #5a6a7a;
+    font-size: .97rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .focus-who-list {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    margin-bottom: 1.75rem;
+  }
+  .focus-who-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--ish-teal);
+    background: #f7f9fb;
+    border-radius: 0 10px 10px 0;
+  }
+  .focus-who-icon {
+    color: var(--ish-teal);
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .focus-who-item strong {
+    display: block;
+    font-size: .93rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin-bottom: .2rem;
+  }
+  .focus-who-item p {
+    font-size: .85rem;
+    color: #6b7d8e;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .focus-quote {
+    margin: 0;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--akademie);
+    background: #f7f9fb;
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: .88rem;
+    color: #6b7d8e;
+    line-height: 1.65;
+  }
+  .focus-quote cite {
+    display: block;
+    margin-top: .5rem;
+    font-style: normal;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--ish-teal);
+    letter-spacing: .05em;
+  }
+
+  /* ── UE Tiles ─────────────────────────────────── */
+  .ue-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .ue-tile {
+    background: #f7f9fb;
+    border: 1px solid #e3eaf0;
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ue-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ish-teal);
+  }
+  .ue-tile--accent {
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+  }
+  .ue-tile--accent::before { background: var(--ish-teal); }
+  .ue-tile--accent h4 { color: rgba(255,255,255,.85); }
+  .ue-tile--accent p  { color: rgba(255,255,255,.5); }
+  .ue-tile--accent .ue-tile__num  { color: var(--ish-teal); }
+  .ue-tile--accent .ue-tile__unit { color: rgba(255,255,255,.45); }
+  .ue-tile__num {
     font-family: var(--font-head);
-    font-size: 1.5rem;
+    font-size: 3.8rem;
     font-weight: 900;
     color: var(--ish-dark);
     line-height: 1;
-    margin-top: .25rem;
+    display: block;
   }
-  .buchung-card__price span {
-    font-size: .75rem;
-    font-weight: 500;
-    color: var(--ish-gray-400, #8a9bab);
-    font-family: var(--font-body);
-  }
-  .buchung-card__btn {
-    margin-top: .25rem;
+  .ue-tile__unit {
     font-size: .82rem;
-    padding: .6rem .9rem;
-    border-radius: 8px;
-    font-weight: 700;
-  }
-  .buchung-card__btn--k  { background: transparent; border: 1.5px solid var(--ish-gray-300, #c0ccd8); color: var(--ish-dark); }
-  .buchung-card__btn--gk { background: var(--ish-teal); color: #fff; border: none; }
-  .buchung-card__btn--sg { background: var(--akademie); color: #fff; border: none; }
-  .buchung-card__btn--k:hover  { border-color: var(--ish-dark); }
-  .register__form-wrap {
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  #buchung-selected-label {
-    font-size: .85rem;
     font-weight: 700;
     color: var(--ish-teal);
-    min-height: 1.2em;
-    margin: 0 0 .5rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .75rem;
   }
-  @media (max-width: 900px) {
-    .buchung-grid { grid-template-columns: 1fr 1fr !important; }
+  .ue-tile h4 {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin: 0 0 .4rem;
   }
-  @media (max-width: 560px) {
-    .buchung-grid { grid-template-columns: 1fr !important; }
+  .ue-tile p {
+    font-size: .82rem;
+    color: #6b7d8e;
+    line-height: 1.55;
+    margin: 0;
   }
 
-  /* ── ISH SEAL MODAL ──────────────────────────────── */
-  .seal-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0,0,0,.75);
-    backdrop-filter: blur(4px);
+  /* ── Modul Accordion ──────────────────────────── */
+  .mod-accordion {
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid #e3eaf0;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  }
+  .mod-accordion__trigger {
+    width: 100%;
+    display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  .seal-modal.is-open { display: flex; }
-  .seal-modal__inner {
-    position: relative;
-    padding: 2rem;
-    text-align: center;
-    animation: seal-pop .25s ease;
-  }
-  @keyframes seal-pop {
-    from { transform: scale(.8); opacity: 0; }
-    to   { transform: scale(1);  opacity: 1; }
-  }
-  .seal-modal__img { width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 0 60px rgba(0,170,162,.4); }
-  .seal-modal__caption { margin-top: 1rem; color: #fff; font-size: .9rem; opacity: .8; }
-  .seal-modal__close {
-    position: absolute;
-    top: -1rem;
-    right: -1rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.15);
+    gap: 1.5rem;
+    background: #fff;
     border: none;
+    border-left: 4px solid var(--ish-teal);
+    padding: 1.5rem 2rem;
     cursor: pointer;
-    color: #fff;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
   }
-  .seal-modal__close:hover { background: rgba(255,255,255,.25); }
-
-  /* ── Sticky CTA ──────────────────────────────────── */
-  .sticky-cta {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 8000;
-    opacity: 0;
-    transform: translateY(12px);
+  .mod-accordion__trigger:hover { background: #f4f8fa; }
+  .mod-accordion__bg-num {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-head);
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(0,0,0,.04);
+    line-height: 1;
     pointer-events: none;
-    transition: opacity .3s ease, transform .3s ease;
+    user-select: none;
+    letter-spacing: -.02em;
   }
-  .sticky-cta.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  .mod-accordion__num {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--ish-teal);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 3.2rem;
   }
-  .sticky-cta__btn {
+  .mod-accordion__summary { flex: 1; }
+  .mod-accordion__summary h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin: 0 0 .55rem;
+    line-height: 1.3;
+  }
+  .mod-accordion__tags {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+  .mod-accordion__chevron {
+    flex-shrink: 0;
+    color: #a0aab4;
+    transition: transform .3s ease, color .2s;
+  }
+  .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron {
+    transform: rotate(180deg);
+    color: var(--ish-teal);
+  }
+  .mod-accordion__panel { background: #fff; }
+  .mod-panel__cols {
+    display: grid;
+    grid-template-columns: 1.1fr 1.1fr .9fr;
+    border-top: 1px solid #e3eaf0;
+  }
+  .mod-panel__col {
+    padding: 1.75rem 1.6rem;
+    border-right: 1px solid #e3eaf0;
+  }
+  .mod-panel__col:last-child { border-right: none; }
+  .mod-panel__label {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: var(--ish-teal);
+    margin-bottom: 1rem;
+  }
+  .mod-panel__check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+  .mod-panel__check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .87rem;
+    color: #3a4a58;
+    line-height: 1.5;
+  }
+  .mod-panel__check-list li::before {
+    content: '✓';
+    color: var(--ish-teal);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .mod-panel__arrow-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .mod-panel__arrow-list li {
+    display: flex;
+    align-items: flex-start;
     gap: .55rem;
-    background: var(--ish-teal);
-    color: #fff;
+    font-size: .87rem;
+    color: #3a4a58;
+    line-height: 1.5;
+  }
+  .mod-panel__arrow-list li::before {
+    content: '→';
+    color: var(--ish-dark);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .mod-panel__format-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .mod-panel__format-item {
+    padding-left: .85rem;
+    border-left: 3px solid var(--ish-teal);
+  }
+  .mod-panel__format-item .fmt-label {
+    display: block;
+    font-size: .64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ish-teal);
+    margin-bottom: .2rem;
+  }
+  .mod-panel__format-item strong {
+    display: block;
     font-size: .9rem;
     font-weight: 700;
-    padding: .8rem 1.4rem;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 8px 28px rgba(0,170,162,.4);
-    transition: background .2s, transform .2s, box-shadow .2s;
-    white-space: nowrap;
+    color: var(--ish-dark);
+    margin-bottom: .1rem;
   }
-  .sticky-cta__btn:hover {
-    background: #009990;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(0,170,162,.5);
+  .mod-panel__format-item span {
+    font-size: .81rem;
+    color: #6b7d8e;
+    line-height: 1.4;
   }
+  .mod-panel__note {
+    padding: .65rem 1.6rem;
+    font-size: .77rem;
+    color: #8a9bab;
+    background: #f7f9fb;
+    border-top: 1px solid #e3eaf0;
+    font-style: italic;
+  }
+  @media (max-width: 900px) {
+    .focus-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .ue-tiles { grid-template-columns: 1fr; }
+    .mod-panel__cols { grid-template-columns: 1fr; }
+    .mod-panel__col { border-right: none; border-bottom: 1px solid #e3eaf0; }
+    .mod-panel__col:last-child { border-bottom: none; }
+    .mod-accordion__trigger { padding: 1.25rem 1.25rem; gap: 1rem; }
+    .mod-accordion__bg-num { display: none; }
+  }
+
+/* ── Produkt-Divider (Abschnittskopf je Produkt) ── */
+.prod-divider {
+  background: var(--ish-dark);
+  padding: 2.5rem 0 2rem;
+}
+.prod-divider__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.prod-divider__eyebrow {
+  display: block;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.45);
+  margin-bottom: .4rem;
+}
+.prod-divider__title {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+.prod-divider__title em {
+  font-style: normal;
+  color: var(--ish-teal);
+}
+.prod-divider__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .3rem .9rem;
+  border-radius: 20px;
+  margin-left: auto;
+}
+.prod-divider__badge--optional {
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.6);
+  border: 1px dashed rgba(255,255,255,.25);
+}
+.prod-divider__badge--ish {
+  background: rgba(0,170,162,.2);
+  color: var(--ish-teal);
+}
+.prod-divider__badge--sg {
+  background: rgba(120,136,254,.2);
+  color: var(--akademie);
+}
+
+/* ── Zeitstrahl Erweiterungen ─────────────────────── */
+.zeitstrahl__dot--optional {
+  background: rgba(255,255,255,.06);
+  border: 2px dashed rgba(255,255,255,.25);
+}
+.zeitstrahl__dot--optional .zeitstrahl__dot-num { color: rgba(255,255,255,.35); font-size: .72rem; }
+.zeitstrahl__card--optional {
+  border-top: 2px dashed rgba(255,255,255,.25);
+  background: rgba(255,255,255,.03);
+}
+.zeitstrahl__dot--ish {
+  background: var(--ish-teal);
+  border-color: var(--ish-teal);
+  box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1);
+  color: white;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+.zeitstrahl__dot--aufbau {
+  background: rgba(120,136,254,.12);
+  border-color: rgba(120,136,254,.35);
+}
+.zeitstrahl__dot--aufbau .zeitstrahl__dot-num { color: var(--akademie); }
+.zeitstrahl__card--aufbau { border-top: 2.5px solid rgba(120,136,254,.4); }
+.zeitstrahl__dot--sg {
+  background: var(--akademie);
+  border-color: var(--akademie);
+  box-shadow: 0 0 0 6px rgba(120,136,254,.25), 0 0 0 12px rgba(120,136,254,.1);
+  color: white;
+  animation: pulse-dot-sg 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot-sg {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(120,136,254,.25), 0 0 0 12px rgba(120,136,254,.1); }
+  50%       { box-shadow: 0 0 0 8px rgba(120,136,254,.35), 0 0 0 18px rgba(120,136,254,.08); }
+}
+.zeitstrahl__card--sg {
+  border-top: 2.5px solid var(--akademie);
+  text-align: center;
+  background: rgba(120,136,254,.08);
+}
+.zeitstrahl__card--sg .zeitstrahl__seal { justify-content: center; }
+.zeitstrahl__optional-badge {
+  display: block;
+  font-size: .6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.35);
+  border: 1px dashed rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: .15rem .5rem;
+  margin-bottom: .5rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Kompaktkurs Varianten ────────────────────────── */
+.kompakt-variants {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.kompakt-variant {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: background .22s, border-color .22s, transform .22s, box-shadow .22s;
+  cursor: pointer;
+}
+.kompakt-variant:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--ish-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,0,0,.25), 0 0 0 1px rgba(0,170,162,.3);
+}
+.kompakt-variant__label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ish-teal);
+  margin-bottom: .6rem;
+  display: block;
+}
+.kompakt-variant h4 {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+.kompakt-variant__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.kompakt-variant__list li {
+  font-size: .85rem;
+  color: rgba(255,255,255,.65);
+  display: flex;
+  gap: .5rem;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.kompakt-variant__list li::before {
+  content: '·';
+  color: var(--ish-teal);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.kompakt-variant__price {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ish-teal);
+  line-height: 1;
+}
+.kompakt-variant__price span {
+  font-size: .85rem;
+  color: rgba(255,255,255,.4);
+  font-weight: 400;
+  font-family: var(--font-body, sans-serif);
+}
+.kompakt-section {
+  background: var(--ish-dark);
+  padding: 3rem 0 3.5rem;
+}
+.aufbaukurs-section {
+  background: var(--ish-dark);
+  padding: 3rem 0 3.5rem;
+}
+.prod-section-cta {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin-top: 2rem;
+}
+@media (max-width: 700px) {
+  .kompakt-variants { grid-template-columns: 1fr; }
+}
+
+/* ── Grundkurs prod-divider: weiß wie Modules ─── */
+#grundkurs {
+  background: #fff;
+}
+#grundkurs .prod-divider__eyebrow { color: #8a9aaa; }
+#grundkurs .prod-divider__title { color: var(--ish-dark); }
+#grundkurs .prod-divider__badge--ish { background: rgba(0,170,162,.1); color: var(--ish-teal); }
+
+/* ── Aufbaukurs accordions: dark (zurück zum alten Stil) ── */
+.aufbaukurs-section .mod-accordion {
+  border: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,.22);
+}
+.aufbaukurs-section .mod-accordion__trigger {
+  background: var(--ish-dark);
+  border-left: none;
+}
+.aufbaukurs-section .mod-accordion__trigger:hover { background: #0d3548; }
+.aufbaukurs-section .mod-accordion__summary h3 { color: #fff; }
+.aufbaukurs-section .mod-accordion__bg-num { color: rgba(255,255,255,.04); }
+.aufbaukurs-section .mod-accordion__chevron { color: rgba(255,255,255,.4); }
+.aufbaukurs-section .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron { color: var(--ish-teal); }
+
+/* ── SG-QUALIFIZIERUNGSWEG TIMELINE ─────────────── */
+.sg-weg {
+  background: #fff;
+  padding: 4rem 0 3.5rem;
+  border-top: 1px solid #e3eaf0;
+}
+.sg-weg__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.sg-weg__eyebrow {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--akademie);
+  margin-bottom: .6rem;
+}
+.sg-weg__title {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0;
+}
+.sg-weg__track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+/* horizontal connector lines between nodes */
+.sg-weg__track::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right,
+    #e3eaf0 0%,
+    rgba(0,170,162,.5) 35%,
+    rgba(120,136,254,.6) 70%,
+    #e3eaf0 100%);
+  z-index: 0;
+}
+.sg-weg__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+  padding: 0 .5rem;
+}
+.sg-weg__dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: .85rem;
+  position: relative;
+}
+.sg-weg__dot--k {
+  background: #f4f7fa;
+  border: 2px dashed #c8d4dd;
+}
+.sg-weg__dot--k::after {
+  content: 'K';
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #a0aab4;
+}
+.sg-weg__dot--gk {
+  background: rgba(0,170,162,.1);
+  border: 2.5px solid var(--ish-teal);
+  box-shadow: 0 0 0 5px rgba(0,170,162,.12);
+}
+.sg-weg__dot--gk img {
+  width: 28px;
+}
+.sg-weg__dot--ak {
+  background: var(--akademie);
+  border: 2.5px solid var(--akademie);
+  box-shadow: 0 0 0 5px rgba(120,136,254,.15);
+}
+.sg-weg__dot--ak img {
+  width: 28px;
+  filter: brightness(0) invert(1);
+}
+.sg-weg__label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  margin-bottom: .3rem;
+}
+.sg-weg__name {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin-bottom: .35rem;
+  line-height: 1.3;
+}
+.sg-weg__node--k .sg-weg__name { color: #8a9aaa; }
+.sg-weg__sub {
+  font-size: .75rem;
+  color: #6b7d8e;
+  line-height: 1.45;
+  max-width: 130px;
+}
+.sg-weg__optional-badge {
+  display: inline-block;
+  margin-top: .4rem;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  border: 1px dashed #c8d4dd;
+  border-radius: 20px;
+  padding: .2rem .55rem;
+}
+.sg-weg__cert {
+  margin-top: .5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .3rem .7rem;
+  border-radius: 20px;
+}
+.sg-weg__cert--ish {
+  background: rgba(0,170,162,.1);
+  color: var(--ish-teal);
+  border: 1px solid rgba(0,170,162,.3);
+}
+.sg-weg__cert--sg {
+  background: rgba(120,136,254,.1);
+  color: var(--akademie);
+  border: 1px solid rgba(120,136,254,.3);
+}
+.sg-weg__arrow {
+  align-self: center;
+  flex-shrink: 0;
+  color: #ccd5dd;
+  margin: 0 .25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+@media (max-width: 700px) {
+  .sg-weg__track { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .sg-weg__track::before { display: none; }
+  .sg-weg__arrow { transform: rotate(90deg); margin: 0; }
+  .sg-weg__node { max-width: 260px; }
+}
+
+/* ── VERTICAL TIMELINE ───────────────────────────── */
+.vtl-wrapper {
+  background: var(--ish-dark);
+}
+.vtl-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+}
+.vtl-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3.5rem;
+}
+.vtl-dot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.vtl-dot--k {
+  background: rgba(255,255,255,.05);
+  border: 2px dashed rgba(255,255,255,.25);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.5);
+}
+.vtl-dot--ish {
+  background: var(--ish-dark);
+  border: 2.5px solid var(--ish-teal);
+  box-shadow: 0 0 0 5px rgba(0,170,162,.1), 0 0 24px rgba(0,170,162,.2);
+}
+.vtl-dot--ish img {
+  width: 26px;
+  filter: brightness(0) invert(1);
+}
+.vtl-dot--sg {
+  background: var(--ish-dark);
+  border: 2.5px solid var(--akademie);
+  box-shadow: 0 0 0 5px rgba(120,136,254,.1), 0 0 24px rgba(120,136,254,.2);
+}
+.vtl-dot--sg img {
+  width: 26px;
+}
+.vtl-connector {
+  flex: 1;
+  width: 2px;
+  min-height: 60px;
+  background: linear-gradient(to bottom, rgba(0,170,162,.25), rgba(120,136,254,.2));
+  margin: 8px 0;
+}
+.vtl-connector--k {
+  background: linear-gradient(to bottom, rgba(255,255,255,.1), rgba(0,170,162,.3));
+}
+.vtl-content {
+  min-width: 0;
+}
+@media (max-width: 860px) {
+  .vtl-row { grid-template-columns: 1fr; }
+  .vtl-spine { display: none; }
+}
+
+/* ── BUCHUNGSOPTIONEN ────────────────────────────── */
+.register__intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 3rem;
+}
+.register__intro h2 { color: var(--ish-dark); margin: .5rem 0 .75rem; }
+.register__intro p { color: var(--ish-gray-500, #6b7d8e); font-size: .95rem; }
+.buchung-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.buchung-card {
+  background: #fff;
+  border: 1.5px solid var(--ish-gray-200);
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: box-shadow .2s, transform .2s;
+}
+.buchung-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,.1); transform: translateY(-2px); }
+.buchung-card--sg { border-color: var(--akademie); box-shadow: 0 4px 20px rgba(120,136,254,.15); }
+.buchung-card__badge {
+  display: inline-block;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  padding: .2rem .65rem;
+  border-radius: 20px;
+  width: fit-content;
+  background: var(--ish-gray-100, #eef2f6);
+  color: var(--ish-gray-500, #6b7d8e);
+}
+.buchung-card__badge--highlight {
+  background: rgba(120,136,254,.15);
+  color: var(--akademie);
+}
+.buchung-card--gk .buchung-card__badge {
+  background: rgba(0,170,162,.1);
+  color: var(--ish-teal);
+}
+.buchung-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ish-dark);
+  margin: 0;
+  line-height: 1.25;
+}
+.buchung-card p {
+  font-size: .82rem;
+  color: var(--ish-gray-500, #6b7d8e);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.buchung-card__facts {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.buchung-card__facts span {
+  font-size: .68rem;
+  font-weight: 600;
+  background: var(--ish-gray-50, #f5f7f9);
+  color: var(--ish-gray-600, #4a5a68);
+  padding: .15rem .55rem;
+  border-radius: 20px;
+}
+.buchung-card__price {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--ish-dark);
+  line-height: 1;
+  margin-top: .25rem;
+}
+.buchung-card__price span {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--ish-gray-400, #8a9bab);
+  font-family: var(--font-body);
+}
+.buchung-card__btn {
+  margin-top: .25rem;
+  font-size: .82rem;
+  padding: .6rem .9rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.buchung-card__btn--k  { background: transparent; border: 1.5px solid var(--ish-gray-300, #c0ccd8); color: var(--ish-dark); }
+.buchung-card__btn--gk { background: var(--ish-teal); color: #fff; border: none; }
+.buchung-card__btn--ak { background: transparent; border: 1.5px solid var(--ish-gray-300, #c0ccd8); color: var(--ish-dark); }
+.buchung-card__btn--sg { background: var(--akademie); color: #fff; border: none; }
+.buchung-card__btn--k:hover  { border-color: var(--ish-dark); }
+.buchung-card__btn--ak:hover { border-color: var(--akademie); color: var(--akademie); }
+.register__form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+#buchung-selected-label {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ish-teal);
+  min-height: 1.2em;
+  margin: 0 0 .5rem;
+}
+@media (max-width: 900px) {
+  .buchung-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .buchung-grid { grid-template-columns: 1fr; }
+}
+
+/* ── ISH SEAL MODAL ──────────────────────────────── */
+.seal-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+.seal-modal.is-open { display: flex; }
+.seal-modal__inner {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  animation: seal-pop .25s ease;
+}
+@keyframes seal-pop {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+.seal-modal__img { width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 0 60px rgba(0,170,162,.4); }
+.seal-modal__caption { margin-top: 1rem; color: #fff; font-size: .9rem; opacity: .8; }
+.seal-modal__close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seal-modal__close:hover { background: rgba(255,255,255,.25); }
+.prod-divider__badge--ish {
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.prod-divider__badge--ish:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 12px rgba(0,170,162,.3);
+}
+
+/* Zertifikate Section */
+.zert-section {
+  background: #fff;
+  padding: 3rem 0 2.5rem;
+  border-top: 1px solid #e3eaf0;
+}
+.zert-section__lead {
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  margin-bottom: 2rem;
+}
+.zert-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .zert-section__grid { grid-template-columns: 1fr; }
+}
+.zert-section__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f7fafc;
+  border: 1px solid #e3eaf0;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  gap: 1.25rem;
+  transition: box-shadow .25s, transform .25s;
+  cursor: zoom-in;
+}
+.zert-section__card:hover {
+  box-shadow: 0 12px 40px rgba(0,170,162,.12);
+  transform: translateY(-4px);
+}
+.zert-section__card--sg {
+  background: var(--ish-dark);
+  border-color: var(--ish-dark);
+}
+.zert-section__img-wrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.zert-section__img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.zert-section__card:hover .zert-section__img { transform: scale(1.2); }
+.zert-section__img--sg {
+  filter: brightness(0) invert(1);
+}
+.zert-section__info { display: flex; flex-direction: column; gap: .35rem; }
+.zert-section__stufe {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ish-teal);
+}
+.zert-section__card--sg .zert-section__stufe { color: rgba(255,255,255,.55); }
+.zert-section__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0;
+}
+.zert-section__card--sg .zert-section__name { color: #fff; }
+.zert-section__desc {
+  font-size: .82rem;
+  color: #6b7d8e;
+  margin: 0;
+  line-height: 1.5;
+}
+.zert-section__card--sg .zert-section__desc { color: rgba(255,255,255,.55); }
+
+/* Grundkurs price hint in prod-divider */
+.prod-divider__price-hint {
+  display: inline-block;
+  margin-top: .45rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ish-teal);
+  letter-spacing: .01em;
+}
+
+/* Stufen-card: Empfohlen / Featured */
+.stufen-card--featured {
+  box-shadow: 0 4px 20px rgba(0,170,162,.12);
+}
+.stufen-card__badge--empfohlen {
+  background: var(--ish-teal);
+  color: #fff;
+}
+.stufen-card__price-tag {
+  margin-top: .9rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+}
+.stufen-card__price-tag span {
+  font-size: .78rem;
+  font-weight: 400;
+  color: #7a8fa0;
+}
+
+/* Erst-Grundkurs hint */
+.erst-grundkurs-hint {
+  background: transparent;
+  border-top: none;
+  padding: 2rem 0;
+}
+.erst-grundkurs-hint__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  font-size: .88rem;
+  color: #3a5a5a;
+  line-height: 1.5;
+  background: #f0f8f8;
+  border: 1.5px solid #b8e0dd;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0,170,162,.06);
+}
+.erst-grundkurs-hint__inner svg {
+  flex-shrink: 0;
+  margin-top: .1rem;
+  stroke: var(--ish-teal);
+}
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 8000;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.sticky-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.sticky-cta__btn {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  background: var(--ish-teal);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 700;
+  padding: .8rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(0,170,162,.4);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.sticky-cta__btn:hover {
+  background: #009990;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,170,162,.5);
+}
+
+/* ── Hero Inline Check & Quote ───────────────────── */
+.hero__inline-check {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.hero__inline-check li {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .92rem;
+  color: var(--ish-dark);
+}
+.hero__inline-check li svg { stroke: var(--ish-teal); flex-shrink: 0; }
+.hero__inline-quote {
+  font-size: .88rem;
+  color: #6b7d8e;
+  font-style: italic;
+  border-left: 2px solid var(--ish-teal);
+  padding-left: .85rem;
+  margin: 0 0 1.25rem;
+}
+.hero__visual--img {
+  display: flex;
+  align-items: stretch;
+}
+.hero__gruppe-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* ── Zert-section bigger images & spin animation ─── */
+@keyframes zert-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Module Termine ──────────────────────────────── */
+.module-termine {
+  margin-top: 2.5rem;
+  background: #f4f8fa;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e3eaf0;
+}
+.module-termine__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0 0 1.25rem;
+}
+.module-termine__grid {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.module-termine__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: .85rem 1rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e3eaf0;
+}
+.module-termine__num {
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  color: var(--ish-teal);
+  min-width: 36px;
+  padding-top: .1rem;
+}
+.module-termine__item div {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.module-termine__item strong {
+  font-size: .92rem;
+  color: var(--ish-dark);
+}
+.module-termine__item span {
+  font-size: .82rem;
+  color: #7a8fa0;
+}
+
+
+.modul-kurse-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: .5rem;
+}
+@media (max-width: 700px) { .modul-kurse-tabs { grid-template-columns: 1fr; } }
+.modul-kurs-block {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3eaf0;
+  padding: 1.1rem;
+}
+.modul-kurs-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .85rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid #e8eff5;
+}
+.modul-kurs-block__label {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ish-teal);
+}
+.modul-kurs-block__dates {
+  font-size: .75rem;
+  color: #8a9aaa;
+}
+.modul-kurs-block .module-termine__item {
+  background: #f7fafc;
+  border: none;
+}
 </style>
 </head>
 <body>
@@ -346,7 +1998,6 @@
   <header class="nav" id="nav">
     <div class="container nav__inner">
       <a href="#" class="nav__logo" aria-label="ISH Akademie">
-        <img src="Akademie.png" alt="ISH Akademie" class="logo-img" />
       </a>
       <a href="index.html" class="nav__back">← Alle Weiterbildungen</a>
       <nav class="nav__links" aria-label="Seitennavigation">
@@ -392,7 +2043,7 @@
           </div>
           <div class="hero__meta-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span><strong>2-tägiger Grundkurs</strong></span>
+            <span><strong>2-tägiger Kompaktkurs</strong> oder direkt in den Grundkurs</span>
           </div>
           <div class="hero__meta-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -425,7 +2076,7 @@
 
         <div class="zert-section__card">
           <div class="zert-section__img-wrap">
-            <img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen" class="zert-section__img" />
+            <img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen im Bildungskontext" class="zert-section__img" />
           </div>
           <div class="zert-section__info">
             <span class="zert-section__stufe">Stufe 1 · Grundkurs</span>
@@ -459,6 +2110,7 @@
 
       <div class="stufen-grid">
 
+        <!-- STUFE 1: Kompaktkurs -->
         <div class="stufen-card stufen-card--entry">
           <span class="stufen-card__badge">Einstieg</span>
           <h3>Kompaktkurs</h3>
@@ -473,10 +2125,11 @@
           </div>
         </div>
 
+        <!-- STUFE 2: Grundkurs -->
         <div class="stufen-card stufen-card--main stufen-card--featured">
-          <span class="stufen-card__badge stufen-card__badge--empfohlen">&#10003; Grundkurs</span>
+          <span class="stufen-card__badge stufen-card__badge--empfohlen">Grundkurs</span>
           <h3>Systemisch Coachen<br />im Bildungskontext</h3>
-          <p>Der gemeinsame Grundkurs – fundierte Qualifizierung in 150 UE über 9 Monate mit ISH-Akademie-Zertifikat.</p>
+          <p>Fundierte Qualifizierung in 150 UE über 9 Monate. Mit Abschluss erhalten Sie das ISH-Akademie-Zertifikat als Systemisch Coachen im Bildungskontext.</p>
           <div class="stufen-card__facts">
             <span>150 UE · 9 Monate</span>
             <span>Präsenz + Online</span>
@@ -489,6 +2142,7 @@
           </div>
         </div>
 
+        <!-- STUFE 3: Aufbaukurs -->
         <div class="stufen-card stufen-card--aufbau">
           <span class="stufen-card__badge">Aufbaukurs</span>
           <h3>Systemisch Moderieren<br />im Bildungskontext</h3>
@@ -508,7 +2162,7 @@
     </div>
   </section>
 
-  <!-- ZIELGRUPPE -->
+  <!-- SCHULKONTEXT-FOKUS -->
   <section class="focus" id="focus">
     <div class="container">
       <div class="focus-split">
@@ -565,6 +2219,10 @@
     </div>
   </section>
 
+
+  <!-- VERTIKALE TIMELINE: alle Produkte -->
+
+
   <!-- KOMPAKTKURS -->
   <section class="kompakt-section" id="kompaktkurs">
     <div class="container">
@@ -581,11 +2239,13 @@
 
       <div class="kompakt-variants">
 
+        <!-- ONLINE -->
         <div class="kompakt-variant">
           <span class="kompakt-variant__label">Online-Seminar</span>
           <h4>Systemische Moderation kompakt · Online</h4>
           <ul class="kompakt-variant__list">
             <li>Vollständig online · via Zoom</li>
+            <li>Referent: Dennis Sawatzki</li>
             <li>Kleine Gruppengröße · max. 12 TN</li>
           </ul>
           <div class="kompakt-variant__price">800 € <span>umsatzsteuerfrei</span></div>
@@ -594,11 +2254,13 @@
           </div>
         </div>
 
+        <!-- PRÄSENZ -->
         <div class="kompakt-variant">
           <span class="kompakt-variant__label">Präsenzseminar · Bochum</span>
           <h4>Systemische Moderation kompakt · Präsenz</h4>
           <ul class="kompakt-variant__list">
             <li>Am ISH Institut in Bochum</li>
+            <li>Referent: Dennis Sawatzki</li>
             <li>Kleine Gruppengröße · max. 12 TN</li>
           </ul>
           <div class="kompakt-variant__price">800 € <span>umsatzsteuerfrei</span></div>
@@ -617,7 +2279,9 @@
     </div>
   </section>
 
-  <!-- GRUNDKURS DIVIDER -->
+
+
+  <!-- GRUNDKURS -->
   <div class="prod-divider" id="grundkurs">
     <div class="container">
       <div class="prod-divider__inner">
@@ -631,7 +2295,7 @@
     </div>
   </div>
 
-  <!-- GRUNDKURS MODULE -->
+  <!-- MODULE GRUNDKURS -->
   <section class="modules" id="inhalte">
     <div class="container">
       <div class="section-header">
@@ -644,7 +2308,7 @@
 
         <!-- MODUL 1 -->
         <div class="mod-accordion">
-          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-m01">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-01">
             <span class="mod-accordion__bg-num" aria-hidden="true">01</span>
             <span class="mod-accordion__num">01</span>
             <div class="mod-accordion__summary">
@@ -656,7 +2320,7 @@
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="mod-accordion__panel" id="mod-panel-m01" hidden>
+          <div class="mod-accordion__panel" id="mod-panel-01" hidden>
             <div class="mod-panel__cols">
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
@@ -697,7 +2361,7 @@
 
         <!-- MODUL 2 -->
         <div class="mod-accordion">
-          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-m02">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-02">
             <span class="mod-accordion__bg-num" aria-hidden="true">02</span>
             <span class="mod-accordion__num">02</span>
             <div class="mod-accordion__summary">
@@ -709,7 +2373,7 @@
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="mod-accordion__panel" id="mod-panel-m02" hidden>
+          <div class="mod-accordion__panel" id="mod-panel-02" hidden>
             <div class="mod-panel__cols">
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
@@ -750,7 +2414,7 @@
 
         <!-- MODUL 3 -->
         <div class="mod-accordion">
-          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-m03">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-03">
             <span class="mod-accordion__bg-num" aria-hidden="true">03</span>
             <span class="mod-accordion__num">03</span>
             <div class="mod-accordion__summary">
@@ -762,7 +2426,7 @@
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="mod-accordion__panel" id="mod-panel-m03" hidden>
+          <div class="mod-accordion__panel" id="mod-panel-03" hidden>
             <div class="mod-panel__cols">
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
@@ -803,7 +2467,7 @@
 
         <!-- SELBSTERFAHRUNG & ABSCHLUSS -->
         <div class="mod-accordion">
-          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-m04">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-04">
             <span class="mod-accordion__bg-num" aria-hidden="true">SE I</span>
             <span class="mod-accordion__num" style="font-size:1.1rem;">SE I</span>
             <div class="mod-accordion__summary">
@@ -815,7 +2479,7 @@
             </div>
             <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="mod-accordion__panel" id="mod-panel-m04" hidden>
+          <div class="mod-accordion__panel" id="mod-panel-04" hidden>
             <div class="mod-panel__cols">
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
@@ -823,7 +2487,7 @@
                   <li>Die eigene Systembiografie als Ressource und Coach verstehen</li>
                   <li>9 Monate Wachstum reflektieren und integrieren</li>
                   <li>Eine gefestigte Coaching-Identität für den Schulalltag entwickeln</li>
-                  <li>Als zertifizierter Systemischer Coach (ISH) abschließen</li>
+                  <li>Als zertifizierter Systemischer Coach (SG) abschließen</li>
                 </ul>
               </div>
               <div class="mod-panel__col">
@@ -832,7 +2496,7 @@
                   <li>Genogramm und eigene Systembiografie erkunden</li>
                   <li>Reflexion: Was hat sich in 9 Monaten verändert?</li>
                   <li>Coaching-Identität und professionelles Selbstbild festigen</li>
-                  <li>Zertifikatsübergabe: Systemisch Coachen im Bildungskontext (ISH)</li>
+                  <li>Zertifikatsübergabe: Systemisch Coachen im Bildungskontext (SG)</li>
                   <li>Ausblick: Aufbaukurs Systemische Moderation</li>
                 </ul>
               </div>
@@ -857,10 +2521,94 @@
 
       </div>
 
+      <div class="module-termine">
+        <h3 class="module-termine__title">Termine · Grundkurs</h3>
+        <div class="modul-kurse-tabs">
+
+          <div class="modul-kurs-block">
+            <div class="modul-kurs-block__header">
+              <span class="modul-kurs-block__label">Kurs 26_1</span>
+              <span class="modul-kurs-block__dates">Sep 2026 – Apr 2027</span>
+            </div>
+            <div class="module-termine__grid">
+              <div class="module-termine__item">
+                <span class="module-termine__num">01</span>
+                <div>
+                  <strong>Grundlagen systemischen Coachings</strong>
+                  <span>24.–26. September 2026 · Präsenz Bochum · 30 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-termine__num">02</span>
+                <div>
+                  <strong>Systemische Gesprächsführung</strong>
+                  <span>20.–21. November 2026 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-termine__num">03</span>
+                <div>
+                  <strong>Coaching-Methoden &amp; Formate</strong>
+                  <span>26.–27. Februar 2027 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-termine__num">SE I</span>
+                <div>
+                  <strong>Selbsterfahrung &amp; Abschluss</strong>
+                  <span>9.–11. April 2027 · Präsenz Bochum · 25 WE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modul-kurs-block">
+            <div class="modul-kurs-block__header">
+              <span class="modul-kurs-block__label">Kurs 27_1</span>
+              <span class="modul-kurs-block__dates">Sep 2027 – Apr 2028</span>
+            </div>
+            <div class="module-termine__grid">
+              <div class="module-termine__item">
+                <span class="module-termine__num">01</span>
+                <div>
+                  <strong>Grundlagen systemischen Coachings</strong>
+                  <span>23.–25. September 2027 · Präsenz Bochum · 30 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-terne__num">02</span>
+                <div>
+                  <strong>Systemische Gesprächsführung</strong>
+                  <span>19.–20. November 2027 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-termine__num">03</span>
+                <div>
+                  <strong>Coaching-Methoden &amp; Formate</strong>
+                  <span>25.–26. Februar 2028 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item">
+                <span class="module-termine__num">SE I</span>
+                <div>
+                  <strong>Selbsterfahrung &amp; Abschluss</strong>
+                  <span>6.–8. April 2028 · Präsenz Bochum · 25 WE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div style="margin-top:1.5rem;text-align:center;">
+          <a href="#register" class="btn btn--primary">Jetzt für den Grundkurs anmelden</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- KARRIEREWEG -->
+  <!-- SG-QUALIFIZIERUNGSWEG -->
   <section class="sg-weg">
     <div class="container">
       <div class="sg-weg__header">
@@ -870,6 +2618,7 @@
 
       <div class="sg-weg__track">
 
+        <!-- Kompaktkurs (optional) -->
         <div class="sg-weg__node sg-weg__node--k">
           <div class="sg-weg__dot sg-weg__dot--k"></div>
           <span class="sg-weg__label">Einstieg</span>
@@ -880,6 +2629,7 @@
 
         <span class="sg-weg__arrow">›</span>
 
+        <!-- Grundkurs -->
         <div class="sg-weg__node sg-weg__node--gk">
           <div class="sg-weg__dot sg-weg__dot--gk"><img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" /></div>
           <span class="sg-weg__label">Grundkurs</span>
@@ -893,6 +2643,7 @@
 
         <span class="sg-weg__arrow">›</span>
 
+        <!-- Aufbaukurs -->
         <div class="sg-weg__node sg-weg__node--ak">
           <div class="sg-weg__dot sg-weg__dot--ak">
             <img src="Systemische Moderieren.png" alt="ISH-Akademie-Zertifikat Systemisch Moderieren" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" />
@@ -910,6 +2661,7 @@
     </div>
   </section>
 
+
   <!-- ERST GRUNDKURS HINT -->
   <div class="erst-grundkurs-hint">
     <div class="container">
@@ -920,7 +2672,7 @@
     </div>
   </div>
 
-  <!-- AUFBAUKURS DIVIDER -->
+  <!-- AUFBAUKURS -->
   <div class="prod-divider" id="aufbaukurs-divider">
     <div class="container">
       <div class="prod-divider__inner">
@@ -932,8 +2684,6 @@
       </div>
     </div>
   </div>
-
-  <!-- AUFBAUKURS MODULE -->
   <section class="aufbaukurs-section" id="aufbaukurs">
     <div class="container">
 
@@ -941,6 +2691,7 @@
 
       <div class="modules__list">
 
+        <!-- MODUL 01: Grundlagen systemischer Didaktik -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak01">
             <span class="mod-accordion__bg-num" aria-hidden="true">01</span>
@@ -990,6 +2741,7 @@
           </div>
         </div>
 
+        <!-- MODUL 02: Großgruppenmoderation -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak02">
             <span class="mod-accordion__bg-num" aria-hidden="true">02</span>
@@ -1039,6 +2791,7 @@
           </div>
         </div>
 
+        <!-- MODUL 03: Widerstände und Störungen -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak03">
             <span class="mod-accordion__bg-num" aria-hidden="true">03</span>
@@ -1088,6 +2841,7 @@
           </div>
         </div>
 
+        <!-- MODUL 04: Rhetorisches Handwerkszeug -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak04">
             <span class="mod-accordion__bg-num" aria-hidden="true">04</span>
@@ -1137,6 +2891,7 @@
           </div>
         </div>
 
+        <!-- MODUL 05: Methodenvielfalt -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak05">
             <span class="mod-accordion__bg-num" aria-hidden="true">05</span>
@@ -1186,6 +2941,7 @@
           </div>
         </div>
 
+        <!-- MODUL 06: Dramaturgie -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak06">
             <span class="mod-accordion__bg-num" aria-hidden="true">06</span>
@@ -1235,6 +2991,7 @@
           </div>
         </div>
 
+        <!-- ABSCHLUSS: Steuerung Gruppenprozesse -->
         <div class="mod-accordion module-card--final">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-ak07" style="background:linear-gradient(135deg, #1a2a5e 0%, var(--ish-dark) 100%);">
             <span class="mod-accordion__bg-num" aria-hidden="true" style="color:rgba(120,136,254,.08);">AB</span>
@@ -1296,6 +3053,9 @@
     </div>
   </section>
 
+
+
+
   <!-- VERSPRECHEN -->
   <section class="promise" id="promise">
     <div class="container promise__inner">
@@ -1312,11 +3072,11 @@
         <h2>Was Sie mitnehmen.</h2>
         <p>Das Angebot der Weiterbildung zielt insbesondere darauf ab:</p>
         <ul class="promise__list">
-          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Entwickeln Sie eine systemische Moderationshaltung und erweitern Sie Ihr methodisches Repertoire für Gruppen und Großgruppen.</li>
-          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Gestalten Sie Fortbildungen, pädagogische Tage und Entwicklungsveranstaltungen professionell und wirkungsvoll.</li>
-          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Lernen Sie, Widerstände und Störungen konstruktiv zu nutzen – für mehr Energie und Verbindlichkeit in Gruppen.</li>
-          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Stärken Sie Ihre rhetorische Präsenz und Ihr Auftreten vor Gruppen mit klaren, sofort einsetzbaren Techniken.</li>
-          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Profitieren Sie von Hospitationsmöglichkeiten bei ISH-Veranstaltungen und der Chance, als ISH-Moderator:in tätig zu werden.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Entwickeln Sie eine systemische Haltung und gestalten Sie Gruppen- und Entwicklungsprozesse wirkungsvoll.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Lernen Sie Großgruppenformate souverän zu moderieren und Widerstände konstruktiv zu nutzen.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Erweitern Sie Ihr rhetorisches und methodisches Handwerkszeug für komplexe Bildungskontexte.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Strukturieren und inszenieren Sie Veranstaltungen mit klarer Dramaturgie und Wirkung.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Profitieren Sie von Hospitationsmöglichkeiten und einem praxisnahen Lernformat mit echten Gruppen.</li>
         </ul>
       </div>
     </div>
@@ -1328,7 +3088,7 @@
       <div class="section-header">
         <span class="section-tag">Ihr Weiterbildungsteam</span>
         <h2>Ihre Trainer:innen.</h2>
-        <p class="section-intro">Erfahren, leidenschaftlich und auf Augenhöhe – mit tiefem Verständnis für das System Schule.</p>
+        <p class="section-intro">Erfahren, leidenschaftlich und auf Augenhöhe – alle mit tiefem Verständnis für das System Schule.</p>
       </div>
       <div class="trainers__grid trainers__grid--bio">
 
@@ -1343,7 +3103,7 @@
           <p class="trainer-card__bio">Systemischer (Business-)Coach (SG), Supervisor &amp; Coach (DGSv), Counselor grad. (BVPPT), Green-Trainer für Kooperatives Lehren, Lernen und Leiten, Gründer und Geschäftsführer des Instituts für Schulentwicklung und Hochschuldidaktik, Mitgründer von Coachingspace, Fortbildungs- und Veranstaltungsmoderator, Buchautor.</p>
           <div class="trainer-card__focus">
             <strong>Schwerpunkte:</strong>
-            <div class="trainer-tags"><span>Großgruppenmoderation</span><span>Leitbildentwicklung</span><span>Feedback-Kultur</span><span>Kooperatives Lernen</span><span>Salutogene Schulentwicklung</span></div>
+            <div class="trainer-tags"><span>Großgruppenmoderation</span><span>Schulentwicklung</span><span>Leitbildentwicklung</span><span>Kooperatives Lernen</span><span>Salutogene Schulentwicklung</span></div>
           </div>
         </div>
 
@@ -1351,7 +3111,7 @@
     </div>
   </section>
 
-  <!-- INTERESSE MELDEN -->
+  <!-- ANMELDUNG -->
   <section class="register" id="register">
     <div class="register__deco" aria-hidden="true">
       <div class="register__sq register__sq--1"></div>
@@ -1362,63 +3122,54 @@
       <div class="register__intro">
         <span class="section-tag">Interesse melden</span>
         <h2>Starten Sie mit<br /><span class="text-teal">Systemisch Moderieren.</span></h2>
-        <p>Melden Sie Ihr Interesse – wir kontaktieren Sie mit allen Details zu Terminen, Formaten und nächsten Schritten.</p>
-      </div>
-
-      <!-- USP BOX -->
-      <div style="max-width: 860px; margin: 0 auto 2.5rem; background: rgba(0,170,162,.08); border: 1.5px solid rgba(0,170,162,.3); border-left: 4px solid var(--ish-teal); border-radius: 0 14px 14px 0; padding: 1.25rem 1.75rem; display: flex; gap: 1rem; align-items: flex-start;">
-        <svg style="flex-shrink:0;color:var(--ish-teal);margin-top:.1rem;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <div>
-          <strong style="display:block;font-family:var(--font-head);font-size:.95rem;font-weight:700;color:var(--ish-dark);margin-bottom:.35rem;">Hospitationsmöglichkeit &amp; Berufsperspektive</strong>
-          <p style="margin:0;font-size:.87rem;color:var(--ish-gray-600);line-height:1.65;">Als Teilnehmer:in erhalten Sie Hospitationsmöglichkeiten bei ISH-Veranstaltungen – und die Chance, nach erfolgreicher Ausbildung als ISH-Moderator:in tätig zu werden.</p>
-        </div>
+        <p>Melden Sie Ihr Interesse – wir informieren Sie über nächste Termine und Details.</p>
       </div>
 
       <!-- 3 INTERESSE-OPTIONEN -->
-      <div class="buchung-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 860px; margin: 0 auto 3rem;">
+      <div class="buchung-grid">
 
         <div class="buchung-card buchung-card--k">
           <span class="buchung-card__badge">Optional · Anrechenbar</span>
           <h3>Kompaktkurs</h3>
-          <p>Zweitägiger Einstieg in systemische Moderation – online oder in Präsenz. Die Teilnahme ist auf den Aufbaukurs anrechenbar.</p>
+          <p>Zweitägiger Einstieg in systemische Moderation – online oder in Präsenz. Vollständig auf den Aufbaukurs anrechenbar.</p>
           <div class="buchung-card__facts">
             <span>2 Tage</span>
             <span>Online oder Präsenz</span>
           </div>
-          <div class="buchung-card__price">800 <span>€ umsatzsteuerfrei</span></div>
-          <button class="btn buchung-card__btn buchung-card__btn--k" data-option="Kompaktkurs Systemische Moderation">Interesse melden</button>
+          <div class="buchung-card__price">800 <span>€ umsatzsteuerbefreit</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--k" data-option="Kompaktkurs Systemisch Moderieren">Interesse melden</button>
         </div>
 
-        <div class="buchung-card buchung-card--gk">
-          <span class="buchung-card__badge">ISH-Zertifikat</span>
+        <div class="buchung-card buchung-card--ak">
+          <span class="buchung-card__badge">ISH-Akademie-Zertifikat</span>
           <h3>Aufbaukurs</h3>
-          <p>Vertiefende Ausbildung in professioneller Gruppenmoderation und Fortbildungsdesign – berufsbegleitend mit Zertifikat.</p>
+          <p>130 WE über 13 Monate – aufbauend auf dem Grundkurs Systemisch Coachen. Abschluss mit dem ISH-Akademie-Zertifikat Systemisch Moderieren.</p>
           <div class="buchung-card__facts">
+            <span>130 WE · 13 Monate</span>
             <span>Berufsbegleitend</span>
-            <span>Aufbauend auf Grundkurs Coaching</span>
           </div>
-          <div class="buchung-card__price">5.600 <span>€ umsatzsteuerfrei</span></div>
-          <button class="btn buchung-card__btn buchung-card__btn--gk" data-option="Aufbaukurs Systemische Moderation">Interesse melden</button>
+          <div class="buchung-card__price">5.600 <span>€ umsatzsteuerbefreit</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--ak" data-option="Aufbaukurs Systemisch Moderieren">Interesse melden</button>
         </div>
 
         <div class="buchung-card buchung-card--sg">
-          <span class="buchung-card__badge buchung-card__badge--highlight">Gesamtpaket · Vorteilspreis</span>
-          <h3>Gesamtpaket</h3>
-          <p>Kompaktkurs und Aufbaukurs gemeinsam – den vollständigen Weg zur ISH-zertifizierten Moderator:in gehen.</p>
+          <span class="buchung-card__badge buchung-card__badge--highlight">Gesamtpaket · Auf Anfrage</span>
+          <h3>Kompaktkurs + Aufbaukurs</h3>
+          <p>Der vollständige Weg zur zertifizierten Moderator:in – Kompaktkurs und Aufbaukurs gemeinsam. Preis auf Anfrage.</p>
           <div class="buchung-card__facts">
-            <span>Kompakt- + Aufbaukurs</span>
-            <span>ISH-zertifiziert</span>
+            <span>Gesamtpaket</span>
+            <span>Auf Anfrage</span>
           </div>
-          <div class="buchung-card__price" style="font-size:1.2rem;">Auf Anfrage</div>
-          <button class="btn buchung-card__btn buchung-card__btn--sg" data-option="Gesamtpaket Systemische Moderation">Interesse melden</button>
+          <div class="buchung-card__price" style="font-size:1.3rem;padding-top:.25rem;">Auf Anfrage</div>
+          <button class="btn buchung-card__btn buchung-card__btn--sg" data-option="Gesamtpaket Systemisch Moderieren">Interesse melden</button>
         </div>
 
       </div><!-- /buchung-grid -->
 
-      <!-- FORMULAR -->
+      <!-- FORM -->
       <div class="register__form-wrap">
         <form class="register__form" novalidate>
-          <h3>Interesse melden</h3>
+          <h3>Interesse melden &amp; Anfrage</h3>
           <p class="register__form-sub" id="buchung-selected-label"></p>
           <input type="hidden" id="reg-buchung" name="buchung" value="" />
           <div class="form-row">
@@ -1469,15 +3220,12 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <img src="Akademie.png" alt="ISH Akademie" class="logo-img logo-img--footer" />
         <p>Systemisch Bildung gestalten.<br />ISH Akademie – Teil der ISH Gruppe.</p>
       </div>
       <nav class="footer__nav" aria-label="Footer Navigation">
         <div class="footer__col">
           <strong>Kurs</strong>
           <a href="#focus">Zielgruppe</a>
-          <a href="#stufen">Kursstufen</a>
-          <a href="#kompaktkurs">Kompaktkurs</a>
           <a href="#inhalte">Grundkurs</a>
           <a href="#aufbaukurs">Aufbaukurs</a>
           <a href="#trainers">Trainer:innen</a>
@@ -1539,21 +3287,23 @@
 
     // ISH seal modal
     (function(){
-      const badge = document.querySelector('.promise__seal-img');
+      const badge = document.querySelector('.prod-divider__badge--ish');
       const modal = document.getElementById('sealModal');
       const closeBtn = document.getElementById('sealModalClose');
       if (!badge || !modal) return;
-      badge.style.cursor = 'zoom-in';
-      badge.title = 'Zertifikat vergrößern';
+      badge.setAttribute('role','button');
+      badge.setAttribute('tabindex','0');
+      badge.title = 'Zertifikat anzeigen';
       function open(){ modal.classList.add('is-open'); document.body.style.overflow='hidden'; }
       function close(){ modal.classList.remove('is-open'); document.body.style.overflow=''; }
       badge.addEventListener('click', open);
+      badge.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') open(); });
       closeBtn.addEventListener('click', close);
       modal.addEventListener('click', e => { if(e.target===modal) close(); });
       document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
     })();
 
-    // Interesse-Karten → Formular
+    // Buchungskarten → Formular
     (function(){
       document.querySelectorAll('.buchung-card__btn').forEach(btn => {
         btn.addEventListener('click', function(){
@@ -1567,13 +3317,13 @@
       });
     })();
 
-    // Accordion (simple inline items)
-    document.querySelectorAll('.accordion-item__btn').forEach(btn => {
+    // Modul-Accordion
+    document.querySelectorAll('.mod-accordion__trigger').forEach(btn => {
       btn.addEventListener('click', () => {
-        const body = btn.nextElementSibling;
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!isOpen));
-        body.style.display = isOpen ? 'none' : 'block';
+        panel.hidden = isOpen;
       });
     });
   </script>
