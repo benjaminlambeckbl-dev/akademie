@@ -1299,7 +1299,7 @@
 }
 .sg-weg__track {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   gap: 0;
   position: relative;
@@ -1712,6 +1712,7 @@
   padding: 2rem 1.5rem;
   gap: 1.25rem;
   transition: box-shadow .25s, transform .25s;
+  cursor: zoom-in;
 }
 .zert-section__card:hover {
   box-shadow: 0 12px 40px rgba(0,170,162,.12);
@@ -1737,9 +1738,7 @@
   border-radius: 50%;
   transition: transform .4s cubic-bezier(.34,1.56,.64,1);
 }
-.zert-section__card:hover .zert-section__img {
-  animation: zert-spin 2s linear infinite;
-}
+.zert-section__card:hover .zert-section__img { transform: scale(1.2); }
 .zert-section__img--sg {
   filter: brightness(0) invert(1);
 }
@@ -1875,12 +1874,12 @@
   align-items: center;
   gap: .55rem;
   font-size: .92rem;
-  color: rgba(255,255,255,.85);
+  color: var(--ish-dark);
 }
 .hero__inline-check li svg { stroke: var(--ish-teal); flex-shrink: 0; }
 .hero__inline-quote {
   font-size: .88rem;
-  color: rgba(255,255,255,.5);
+  color: #6b7d8e;
   font-style: italic;
   border-left: 2px solid var(--ish-teal);
   padding-left: .85rem;
@@ -1892,10 +1891,10 @@
 }
 .hero__gruppe-img {
   width: 100%;
-  height: 100%;
+  height: 460px;
   object-fit: cover;
   border-radius: 16px;
-  min-height: 380px;
+  display: block;
 }
 
 /* ── Zert-section bigger images & spin animation ─── */
@@ -1954,20 +1953,42 @@
   color: #7a8fa0;
 }
 
-/* ── SG-Weg Abschluss Labels ─────────────────────── */
-.sg-weg__abschluss {
-  display: inline-block;
-  margin-top: .5rem;
-  font-size: .75rem;
-  font-weight: 600;
-  color: var(--ish-teal);
-  background: rgba(0,170,162,.08);
-  border-radius: 20px;
-  padding: .25rem .75rem;
+
+.modul-kurse-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: .5rem;
 }
-.sg-weg__abschluss--sg {
-  color: var(--akademie);
-  background: rgba(120,136,254,.1);
+@media (max-width: 700px) { .modul-kurse-tabs { grid-template-columns: 1fr; } }
+.modul-kurs-block {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3eaf0;
+  padding: 1.1rem;
+}
+.modul-kurs-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .85rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid #e8eff5;
+}
+.modul-kurs-block__label {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ish-teal);
+}
+.modul-kurs-block__dates {
+  font-size: .75rem;
+  color: #8a9aaa;
+}
+.modul-kurs-block .module-termine__item {
+  background: #f7fafc;
+  border: none;
 }
 </style>
 </head>
@@ -2553,41 +2574,86 @@
       </div>
 
       <div class="module-termine">
-        <h3 class="module-termine__title">Termine 2026 – 2027</h3>
-        <div class="module-termine__grid">
-          <div class="module-termine__item">
-            <span class="module-termine__num">01</span>
-            <div>
-              <strong>Grundlagen systemischen Coachings</strong>
-              <span>24.–26. September 2026 · Präsenz Bochum · 30 WE</span>
-            </div>
-          </div>
-          <div class="module-termine__item">
-            <span class="module-termine__num">02</span>
-            <div>
-              <strong>Systemische Gesprächsführung</strong>
-              <span>20.–21. November 2026 · Online · 20 WE</span>
-            </div>
-          </div>
-          <div class="module-termine__item">
-            <span class="module-termine__num">03</span>
-            <div>
-              <strong>Coaching-Methoden &amp; Formate</strong>
-              <span>26.–27. Februar 2027 · Online · 20 WE</span>
-            </div>
-          </div>
-          <div class="module-termine__item">
-            <span class="module-termine__num">SE I</span>
-            <div>
-              <strong>Selbsterfahrung &amp; Abschluss</strong>
-              <span>9.–11. April 2027 · Präsenz Bochum · 25 WE</span>
-            </div>
+  <h3 class="module-termine__title">Termine · Grundkurs</h3>
+  <div class="modul-kurse-tabs">
+    <div class="modul-kurs-block">
+      <div class="modul-kurs-block__header">
+        <span class="modul-kurs-block__label">Kurs 26_1</span>
+        <span class="modul-kurs-block__dates">Sep 2026 – Apr 2027</span>
+      </div>
+      <div class="module-termine__grid">
+        <div class="module-termine__item">
+          <span class="module-termine__num">01</span>
+          <div>
+            <strong>Grundlagen systemischen Coachings</strong>
+            <span>24.–26. September 2026 · Präsenz Bochum · 30 WE</span>
           </div>
         </div>
-        <div style="margin-top:1.5rem;text-align:center;">
-          <a href="#register" class="btn btn--primary">Jetzt für den Grundkurs anmelden</a>
+        <div class="module-termine__item">
+          <span class="module-termine__num">02</span>
+          <div>
+            <strong>Systemische Gesprächsführung</strong>
+            <span>20.–21. November 2026 · Online · 20 WE</span>
+          </div>
+        </div>
+        <div class="module-termine__item">
+          <span class="module-termine__num">03</span>
+          <div>
+            <strong>Coaching-Methoden &amp; Formate</strong>
+            <span>26.–27. Februar 2027 · Online · 20 WE</span>
+          </div>
+        </div>
+        <div class="module-termine__item">
+          <span class="module-termine__num">SE I</span>
+          <div>
+            <strong>Selbsterfahrung &amp; Abschluss</strong>
+            <span>9.–11. April 2027 · Präsenz Bochum · 25 WE</span>
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="modul-kurs-block">
+      <div class="modul-kurs-block__header">
+        <span class="modul-kurs-block__label">Kurs 27_1</span>
+        <span class="modul-kurs-block__dates">Sep 2027 – Apr 2028</span>
+      </div>
+      <div class="module-termine__grid">
+        <div class="module-termine__item">
+          <span class="module-termine__num">01</span>
+          <div>
+            <strong>Grundlagen systemischen Coachings</strong>
+            <span>23.–25. September 2027 · Präsenz Bochum · 30 WE</span>
+          </div>
+        </div>
+        <div class="module-termine__item">
+          <span class="module-termine__num">02</span>
+          <div>
+            <strong>Systemische Gesprächsführung</strong>
+            <span>19.–20. November 2027 · Online · 20 WE</span>
+          </div>
+        </div>
+        <div class="module-termine__item">
+          <span class="module-termine__num">03</span>
+          <div>
+            <strong>Coaching-Methoden &amp; Formate</strong>
+            <span>25.–26. Februar 2028 · Online · 20 WE</span>
+          </div>
+        </div>
+        <div class="module-termine__item">
+          <span class="module-termine__num">SE I</span>
+          <div>
+            <strong>Selbsterfahrung &amp; Abschluss</strong>
+            <span>6.–8. April 2028 · Präsenz Bochum · 25 WE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center;">
+    <a href="#register" class="btn btn--primary">Jetzt für den Grundkurs anmelden</a>
+  </div>
+</div>
 
     </div>
   </section>
@@ -2623,7 +2689,6 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Systemischer Coach (ISH-Zertifikat)
           </span>
-          <span class="sg-weg__abschluss">Optional: Systemischer Coach (ISH-zertifiziert)</span>
         </div>
 
         <span class="sg-weg__arrow">›</span>
@@ -2640,7 +2705,6 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Systemischer Coach (SG-zertifiziert)
           </span>
-          <span class="sg-weg__abschluss sg-weg__abschluss--sg">Systemischer Coach (SG-zertifiziert)</span>
         </div>
 
       </div>
@@ -2651,7 +2715,7 @@
   <div class="erst-grundkurs-hint">
     <div class="container">
       <div class="erst-grundkurs-hint__inner">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.5-1.5 4.5-3 6H9c-1.5-1.5-3-3.5-3-6a6 6 0 0 1 6-6z"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg>
         <span><strong>Gut zu wissen:</strong> Sie müssen sich jetzt noch nicht für den Aufbaukurs entscheiden. Starten Sie mit dem Grundkurs – und entscheiden Sie danach, ob Sie den Weg zur SG-Zertifizierung weitergehen möchten.</span>
       </div>
     </div>
@@ -3048,6 +3112,62 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="module-termine" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);">
+        <h3 class="module-termine__title" style="color:#fff;">Termine · Aufbaukurs</h3>
+        <div class="modul-kurse-tabs">
+          <div class="modul-kurs-block" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);">
+            <div class="modul-kurs-block__header" style="border-bottom-color:rgba(255,255,255,.1);">
+              <span class="modul-kurs-block__label">Kurs 27_AK</span>
+              <span class="modul-kurs-block__dates" style="color:rgba(255,255,255,.45);">Okt 2027 – Sep 2028</span>
+            </div>
+            <div class="module-termine__grid">
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">01</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Systemisch führen</strong>
+                  <span>16.–17. Oktober 2027 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">02</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Coaching-Methoden &amp; Formate (Aufbaukurs)</strong>
+                  <span>19.–20. November 2027 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">03</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Coaching im Kontext Org. &amp; Teams</strong>
+                  <span>19.–20. November 2027 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">04</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Konflikt</strong>
+                  <span>10.–11. März 2028 · Online · 20 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">SE II</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Selbsterfahrungswoche II</strong>
+                  <span>26.–30. April 2028 · Präsenz extern · 50 WE</span>
+                </div>
+              </div>
+              <div class="module-termine__item" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);">
+                <span class="module-termine__num">AB</span>
+                <div>
+                  <strong style="color:rgba(255,255,255,.85);">Abschluss &amp; Zertifizierung</strong>
+                  <span>September 2028 · Präsenz Bochum</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="prod-section-cta">
