@@ -684,8 +684,8 @@
     box-shadow: 0 16px 60px rgba(0,0,0,.4), 0 0 0 3px rgba(120,136,254,.3);
   }
   .stufen-card__zert--hoverable:hover .stufen-card__zert-popup {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
+    opacity: 0;
+    transform: translateX(-50%) scale(.3);
   }
   .stufen-card__sg-logo-wrap {
     width: 52px;
@@ -1299,7 +1299,7 @@
 }
 .sg-weg__track {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   gap: 0;
   position: relative;
@@ -1722,8 +1722,8 @@
   border-color: var(--ish-dark);
 }
 .zert-section__img-wrap {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: visible;
   display: flex;
@@ -1731,14 +1731,14 @@
   justify-content: center;
 }
 .zert-section__img {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   border-radius: 50%;
   transition: transform .4s cubic-bezier(.34,1.56,.64,1);
 }
 .zert-section__card:hover .zert-section__img {
-  transform: scale(1.12);
+  animation: zert-spin 2s linear infinite;
 }
 .zert-section__img--sg {
   filter: brightness(0) invert(1);
@@ -1779,8 +1779,7 @@
 
 /* Stufen-card: Empfohlen / Featured */
 .stufen-card--featured {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0,170,162,.18), 0 0 0 2px var(--ish-teal);
+  box-shadow: 0 4px 20px rgba(0,170,162,.12);
 }
 .stufen-card__badge--empfohlen {
   background: var(--ish-teal);
@@ -1800,9 +1799,9 @@
 
 /* Erst-Grundkurs hint */
 .erst-grundkurs-hint {
-  background: #f0f8f8;
-  border-top: 1px solid #d0eae9;
-  padding: 1.1rem 0;
+  background: transparent;
+  border-top: none;
+  padding: 2rem 0;
 }
 .erst-grundkurs-hint__inner {
   display: flex;
@@ -1811,6 +1810,13 @@
   font-size: .88rem;
   color: #3a5a5a;
   line-height: 1.5;
+  background: #f0f8f8;
+  border: 1.5px solid #b8e0dd;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0,170,162,.06);
 }
 .erst-grundkurs-hint__inner svg {
   flex-shrink: 0;
@@ -1853,6 +1859,115 @@
   background: #009990;
   transform: translateY(-2px);
   box-shadow: 0 12px 36px rgba(0,170,162,.5);
+}
+
+/* ── Hero Inline Check & Quote ───────────────────── */
+.hero__inline-check {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.hero__inline-check li {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .92rem;
+  color: rgba(255,255,255,.85);
+}
+.hero__inline-check li svg { stroke: var(--ish-teal); flex-shrink: 0; }
+.hero__inline-quote {
+  font-size: .88rem;
+  color: rgba(255,255,255,.5);
+  font-style: italic;
+  border-left: 2px solid var(--ish-teal);
+  padding-left: .85rem;
+  margin: 0 0 1.25rem;
+}
+.hero__visual--img {
+  display: flex;
+  align-items: stretch;
+}
+.hero__gruppe-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  min-height: 380px;
+}
+
+/* ── Zert-section bigger images & spin animation ─── */
+@keyframes zert-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Module Termine ──────────────────────────────── */
+.module-termine {
+  margin-top: 2.5rem;
+  background: #f4f8fa;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e3eaf0;
+}
+.module-termine__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0 0 1.25rem;
+}
+.module-termine__grid {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.module-termine__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: .85rem 1rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e3eaf0;
+}
+.module-termine__num {
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  color: var(--ish-teal);
+  min-width: 36px;
+  padding-top: .1rem;
+}
+.module-termine__item div {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.module-termine__item strong {
+  font-size: .92rem;
+  color: var(--ish-dark);
+}
+.module-termine__item span {
+  font-size: .82rem;
+  color: #7a8fa0;
+}
+
+/* ── SG-Weg Abschluss Labels ─────────────────────── */
+.sg-weg__abschluss {
+  display: inline-block;
+  margin-top: .5rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--ish-teal);
+  background: rgba(0,170,162,.08);
+  border-radius: 20px;
+  padding: .25rem .75rem;
+}
+.sg-weg__abschluss--sg {
+  color: var(--akademie);
+  background: rgba(120,136,254,.1);
 }
 </style>
 </head>
@@ -1898,6 +2013,12 @@
         <p class="hero__sub">
           Die vollständige Qualifizierung – vom zweitägigen Einstieg bis zur SG-anerkannten Zertifizierung. Berufsbegleitend, praxisnah und für alle, die in Schule und Bildung professionell begleiten wollen.
         </p>
+        <ul class="hero__inline-check">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Berufsbegleitend &amp; praxisnah</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Spezialisiert für Schule &amp; Bildung</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Systemisch fundiert &amp; SG-anerkannt</li>
+        </ul>
+        <p class="hero__inline-quote">„Von der ersten Idee zur anerkannten Qualifikation – Schritt für Schritt."</p>
         <div class="hero__meta">
           <div class="hero__meta-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -1914,38 +2035,9 @@
         </div>
       </div>
 
-      <div class="hero__visual">
-  <div class="hero__facts-wrap">
-    <div class="hero__facts-grid">
-
-      <!-- Stufen: volle Breite -->
-      <div class="hero__fact hero__fact--accent">
-        <div class="hero__fact-num">2</div>
-        <div class="hero__fact-label">Qualifizierungs&shy;stufen</div>
+      <div class="hero__visual hero__visual--img">
+        <img src="Gruppe.jpg" alt="ISH Akademie Gruppe" class="hero__gruppe-img" />
       </div>
-
-      <!-- Checkliste: volle Breite -->
-      <div class="hero__fact hero__fact--checklist">
-        <div class="hero__fact-check-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Berufsbegleitend
-        </div>
-        <div class="hero__fact-check-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Spezialisiert für Schule &amp; Bildung
-        </div>
-        <div class="hero__fact-check-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Praxisnah &amp; systemisch fundiert
-        </div>
-      </div>
-
-    </div>
-    <div class="hero__fact-quote">
-      „Von der ersten Idee zur anerkannten Qualifikation – Schritt für Schritt."
-    </div>
-  </div>
-</div>
     </div>
 
     <div class="hero__scroll">
@@ -1966,7 +2058,7 @@
             <img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen im Bildungskontext" class="zert-section__img" />
           </div>
           <div class="zert-section__info">
-            <span class="zert-section__stufe">Grundkurs · Stufe 2</span>
+            <span class="zert-section__stufe">Stufe 1 · Grundkurs</span>
             <h3 class="zert-section__name">ISH-Akademie-Zertifikat</h3>
             <p class="zert-section__desc">Systemisch Coachen im Bildungskontext – ausgestellt durch die ISH Akademie.</p>
           </div>
@@ -1977,7 +2069,7 @@
             <img src="logo_sg-weiss.png" alt="Systemische Gesellschaft – SG-anerkannte Qualifikation" class="zert-section__img zert-section__img--sg" />
           </div>
           <div class="zert-section__info">
-            <span class="zert-section__stufe">Grundkurs + Aufbaukurs · Stufe 3</span>
+            <span class="zert-section__stufe">Stufe 2 · Aufbaukurs</span>
             <h3 class="zert-section__name">SG-Zertifizierung</h3>
             <p class="zert-section__desc">Systemischer Coach – anerkannt durch die Systemische Gesellschaft (SG). Die höchste Anerkennung im Berufsfeld.</p>
           </div>
@@ -2198,9 +2290,9 @@
   <section class="modules" id="modules">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Grundkurs · Termine 2026–2027</span>
+        <span class="section-tag">Grundkurs · 4 Module</span>
         <h2>Die vier Module.</h2>
-        <p class="section-intro">Aufeinander aufbauend, durchgehend mit Schulkontext-Fokus – berufsbegleitend in 9 Monaten.</p>
+        <p class="section-intro">Aufeinander aufbauend, durchgehend mit Schulkontext-Fokus – berufsbegleitend in 9 Monaten. Öffnen Sie ein Modul für Details und Termine.</p>
       </div>
 
       <div class="modules__list">
@@ -2213,7 +2305,6 @@
             <div class="mod-accordion__summary">
               <h3>Grundlagen systemischen Coachings</h3>
               <div class="mod-accordion__tags">
-                <span class="tag tag--date">24.–26. Sep 2026 · Do–Sa</span>
                 <span class="tag tag--format tag--inperson">Präsenz · Bochum</span>
                 <span class="tag tag--ue">30 WE</span>
               </div>
@@ -2277,7 +2368,6 @@
             <div class="mod-accordion__summary">
               <h3>Systemische Gesprächsführung im Coaching</h3>
               <div class="mod-accordion__tags">
-                <span class="tag tag--date">20.–21. Nov 2026 · Fr–Sa</span>
                 <span class="tag tag--format tag--online">Online</span>
                 <span class="tag tag--ue">20 WE</span>
               </div>
@@ -2339,9 +2429,8 @@
             <span class="mod-accordion__bg-num" aria-hidden="true">03</span>
             <span class="mod-accordion__num">03</span>
             <div class="mod-accordion__summary">
-              <h3>Coaching im Kontext von Organisationen &amp; Teams</h3>
+              <h3>Coaching-Methoden &amp; Formate</h3>
               <div class="mod-accordion__tags">
-                <span class="tag tag--date">26.–27. Feb 2027 · Fr–Sa</span>
                 <span class="tag tag--format tag--online">Online</span>
                 <span class="tag tag--ue">20 WE</span>
               </div>
@@ -2353,20 +2442,21 @@
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
                 <ul class="mod-panel__check-list">
-                  <li>Teamprozesse und Entwicklungsphasen systemisch einschätzen</li>
-                  <li>Als Schulleitung systemisch führen – statt zu verwalten</li>
-                  <li>Mit Widerstand und Dynamiken im Kollegium professionell umgehen</li>
-                  <li>Komplexe Aufträge im Dreiecksvertrag klar klären</li>
+                  <li>Online-Coaching professionell von Präsenz-Coaching unterscheiden</li>
+                  <li>Digitale Methoden sicher und wirkungsvoll einsetzen</li>
+                  <li>Blended-Coaching-Konzepte entwickeln und umsetzen</li>
+                  <li>KI-Tools sinnvoll in Coaching-Prozesse integrieren</li>
                 </ul>
               </div>
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Inhalte</span>
                 <ul class="mod-panel__arrow-list">
-                  <li>Teamentwicklungsphasen &amp; Belbin-Rollen</li>
-                  <li>Systemische Führung im Schulkontext</li>
-                  <li>Der Dreiecksvertrag: Klarheit in komplexen Situationen</li>
-                  <li>Widerstand und Dynamiken verstehen und nutzen</li>
-                  <li>Coaching als Instrument der Schulentwicklung</li>
+                  <li>Online-Coaching vs. Präsenz-Coaching – Unterschiede und Chancen</li>
+                  <li>ABC des Online-Coachings und Stufenmodell</li>
+                  <li>Werte- und Entwicklungsquadrat digital</li>
+                  <li>Inneres Team und Systemaufstellung online</li>
+                  <li>Blended Coaching, Datenschutz &amp; Videokonferenzsysteme</li>
+                  <li>Schriftbasierte Online-Beratung</li>
                 </ul>
               </div>
               <div class="mod-panel__col">
@@ -2380,7 +2470,6 @@
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Format</span>
                     <strong>Online · Zoom</strong>
-                    <span>2 Tage mit Fallarbeit</span>
                   </div>
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Umfang</span>
@@ -2388,7 +2477,7 @@
                   </div>
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Lehrende</span>
-                    <strong>Dennis Sawatzki</strong>
+                    <strong>Benjamin Lambeck</strong>
                   </div>
                 </div>
               </div>
@@ -2399,12 +2488,11 @@
         <!-- SELBSTERFAHRUNG & ABSCHLUSS -->
         <div class="mod-accordion">
           <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-04">
-            <span class="mod-accordion__bg-num" aria-hidden="true">04</span>
-            <span class="mod-accordion__num">04</span>
+            <span class="mod-accordion__bg-num" aria-hidden="true">SE I</span>
+            <span class="mod-accordion__num" style="font-size:1.1rem;">SE I</span>
             <div class="mod-accordion__summary">
               <h3>Selbsterfahrung &amp; Abschluss</h3>
               <div class="mod-accordion__tags">
-                <span class="tag tag--date">9.–11. Apr 2027 · Fr–So</span>
                 <span class="tag tag--format tag--inperson">Präsenz · Bochum</span>
                 <span class="tag tag--ue">25 WE</span>
               </div>
@@ -2464,6 +2552,43 @@
 
       </div>
 
+      <div class="module-termine">
+        <h3 class="module-termine__title">Termine 2026 – 2027</h3>
+        <div class="module-termine__grid">
+          <div class="module-termine__item">
+            <span class="module-termine__num">01</span>
+            <div>
+              <strong>Grundlagen systemischen Coachings</strong>
+              <span>24.–26. September 2026 · Präsenz Bochum · 30 WE</span>
+            </div>
+          </div>
+          <div class="module-termine__item">
+            <span class="module-termine__num">02</span>
+            <div>
+              <strong>Systemische Gesprächsführung</strong>
+              <span>20.–21. November 2026 · Online · 20 WE</span>
+            </div>
+          </div>
+          <div class="module-termine__item">
+            <span class="module-termine__num">03</span>
+            <div>
+              <strong>Coaching-Methoden &amp; Formate</strong>
+              <span>26.–27. Februar 2027 · Online · 20 WE</span>
+            </div>
+          </div>
+          <div class="module-termine__item">
+            <span class="module-termine__num">SE I</span>
+            <div>
+              <strong>Selbsterfahrung &amp; Abschluss</strong>
+              <span>9.–11. April 2027 · Präsenz Bochum · 25 WE</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;text-align:center;">
+          <a href="#register" class="btn btn--primary">Jetzt für den Grundkurs anmelden</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2490,9 +2615,7 @@
 
         <!-- Grundkurs -->
         <div class="sg-weg__node sg-weg__node--gk">
-          <div class="sg-weg__dot sg-weg__dot--gk">
-            <img src="Akademie.png" alt="ISH Akademie" />
-          </div>
+          <div class="sg-weg__dot sg-weg__dot--gk"><img src="Systemischer coach Sigel.png" alt="Systemischer Coach ISH-Zertifikat" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" /></div>
           <span class="sg-weg__label">Stufe 2</span>
           <span class="sg-weg__name">Grundkurs abschließen</span>
           <span class="sg-weg__sub">150 UE · 9 Monate berufsbegleitend</span>
@@ -2500,6 +2623,7 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Systemischer Coach (ISH-Zertifikat)
           </span>
+          <span class="sg-weg__abschluss">Optional: Systemischer Coach (ISH-zertifiziert)</span>
         </div>
 
         <span class="sg-weg__arrow">›</span>
@@ -2516,6 +2640,7 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Systemischer Coach (SG-zertifiziert)
           </span>
+          <span class="sg-weg__abschluss sg-weg__abschluss--sg">Systemischer Coach (SG-zertifiziert)</span>
         </div>
 
       </div>
@@ -2619,7 +2744,7 @@
             <span class="mod-accordion__bg-num" aria-hidden="true">05</span>
             <span class="mod-accordion__num" style="color:var(--akademie);">05</span>
             <div class="mod-accordion__summary">
-              <h3>Coaching-Methoden &amp; Formate</h3>
+              <h3>Coaching im Kontext von Organisationen &amp; Teams</h3>
               <div class="mod-accordion__tags">
                 <span class="tag tag--date">19.–20. November 2027 · Di–Mi</span>
                 <span class="tag tag--format tag--online">Online</span>
@@ -2633,21 +2758,20 @@
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Lernziele</span>
                 <ul class="mod-panel__check-list">
-                  <li>Online-Coaching professionell von Präsenz-Coaching unterscheiden</li>
-                  <li>Digitale Methoden sicher und wirkungsvoll einsetzen</li>
-                  <li>Blended-Coaching-Konzepte entwickeln und umsetzen</li>
-                  <li>KI-Tools sinnvoll in Coaching-Prozesse integrieren</li>
+                  <li>Teamprozesse und Entwicklungsphasen systemisch einschätzen</li>
+                  <li>Als Schulleitung systemisch führen – statt zu verwalten</li>
+                  <li>Mit Widerstand und Dynamiken im Kollegium professionell umgehen</li>
+                  <li>Komplexe Aufträge im Dreiecksvertrag klar klären</li>
                 </ul>
               </div>
               <div class="mod-panel__col">
                 <span class="mod-panel__label">Inhalte</span>
                 <ul class="mod-panel__arrow-list">
-                  <li>Online-Coaching vs. Präsenz-Coaching – Unterschiede und Chancen</li>
-                  <li>ABC des Online-Coachings und Stufenmodell</li>
-                  <li>Werte- und Entwicklungsquadrat digital</li>
-                  <li>Inneres Team und Systemaufstellung online</li>
-                  <li>Blended Coaching, Datenschutz &amp; Videokonferenzsysteme</li>
-                  <li>Schriftbasierte Online-Beratung</li>
+                  <li>Teamentwicklungsphasen &amp; Belbin-Rollen</li>
+                  <li>Systemische Führung im Schulkontext</li>
+                  <li>Der Dreiecksvertrag: Klarheit in komplexen Situationen</li>
+                  <li>Widerstand und Dynamiken verstehen und nutzen</li>
+                  <li>Coaching als Instrument der Schulentwicklung</li>
                 </ul>
               </div>
               <div class="mod-panel__col">
@@ -2661,6 +2785,7 @@
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Format</span>
                     <strong>Online · Zoom</strong>
+                    <span>2 Tage mit Fallarbeit</span>
                   </div>
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Umfang</span>
@@ -2668,7 +2793,7 @@
                   </div>
                   <div class="mod-panel__format-item">
                     <span class="fmt-label">Lehrende</span>
-                    <strong>Benjamin Lambeck</strong>
+                    <strong>Dennis Sawatzki</strong>
                   </div>
                 </div>
               </div>
