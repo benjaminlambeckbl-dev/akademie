@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44">
+  <!-- WEQ-Quadrat: 4 Felder wie im Schulz-von-Thun-Institut-Logo -->
+  <rect x="1"  y="1"  width="19" height="19" rx="2" fill="#d94f3d"/>
+  <rect x="24" y="1"  width="19" height="19" rx="2" fill="#e8b800"/>
+  <rect x="1"  y="24" width="19" height="19" rx="2" fill="#4a9b4b"/>
+  <rect x="24" y="24" width="19" height="19" rx="2" fill="#1a5f8f"/>
+</svg>

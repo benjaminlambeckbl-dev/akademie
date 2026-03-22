@@ -1,0 +1,638 @@
+<h2 mat-dialog-title>
+  @if (modus() === 'auswahl') {
+    <mat-icon>add_box</mat-icon> Neues Wertequadrat
+  } @else if (modus() === 'vordef') {
+    <mat-icon>auto_awesome</mat-icon> Vordefinierten Wert anpassen
+  } @else if (modus() === 'staerke') {
+    <mat-icon>psychology</mat-icon> Stärke reflektieren
+  } @else if (modus() === 'werte') {
+    <mat-icon>favorite_border</mat-icon>
+    @if (werteSchritt() === 'liste') { Werte auswählen }
+    @else if (werteSchritt() === 'entscheidung') { Welcher trifft am meisten zu? }
+    @else { Dein Wertequadrat }
+  } @else if (modus() === 'konflikt') {
+    <mat-icon>people</mat-icon> Konfliktberatung
+  } @else if (modus() === 'innerkonflikt') {
+    <mat-icon>balance</mat-icon> Innerer Konflikt
+  } @else if (modus() === 'schatz') {
+    <mat-icon>diamond</mat-icon> Verborgene Schätze heben
+  } @else if (modus() === 'feedback') {
+    <mat-icon>forum</mat-icon> Konstruktives Feedback
+  } @else {
+    <mat-icon>edit</mat-icon> Eigenes Quadrat erstellen
+  }
+</h2>
+
+<mat-dialog-content>
+
+  <!-- SCHRITT 1: Modus wählen -->
+  @if (modus() === 'auswahl') {
+    <p class="intro-text">
+      Wähle einen vordefinierten Kernwert aus oder lass die KI passende Werte vorschlagen:
+    </p>
+
+    <div class="modus-actions">
+      <button mat-flat-button color="accent" class="staerke-btn modus-btn" (click)="staerkeModus()">
+        <mat-icon>psychology</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Stärke erkunden</span>
+          <span class="modus-btn-sub">Eine persönliche Stärke beschreiben → Wertequadrat + Reflexionsfragen</span>
+        </span>
+      </button>
+      <button mat-flat-button color="accent" class="staerke-btn werte-btn modus-btn" (click)="werteModus()">
+        <mat-icon>favorite_border</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Über Werte einsteigen</span>
+          <span class="modus-btn-sub">Einen Wert aus einer Liste wählen → Wertequadrat entdecken</span>
+        </span>
+      </button>
+      <button mat-flat-button color="accent" class="staerke-btn konflikt-btn modus-btn" (click)="konfliktModus()">
+        <mat-icon>people</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Konflikt verstehen</span>
+          <span class="modus-btn-sub">Schwieriges Verhalten beschreiben → Positiven Kern entdecken + Wertequadrat der anderen Person</span>
+        </span>
+      </button>
+      <button mat-flat-button color="accent" class="staerke-btn feedback-btn modus-btn" (click)="feedbackModus()">
+        <mat-icon>forum</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Feedback formulieren</span>
+          <span class="modus-btn-sub">Feedback-Gespräch vorbereiten → Formulierung nach dem 4-Schritte-Modell von Schulz von Thun</span>
+        </span>
+      </button>
+      <button mat-flat-button color="accent" class="staerke-btn innerkonflikt-btn modus-btn" (click)="innerkonfliktModus()">
+        <mat-icon>balance</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Inneren Konflikt klären</span>
+          <span class="modus-btn-sub">Zwei eigene Impulse beschreiben, die sich widersprechen → Beide Seiten als Werte verstehen + produktive Spannung halten</span>
+        </span>
+      </button>
+      <button mat-flat-button color="accent" class="staerke-btn schatz-btn modus-btn" (click)="schatzModus()">
+        <mat-icon>diamond</mat-icon>
+        <span class="modus-btn-text">
+          <span class="modus-btn-titel">Verborgene Schätze heben</span>
+          <span class="modus-btn-sub">Beschreiben, was einem schwerfällt → Dahinterliegenden Kernwert entdecken ("Das Gute im Schlechten")</span>
+        </span>
+      </button>
+      <button mat-stroked-button class="custom-btn" (click)="customModus()">
+        <mat-icon>edit</mat-icon>
+        Wert direkt eingeben
+      </button>
+    </div>
+
+    @for (kat of service_ref.kategorien; track kat) {
+      <div class="kategorie-gruppe">
+        <h4 class="kategorie-titel">{{ kat }}</h4>
+        <div class="wert-karten">
+          @for (wert of kategorienWerte(kat); track wert.kernwert) {
+            <div class="wert-karte" (click)="vordefiniertenAuswaehlen(wert)">
+              <div class="wert-karte-kern">{{ wert.kernwert }}</div>
+              <div class="wert-karte-pfeil">↔</div>
+              <div class="wert-karte-schwester">{{ wert.schwestertugend }}</div>
+              <div class="wert-karte-preview">
+                <div class="preview-mini-grid">
+                  <span class="preview-zelle preview-kern">{{ wert.kernwert }}</span>
+                  <span class="preview-zelle preview-schwester">{{ wert.schwestertugend }}</span>
+                  <span class="preview-zelle preview-ueber-kern">{{ wert.uebertreibungKernwert }}</span>
+                  <span class="preview-zelle preview-ueber-schwester">{{ wert.uebertreibungSchwestertugend }}</span>
+                </div>
+                @if (wert.beschreibung) {
+                  <p class="preview-beschreibung">{{ wert.beschreibung }}</p>
+                }
+                <span class="preview-cta">Klicken zum Auswählen</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+
+  <!-- SCHRITT 2a: Stärken-Eingabe -->
+  @if (modus() === 'staerke') {
+    <div class="staerke-eingabe">
+      <p class="staerke-intro">
+        Beschreibe eine besondere Stärke von dir – in deinen eigenen Worten.
+        Die KI entwickelt daraus dein persönliches Wertequadrat mit konkreten Hinweisen.
+      </p>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Meine Stärke</mat-label>
+        <textarea matInput
+                  rows="5"
+                  [value]="staerkeBeschreibung()"
+                  (input)="staerkeBeschreibung.set($any($event.target).value)"
+                  placeholder="z.B. Ich bin sehr geduldig und kann auch in stressigen Situationen ruhig bleiben. Ich höre anderen gut zu und gebe ihnen Zeit, ihre Gedanken zu entwickeln...">
+        </textarea>
+        <mat-hint>Schreib frei – je konkreter, desto treffender das Ergebnis</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button
+              color="accent"
+              class="analysieren-btn"
+              [disabled]="!staerkeBeschreibung().trim() || kiLaedt()"
+              (click)="staerkeAnalysieren()">
+        @if (kiLaedt()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          Analysiere...
+        } @else {
+          <ng-container>
+            <mat-icon>psychology</mat-icon>
+            Wertequadrat entwickeln
+          </ng-container>
+        }
+      </button>
+
+      @if (kiAusgefuellt()) {
+        <div class="ki-erfolg">
+          <mat-icon>check_circle</mat-icon>
+          Dein Wertequadrat wurde entwickelt – scrolle nach unten, um es zu überprüfen
+        </div>
+      }
+    </div>
+  }
+
+  <!-- SCHRITT 2c: Werte-Modus -->
+  @if (modus() === 'werte' && !kiAusgefuellt()) {
+
+    <!-- Schritt 1: Liste -->
+    @if (werteSchritt() === 'liste') {
+      <p class="werte-intro">
+        Welche Werte kennst du an dir? Wähle bis zu <strong>3</strong> aus – dann entscheidest du dich für den einen, der dich gerade am meisten beschäftigt.
+      </p>
+      <div class="werte-zaehler">
+        <span [class.voll]="ausgewaehlteWerte().length === 3">
+          {{ ausgewaehlteWerte().length }} / 3 ausgewählt
+        </span>
+      </div>
+      <div class="werte-liste">
+        @for (w of werteliste; track w.wert) {
+          <div class="werte-kachel"
+               [class.ausgewaehlt]="ausgewaehlteWerte().includes(w.wert)"
+               [class.gesperrt]="ausgewaehlteWerte().length === 3 && !ausgewaehlteWerte().includes(w.wert)"
+               (click)="wertToggle(w.wert)">
+            <span class="werte-emoji">{{ w.emoji }}</span>
+            <span class="werte-name">{{ w.wert }}</span>
+            <span class="werte-desc">{{ w.beschreibung }}</span>
+            @if (ausgewaehlteWerte().includes(w.wert)) {
+              <mat-icon class="werte-check">check_circle</mat-icon>
+            }
+          </div>
+        }
+      </div>
+      <button mat-flat-button
+              class="analysieren-btn"
+              [disabled]="ausgewaehlteWerte().length === 0"
+              (click)="werteWeiter()">
+        <mat-icon>arrow_forward</mat-icon>
+        @if (ausgewaehlteWerte().length === 1) { Diesen Wert vertiefen }
+        @else { Weiter zur Entscheidung }
+      </button>
+    }
+
+    <!-- Schritt 2: Entscheidung zwischen den 3 -->
+    @if (werteSchritt() === 'entscheidung') {
+      <p class="werte-intro">
+        Du hast <strong>{{ ausgewaehlteWerte().length }}</strong> Werte ausgewählt. Welcher davon beschäftigt dich gerade am meisten – oder fühlt sich am echtesten an?
+      </p>
+      <div class="werte-entscheidung">
+        @for (wert of ausgewaehlteWerte(); track wert) {
+          <button mat-stroked-button
+                  class="entscheidungs-karte"
+                  [disabled]="kiLaedt()"
+                  (click)="wertFinal(wert)">
+            <span class="entscheidungs-emoji">{{ emojiVonWert(wert) }}</span>
+            <span class="entscheidungs-name">{{ wert }}</span>
+            @if (kiLaedt()) {
+              <mat-spinner diameter="16"></mat-spinner>
+            }
+          </button>
+        }
+      </div>
+      @if (kiLaedt()) {
+        <p class="werte-laden-text">Dein Wertequadrat wird entwickelt...</p>
+      }
+    }
+  }
+
+  <!-- SCHRITT 2d: Konflikt-Eingabe -->
+  @if (modus() === 'konflikt' && !kiAusgefuellt()) {
+    <div class="konflikt-eingabe">
+      <div class="konflikt-intro">
+        <p>Beschreibe das Verhalten, das dich an einer Person stört oder belastet – so konkret wie möglich.</p>
+        <p>Die KI sucht nach dem <strong>positiven Kern dahinter</strong> und entwickelt Fragen, die dir helfen, die andere Person besser zu verstehen – und dich selbst.</p>
+      </div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Was stört oder belastet dich an dieser Person?</mat-label>
+        <textarea matInput
+                  rows="5"
+                  [value]="konfliktBeschreibung()"
+                  (input)="konfliktBeschreibung.set($any($event.target).value)"
+                  placeholder="z.B. Mein Kollege redet ständig drüber, ohne andere zu Wort kommen zu lassen. Er besteht immer auf seiner Meinung, auch wenn alle anderen anderer Ansicht sind...">
+        </textarea>
+        <mat-hint>Je konkreter die Beschreibung, desto treffender die Reflexionsfragen</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button
+              class="analysieren-btn konflikt-analysieren-btn"
+              [disabled]="!konfliktBeschreibung().trim() || kiLaedt()"
+              (click)="konfliktAnalysieren()">
+        @if (kiLaedt()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          Analysiere...
+        } @else {
+          <ng-container>
+            <mat-icon>people</mat-icon>
+            Wertequadrat entwickeln
+          </ng-container>
+        }
+      </button>
+    </div>
+  }
+
+  <!-- SCHRITT 2e: Feedback-Modus -->
+  @if (modus() === 'feedback') {
+    <div class="feedback-eingabe">
+
+      @if (!feedbackErgebnis()) {
+        <div class="feedback-intro">
+          <p>Beschreibe das Verhalten, das dich stört oder belastet – so konkret wie möglich.</p>
+          <p>Die KI entwickelt daraus einen <strong>Feedback-Formulierungsvorschlag</strong> nach Schulz von Thun und fragt dich, ob du auch etwas Positives dahinter erkennen kannst.</p>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Was stört oder belastet dich an dieser Person?</mat-label>
+          <textarea matInput
+                    rows="5"
+                    [value]="feedbackBeschreibung()"
+                    (input)="feedbackBeschreibung.set($any($event.target).value)"
+                    placeholder="z.B. Mein Kollege unterbricht mich regelmäßig in Meetings, bevor ich meinen Gedanken zu Ende geführt habe...">
+          </textarea>
+          <mat-hint>Je konkreter die Beschreibung, desto passender der Feedback-Vorschlag</mat-hint>
+        </mat-form-field>
+
+        <button mat-flat-button
+                class="analysieren-btn feedback-analysieren-btn"
+                [disabled]="!feedbackBeschreibung().trim() || kiLaedt()"
+                (click)="feedbackAnalysieren()">
+          @if (kiLaedt()) {
+            <mat-spinner diameter="20"></mat-spinner>
+            Analysiere...
+          } @else {
+            <ng-container>
+              <mat-icon>forum</mat-icon>
+              Feedback entwickeln
+            </ng-container>
+          }
+        </button>
+      }
+
+      @if (feedbackErgebnis(); as fb) {
+        <div class="feedback-ergebnis">
+
+          <div class="feedback-karte positiver-kern">
+            <div class="feedback-karte-header">
+              <span class="feedback-karte-icon">💡</span>
+              <strong>Das Positive dahinter</strong>
+              <span class="feedback-karte-frage">Kannst du das auch so sehen?</span>
+            </div>
+            <p>{{ fb.positiverKern }}</p>
+          </div>
+
+          <div class="feedback-karte formulierung">
+            <div class="feedback-karte-header">
+              <span class="feedback-karte-icon">💬</span>
+              <strong>Feedback-Formulierungsvorschlag</strong>
+              <button mat-icon-button
+                      class="copy-btn"
+                      (click)="feedbackKopieren()"
+                      [matTooltip]="feedbackKopiert() ? 'Kopiert!' : 'In die Zwischenablage kopieren'">
+                <mat-icon>{{ feedbackKopiert() ? 'check' : 'content_copy' }}</mat-icon>
+              </button>
+            </div>
+            <p>{{ fb.feedbackFormulierung }}</p>
+            <p class="feedback-hinweis">
+              <mat-icon>info_outline</mat-icon>
+              Dieser Vorschlag folgt dem 4-Schritte-Modell nach Schulz von Thun: Wahrnehmung → Wirkung → Würdigung → Wunsch.
+            </p>
+          </div>
+
+          <div class="feedback-karte selbsterkenntnis">
+            <div class="feedback-karte-header">
+              <span class="feedback-karte-icon">🔍</span>
+              <strong>Eine Frage an dich selbst</strong>
+            </div>
+            <p>{{ fb.selbsterkenntnisfrage }}</p>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  }
+
+  <!-- SCHRITT 2f: Innerer Konflikt -->
+  @if (modus() === 'innerkonflikt' && !kiAusgefuellt()) {
+    <div class="innerkonflikt-eingabe">
+      <div class="innerkonflikt-intro">
+        <p>Beschreibe eine innere Zerrissenheit – zwei Impulse oder Wünsche in dir, die sich zu widersprechen scheinen.</p>
+        <p>Die KI zeigt dir: <strong>Beide Seiten repräsentieren echte Werte.</strong> Der Weg liegt nicht in der Entscheidung zwischen ihnen, sondern im bewussten Halten der Spannung.</p>
+      </div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mein innerer Konflikt</mat-label>
+        <textarea matInput
+                  rows="5"
+                  [value]="innerkonfliktBeschreibung()"
+                  (input)="innerkonfliktBeschreibung.set($any($event.target).value)"
+                  placeholder="z.B. Ich will mehr Verantwortung übernehmen und mich einbringen – aber gleichzeitig sehne ich mich nach Ruhe und möchte nicht ständig für andere erreichbar sein...">
+        </textarea>
+        <mat-hint>Je konkreter die Beschreibung, desto treffender das Ergebnis</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button
+              class="analysieren-btn innerkonflikt-analysieren-btn"
+              [disabled]="!innerkonfliktBeschreibung().trim() || kiLaedt()"
+              (click)="innerkonfliktAnalysieren()">
+        @if (kiLaedt()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          Analysiere...
+        } @else {
+          <ng-container>
+            <mat-icon>balance</mat-icon>
+            Wertequadrat entwickeln
+          </ng-container>
+        }
+      </button>
+    </div>
+  }
+
+  <!-- SCHRITT 2g: Verborgene Schätze -->
+  @if (modus() === 'schatz' && !kiAusgefuellt()) {
+    <div class="schatz-eingabe">
+      <div class="schatz-intro">
+        <p>Beschreibe etwas, das dir schwerfällt – etwas, das anderen leicht von der Hand geht, dir aber nicht.</p>
+        <p>Hinter jeder Schwierigkeit steckt ein <strong>verborgener Kernwert</strong> – eine Stärke, die manchmal ein bisschen zu weit geht. Die KI hebt diesen Schatz für dich.</p>
+      </div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Was fällt mir schwer?</mat-label>
+        <textarea matInput
+                  rows="5"
+                  [value]="schatzBeschreibung()"
+                  (input)="schatzBeschreibung.set($any($event.target).value)"
+                  placeholder="z.B. Ich kann schlecht Nein sagen. Wenn jemand mich um Hilfe bittet, sage ich fast immer Ja – auch wenn ich eigentlich keine Kapazität habe. Andere scheinen das viel leichter abgrenzen zu können...">
+        </textarea>
+        <mat-hint>Je konkreter du beschreibst, desto präziser der Schatz</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button
+              class="analysieren-btn schatz-analysieren-btn"
+              [disabled]="!schatzBeschreibung().trim() || kiLaedt()"
+              (click)="schatzAnalysieren()">
+        @if (kiLaedt()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          Schatz wird gesucht...
+        } @else {
+          <ng-container>
+            <mat-icon>diamond</mat-icon>
+            Verborgenen Schatz entdecken
+          </ng-container>
+        }
+      </button>
+    </div>
+  }
+
+  <!-- SCHRITT 2b: Formular (vordef, custom, staerke/werte/konflikt nach Analyse) -->
+  @if (modus() === 'vordef' || modus() === 'custom' || (modus() === 'staerke' && kiAusgefuellt()) || (modus() === 'werte' && kiAusgefuellt()) || (modus() === 'konflikt' && kiAusgefuellt()) || (modus() === 'innerkonflikt' && kiAusgefuellt()) || (modus() === 'schatz' && kiAusgefuellt())) {
+    <form [formGroup]="form" class="quadrat-form">
+
+      <!-- Kernwert-Eingabe (nur im custom/vordef-Modus; im staerke/werte/konflikt-Modus steht das Feld im Grid) -->
+      @if (modus() !== 'staerke' && modus() !== 'werte' && modus() !== 'konflikt' && modus() !== 'innerkonflikt') {
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Kernwert</mat-label>
+          <input matInput formControlName="kernwert"
+                 placeholder="z.B. Geduld"
+                 [readonly]="modus() === 'vordef'">
+          <mat-hint>Dein Ausgangswert</mat-hint>
+        </mat-form-field>
+      }
+
+      <!-- KI-Button darunter (nur im custom-Modus) -->
+      @if (modus() === 'custom') {
+        <button mat-flat-button
+                class="ki-button"
+                type="button"
+                [disabled]="!kernwertValue || kiLaedt()"
+                (click)="kiVorschlagen()"
+                matTooltip="KI schlägt passende Werte vor">
+          @if (kiLaedt()) {
+            <mat-spinner diameter="18"></mat-spinner>
+          } @else {
+            <mat-icon>auto_awesome</mat-icon>
+          }
+          KI-Vorschlag generieren
+        </button>
+      }
+
+      <!-- KI-Hinweis -->
+      @if (kiAusgefuellt()) {
+        <div class="ki-vorschlag-banner">
+          <div class="ki-vorschlag-text">
+            <mat-icon>auto_awesome</mat-icon>
+            <span>Das sind <strong>KI-Vorschläge</strong> – passe die Begriffe gerne an deine eigene Sprache an.</span>
+          </div>
+          <div class="ki-vorschlag-actions">
+            @if (modus() === 'staerke') {
+              <button mat-stroked-button
+                      type="button"
+                      class="neu-gen-btn"
+                      [disabled]="kiLaedt() || fragenLaden()"
+                      (click)="staerkeAnalysieren()"
+                      matTooltip="Komplett neues Wertequadrat aus deiner Beschreibung generieren">
+                @if (kiLaedt()) { <mat-spinner diameter="14"></mat-spinner> }
+                @else { <mat-icon>refresh</mat-icon> }
+                Neu generieren
+              </button>
+            } @else if (modus() === 'konflikt') {
+              <button mat-stroked-button
+                      type="button"
+                      class="neu-gen-btn"
+                      [disabled]="kiLaedt() || fragenLaden()"
+                      (click)="konfliktAnalysieren()"
+                      matTooltip="Komplett neue Analyse aus deiner Beschreibung generieren">
+                @if (kiLaedt()) { <mat-spinner diameter="14"></mat-spinner> }
+                @else { <mat-icon>refresh</mat-icon> }
+                Neu generieren
+              </button>
+            } @else if (modus() === 'innerkonflikt') {
+              <button mat-stroked-button
+                      type="button"
+                      class="neu-gen-btn"
+                      [disabled]="kiLaedt() || fragenLaden()"
+                      (click)="innerkonfliktAnalysieren()"
+                      matTooltip="Komplett neue Analyse aus deiner Beschreibung generieren">
+                @if (kiLaedt()) { <mat-spinner diameter="14"></mat-spinner> }
+                @else { <mat-icon>refresh</mat-icon> }
+                Neu generieren
+              </button>
+            } @else if (modus() === 'schatz') {
+              <button mat-stroked-button
+                      type="button"
+                      class="neu-gen-btn"
+                      [disabled]="kiLaedt() || fragenLaden()"
+                      (click)="schatzAnalysieren()"
+                      matTooltip="Neuen Schatz aus deiner Beschreibung heben">
+                @if (kiLaedt()) { <mat-spinner diameter="14"></mat-spinner> }
+                @else { <mat-icon>refresh</mat-icon> }
+                Neu generieren
+              </button>
+            }
+            <button mat-stroked-button
+                    type="button"
+                    class="fragen-btn"
+                    [disabled]="form.invalid || kiLaedt() || fragenLaden()"
+                    (click)="fragenNeuGenerieren()"
+                    matTooltip="Reflexionsfragen an die aktuellen Begriffe neu generieren">
+              @if (fragenLaden()) { <mat-spinner diameter="14"></mat-spinner> }
+              @else { <mat-icon>psychology</mat-icon> }
+              Fragen anpassen
+            </button>
+          </div>
+        </div>
+      }
+
+      @if (modus() === 'vordef') {
+        <p class="info-text">
+          <mat-icon>info_outline</mat-icon>
+          Vordefiniertes Quadrat – du kannst die Werte noch anpassen:
+        </p>
+      }
+
+      <div class="form-grid">
+        <!-- Positiv oben links: Kernwert -->
+        @if (modus() === 'staerke' || modus() === 'konflikt' || modus() === 'innerkonflikt' || modus() === 'schatz') {
+          <div class="form-zelle positiv">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Kernwert</mat-label>
+              <input matInput formControlName="kernwert" placeholder="z.B. Geduld">
+              <mat-hint>{{ modus() === 'konflikt' ? 'Positiver Kern hinter dem Verhalten' : modus() === 'innerkonflikt' ? 'Erster Impuls als Tugend' : modus() === 'schatz' ? 'Dein verborgener Kernwert' : 'Dein Ausgangswert' }}</mat-hint>
+            </mat-form-field>
+          </div>
+        } @else {
+          <div class="form-zelle positiv kern-zelle">
+            <span class="form-zelle-label">Kernwert</span>
+            <span class="form-zelle-wert">{{ kernwertValue || '…' }}</span>
+          </div>
+        }
+
+        <div class="form-pfeil">↔</div>
+
+        <!-- Positiv oben rechts -->
+        <div class="form-zelle positiv">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Schwestertugend</mat-label>
+            <input matInput formControlName="schwestertugend" placeholder="z.B. Spontaneität">
+            <mat-hint>Ergänzender Gegenpol</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- Pfeile Mitte -->
+        <div class="form-pfeil-v">↕</div>
+        <div class="form-diag">↗↙</div>
+        <div class="form-pfeil-v">↕</div>
+
+        <!-- Negativ unten links -->
+        <div class="form-zelle negativ">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Übertreibung des Kernwerts</mat-label>
+            <input matInput formControlName="uebertreibungKernwert" placeholder="z.B. Sturheit">
+            <mat-hint>Wenn der Kernwert übertrieben wird</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="form-pfeil">↔</div>
+
+        <!-- Negativ unten rechts -->
+        <div class="form-zelle negativ">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Übertreibung der Schwestertugend</mat-label>
+            <input matInput formControlName="uebertreibungSchwestertugend" placeholder="z.B. Impulsivität">
+            <mat-hint>Wenn die Schwestertugend übertrieben wird</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      @if (modus() !== 'staerke') {
+        <mat-form-field appearance="outline" class="full-width beschreibung-field">
+          <mat-label>Beschreibung (optional)</mat-label>
+          <input matInput formControlName="beschreibung" placeholder="Kurze Erklärung des Quadrats">
+        </mat-form-field>
+      }
+
+      @if (aktuelleHinweise(); as h) {
+        <div class="hinweise-preview">
+          <h4 class="hinweise-titel">
+            <mat-icon>tips_and_updates</mat-icon>
+            Reflexionsfragen
+          </h4>
+          <div class="hinweis-card bestaerkung">
+            <div class="hinweis-icon">💚</div>
+            <div>
+              <strong>Zur Stärke</strong>
+              <p>{{ h.bestaerkung }}</p>
+            </div>
+          </div>
+          <div class="hinweis-card uebertreibung">
+            <div class="hinweis-icon">⚠️</div>
+            <div>
+              <strong>Zur Schattenseite</strong>
+              <p>{{ h.uebertreibung }}</p>
+            </div>
+          </div>
+          <div class="hinweis-card entwicklung">
+            <div class="hinweis-icon">🌱</div>
+            <div>
+              <strong>Zur Entwicklung → {{ form.get('schwestertugend')?.value }}</strong>
+              <p>{{ h.entwicklung }}</p>
+            </div>
+          </div>
+          <div class="hinweis-card trigger">
+            <div class="hinweis-icon">🔄</div>
+            <div>
+              <strong>Für Menschen mit viel {{ form.get('schwestertugend')?.value }}</strong>
+              <p>{{ h.triggerhinweis }}</p>
+            </div>
+          </div>
+        </div>
+      }
+
+    </form>
+  }
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  @if (modus() === 'auswahl') {
+    <button mat-button (click)="abbrechen()">Abbrechen</button>
+  } @else {
+    <button mat-button (click)="zurueck()">
+      <mat-icon>arrow_back</mat-icon> Zurück
+    </button>
+    @if (modus() === 'feedback') {
+      @if (feedbackErgebnis()) {
+        <button mat-flat-button (click)="abbrechen()" style="background:#1a5f8f;color:white">
+          <mat-icon>check</mat-icon> Fertig
+        </button>
+      }
+    } @else if ((modus() !== 'werte' && modus() !== 'konflikt' && modus() !== 'staerke' && modus() !== 'innerkonflikt' && modus() !== 'schatz') || kiAusgefuellt()) {
+      <button mat-stroked-button color="primary"
+              [disabled]="form.invalid"
+              (click)="speichernUndWeiteres()">
+        <mat-icon>add_circle_outline</mat-icon> Speichern & Weiteres
+      </button>
+      <button mat-flat-button color="primary"
+              [disabled]="form.invalid"
+              (click)="speichern()">
+        <mat-icon>save</mat-icon> Quadrat speichern
+      </button>
+    }
+  }
+</mat-dialog-actions>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systemisch Moderieren im Bildungskontext | ISH Akademie</title>
+  <meta name="description" content="Weiterbildung zum systemischen Moderator im Bildungskontext. Grundkurs und Aufbaukurs. Professionelle Gestaltung von Gruppen- und Entwicklungsprozessen. ISH Akademie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<style>
+  .grundlage-box {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: rgba(0,170,162,.08);
+    border: 1.5px solid rgba(0,170,162,.3);
+    border-left: 4px solid var(--ish-teal);
+    border-radius: 0 14px 14px 0;
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0 1.5rem;
+  }
+  .grundlage-box__icon {
+    color: var(--ish-teal);
+    flex-shrink: 0;
+    margin-top: .15rem;
+  }
+  .grundlage-box__content strong {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin-bottom: .5rem;
+  }
+  .grundlage-box__content p {
+    font-size: .9rem;
+    color: var(--ish-gray-600);
+    line-height: 1.65;
+    margin: 0 0 .85rem;
+  }
+  .grundlage-box__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ish-teal);
+    text-decoration: none;
+    transition: gap .2s;
+  }
+  .grundlage-box__link:hover { gap: .6rem; }
+
+  /* ── Stufenaufbau ───────────────────────────────── */
+  .stufen-aufbau {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 520px;
+  }
+  .stufen-aufbau .stufe {
+    border-left: 3px solid var(--ish-teal);
+    background: var(--ish-gray-50);
+    border-radius: 0 10px 10px 0;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: .75rem;
+    position: relative;
+  }
+  .stufen-aufbau .stufe--next {
+    border-left-color: var(--ish-dark);
+  }
+  .stufe__label {
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ish-teal);
+    margin-bottom: .25rem;
+  }
+  .stufe--next .stufe__label { color: var(--ish-dark); }
+  .stufe__title {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin-bottom: .45rem;
+  }
+  .stufen-aufbau .stufe p {
+    font-size: .87rem;
+    color: var(--ish-gray-600);
+    line-height: 1.6;
+    margin: 0 0 .6rem;
+  }
+  .stufe__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--ish-teal);
+    text-decoration: none;
+    transition: gap .2s;
+  }
+  .stufe__link:hover { gap: .55rem; }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo" aria-label="ISH Akademie">
+        <img src="Akademie.png" alt="ISH Akademie" class="logo-img" />
+      </a>
+      <a href="index.html" class="nav__back">← Alle Weiterbildungen</a>
+      <nav class="nav__links" aria-label="Seitennavigation">
+        <a href="#focus">Zielgruppe</a>
+        <a href="#inhalte">Inhalte</a>
+        <a href="#stufen">Kursstufen</a>
+        <a href="#register">Anmeldung</a>
+      </nav>
+      <a href="#register" class="btn btn--primary nav__cta">Jetzt anmelden</a>
+      <button class="nav__burger" aria-label="Menü" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__deco-sq hero__deco-sq--1" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--2" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--3" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <div class="hero__badges">
+          <span class="badge badge--akademie">ISH Akademie</span>
+          <span class="badge badge--outline">Grundkurs</span>
+          <span class="badge badge--outline">Aufbaukurs</span>
+          <span class="badge badge--outline" style="border-color:var(--ish-teal);color:var(--ish-teal);">Aufbauend auf dem Grundkurs Systemisch Coachen</span>
+        </div>
+        <h1 class="hero__headline">
+          Systemisch<br />
+          <span class="text-teal">moderieren.</span>
+        </h1>
+        <p class="hero__sub">
+          Professionelle Gestaltung von Gruppen und Entwicklungsprozessen im Bildungsbereich – für Lehrkräfte, Fortbildner:innen und alle, die Schule bewegen wollen.
+        </p>
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Online &amp; Präsenz · <strong>Bochum</strong></span>
+          </div>
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span><strong>2-tägiger Grundkurs</strong></span>
+          </div>
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>sofort einsetzbare <strong>Methoden</strong></span>
+          </div>
+        </div>
+        <div class="hero__actions">
+          <a href="#register" class="btn btn--primary">Jetzt anmelden</a>
+          <a href="#focus" class="btn btn--outline">Mehr erfahren</a>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__sq-wrap">
+          <div class="hero__sq-main">
+            <div class="hero__card-body">
+              <div class="hero__stat">
+                <span class="hero__stat-num">2</span>
+                <span class="hero__stat-label">Tage Grundkurs</span>
+              </div>
+              <div class="hero__stat-divider"></div>
+              <div class="hero__stat">
+                <span class="hero__stat-num">7</span>
+                <span class="hero__stat-label">Kernthemen</span>
+              </div>
+              <div class="hero__stat-divider"></div>
+              <div class="hero__stat">
+                <span class="hero__stat-num">2</span>
+                <span class="hero__stat-label">Kursstufen</span>
+              </div>
+            </div>
+            <div class="hero__sq-dock"></div>
+          </div>
+          <div class="hero__sq-outline"></div>
+          <div class="ish-textbox hero__quote-box">
+            <p>„Sicher vor Gruppen stehen – Dynamiken steuern, Widerstände konstruktiv nutzen."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <a href="#focus" aria-label="Nach unten scrollen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOKUS / ZIELGRUPPE -->
+  <section class="focus" id="focus">
+    <div class="focus__intro">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Für wen ist diese Weiterbildung?</span>
+          <h2>Moderation im System Schule.</h2>
+          <p class="section-intro">Diese Weiterbildung richtet sich an Menschen, die mit Gruppen arbeiten und Entwicklungsprozesse in Bildungseinrichtungen aktiv gestalten wollen – mit systemischer Haltung und konkreten Methoden.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="focus__grid">
+
+        <div class="focus-card focus-card--1">
+          <div class="focus-card__sq" aria-hidden="true"></div>
+          <div class="focus-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Fortbildner:innen</h3>
+          <p>Gestalten Sie Workshops und Fortbildungen professionell und wirkungsvoll – mit klarer Struktur, Methodenvielfalt und sicherem Auftreten vor Gruppen.</p>
+          <div class="focus-card__keywords">
+            <span>Workshop-Moderation</span>
+            <span>Fortbildungsdesign</span>
+            <span>Methodenvielfalt</span>
+          </div>
+        </div>
+
+        <div class="focus-card focus-card--2">
+          <div class="focus-card__sq" aria-hidden="true"></div>
+          <div class="focus-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Schulleitungen</h3>
+          <p>Leiten Sie Konferenzen, Steuergruppen und Entwicklungsprozesse mit Souveränität – Gruppenenergie gezielt nutzen und Entscheidungen tragfähig gestalten.</p>
+          <div class="focus-card__keywords">
+            <span>Steuergruppen moderieren</span>
+            <span>Konferenzleitung</span>
+            <span>Schulentwicklung</span>
+          </div>
+        </div>
+
+        <div class="focus-card focus-card--3">
+          <div class="focus-card__sq" aria-hidden="true"></div>
+          <div class="focus-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Berater:innen</h3>
+          <p>Begleiten Sie Schulentwicklungsprozesse und Organisationsveränderungen professionell – systemisch denken, Gruppen wirksam in Bewegung bringen.</p>
+          <div class="focus-card__keywords">
+            <span>Entwicklungsprozesse</span>
+            <span>Organisationsberatung</span>
+            <span>Prozessbegleitung</span>
+          </div>
+        </div>
+
+        <div class="focus-card focus-card--4">
+          <div class="focus-card__sq" aria-hidden="true"></div>
+          <div class="focus-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="19" x2="23" y2="19"/></svg>
+          </div>
+          <h3>Lehrkräfte</h3>
+          <p>Gestalten Sie Klassengespräche, Elternabende und Teamrunden klarer und wirkungsvoller – mit Techniken, die im pädagogischen Alltag sofort funktionieren.</p>
+          <div class="focus-card__keywords">
+            <span>Klassengespräche</span>
+            <span>Elternabende</span>
+            <span>Teambesprechungen</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GRUNDLAGE-HINWEIS -->
+      <div class="grundlage-box">
+        <div class="grundlage-box__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="grundlage-box__content">
+          <strong>Grundlage: Grundkurs Systemisch Coachen</strong>
+          <p>Für jede gelingende Moderation braucht es vorab eine klare Auftragsklärung – und innerhalb der Moderation das sichere Beherrschen systemischer Gesprächsführung. Beides sind Kernkompetenzen des Grundkurses Systemisch Coachen. Deshalb ist dieser Grundkurs die inhaltliche Grundlage für die Moderationsausbildung.</p>
+          <a href="systemischer-coach.html" class="grundlage-box__link">
+            Zum Grundkurs Systemisch Coachen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="focus__statement">
+        <div class="focus__statement-sq" aria-hidden="true"></div>
+        <blockquote>
+          <p>„Gute Moderation ist mehr als Methode – sie braucht Haltung, Sensibilität für Gruppen und das Handwerkszeug, um auch schwierige Dynamiken konstruktiv zu gestalten."</p>
+          <cite>ISH Akademie · Systemisch moderieren</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- INHALTE -->
+  <section class="curriculum" id="inhalte">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <span class="section-tag section-tag--light">Alle Themen</span>
+        <h2>Seminarinhalte.</h2>
+        <p class="section-intro">Praxisorientierte Themen, die Sie sofort in Ihrer Arbeit einsetzen können.</p>
+      </div>
+      <div class="curriculum__grid">
+        <div class="accordion__col">
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              1. Grundlagen systemischer Didaktik
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Grundprinzipien systemischen Denkens in der Bildungsarbeit: Wie konstruieren Gruppen Wirklichkeit? Welche Haltung braucht es als Moderator:in? Systemische Didaktik als Fundament professioneller Moderation.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              2. Großgruppenmoderation im schulischen Kontext
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Professionelles Moderieren von Konferenzen, pädagogischen Tagen und Entwicklungsveranstaltungen. Raumgestaltung, Energiesteuerung und die besondere Dynamik großer Gruppen im Bildungsbereich.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              3. Umgang mit Widerständen und Störungen
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Widerstände systemisch verstehen und konstruktiv nutzen: Warum „Störungen haben Vorrang" mehr ist als ein Grundsatz. Praktische Techniken für schwierige Gruppensituationen und kritische Teilnehmende.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              4. Rhetorisches Handwerkszeug für überzeugendes Auftreten
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Stimme, Körpersprache, Wortwahl und Präsenz: Das rhetorische Rüstzeug für souveränes Auftreten vor Gruppen. Übungen zur Stärkung der eigenen Moderationspersönlichkeit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion__col">
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              5. Methodenvielfalt für lebendige und wirksame Veranstaltungen
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Ein breites Methodenrepertoire für unterschiedliche Phasen und Ziele: Aktivierungsmethoden, kreative Gruppenarbeit, Visualisierungstechniken und interaktive Formate für den Bildungskontext.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              6. Strukturierung und Dramaturgie von Fortbildungen
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Von der Konzeption zur Durchführung: Wie baut man eine Veranstaltung so auf, dass sie Energie aufbaut und nachhaltig wirkt? Spannungsbögen, Timing und die Kunst des Finales.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-item__btn" aria-expanded="false">
+              7. Steuerung von Gruppenprozessen und Dynamiken
+              <svg class="accordion-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="accordion-item__body">
+              <p>Gruppenphänomene erkennen und professionell begleiten: Dominanzen, Blockaden, Koalitionen und konstruktive Konflikte. Systemische Interventionen zur Steuerung der Gruppendynamik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KURSSTUFEN -->
+  <section class="target" id="stufen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Aufbau der Weiterbildung</span>
+        <h2>Drei Stufen. Ein Weg.</h2>
+        <p class="section-intro">Vom Kompaktkurs als Einstieg über den Grundkurs Systemisches Coaching als Grundlage bis zum Aufbaukurs Systemische Moderation.</p>
+      </div>
+      <div class="stufen-aufbau">
+        <div class="stufe">
+          <div class="stufe__label">Einstieg</div>
+          <div class="stufe__title">Kompaktkurs</div>
+          <p>Zweitägiger Einstieg in systemische Moderation – Haltung, Methoden und erste Praxis. Online oder in Präsenz am Institut in Bochum. Die Teilnahme ist auf den Grundkurs anrechenbar.</p>
+        </div>
+
+        <div class="stufe">
+          <div class="stufe__label">Grundkurs</div>
+          <div class="stufe__title">Systemisches Coaching · Zertifikat</div>
+          <p>Fundierte Qualifizierung mit Zertifikat zum systemischen Coach im Bildungskontext – die inhaltliche Grundlage für professionelle Moderation: Auftragsklärung und systemische Gesprächsführung.</p>
+          <a href="systemischer-coach.html" class="stufe__link">
+            Zum Grundkurs Systemisch Coachen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+
+        <div class="stufe stufe--next">
+          <div class="stufe__label">Aufbaukurs</div>
+          <div class="stufe__title">Systemische Moderation · Zertifikat</div>
+          <p>Vertiefende Ausbildung in professioneller Gruppenmoderation und Fortbildungsdesign – für alle, die Entwicklungsprozesse in Schule und Bildung nachhaltig gestalten wollen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANMELDUNG -->
+  <section class="register" id="register">
+    <div class="register__deco" aria-hidden="true">
+      <div class="register__sq register__sq--1"></div>
+      <div class="register__sq register__sq--2"></div>
+    </div>
+    <div class="container register__inner">
+      <div class="register__text">
+        <span class="section-tag">Jetzt sichern</span>
+        <h2>Starten Sie mit<br /><span class="text-teal">Systemisch moderieren.</span></h2>
+        <p>Sichern Sie sich Ihren Platz. Die Teilnehmerzahl ist begrenzt – damit jede:r die Aufmerksamkeit bekommt, die er/sie verdient.</p>
+
+        <div class="pricing">
+          <div class="pricing__card pricing__card--main">
+            <div class="pricing__label">Kursgebühr</div>
+            <div class="pricing__amount" style="font-size: 2rem;">auf Anfrage</div>
+            <div class="pricing__note">Grundkurs &amp; Aufbaukurs</div>
+          </div>
+        </div>
+
+        <ul class="register__features">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Teilnahmezertifikat der ISH Akademie</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sofort einsetzbare Methoden für den Bildungskontext</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kleine Gruppen &amp; praxisnahe Übungen</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Erfahrenes Trainer:innen-Team mit Schulkontext-Expertise</li>
+        </ul>
+      </div>
+
+      <form class="register__form" novalidate>
+        <h3>Anmeldung &amp; Anfrage</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-firstname">Vorname *</label>
+            <input type="text" id="reg-firstname" name="firstname" placeholder="Vorname" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-lastname">Nachname *</label>
+            <input type="text" id="reg-lastname" name="lastname" placeholder="Nachname" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reg-email">E-Mail-Adresse *</label>
+          <input type="email" id="reg-email" name="email" placeholder="ihre@email.de" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-role">Ich bin / ich arbeite als</label>
+          <select id="reg-role" name="role">
+            <option value="">Bitte wählen...</option>
+            <option>Lehrkraft / Hochschullehrende:r</option>
+            <option>Schulleitung</option>
+            <option>Schulentwicklungsberater:in / Fortbildungsmoderator:in</option>
+            <option>Coach / Berater:in</option>
+            <option>Sonstige Bildungseinrichtung</option>
+            <option>Studierende:r</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reg-course">Kurs-Interesse</label>
+          <select id="reg-course" name="course">
+            <option value="">Bitte wählen...</option>
+            <option>Grundkurs Systemische Moderation</option>
+            <option>Aufbaukurs Systemische Moderation</option>
+            <option>Grundkurs + Aufbaukurs</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reg-message">Fragen oder Anmerkungen</label>
+          <textarea id="reg-message" name="message" rows="4" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
+        </div>
+        <div class="form-group form-group--check">
+          <label class="checkbox-label">
+            <input type="checkbox" name="privacy" required />
+            <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme zu. *</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Jetzt anfragen</button>
+        <p class="form-note">* Pflichtfelder. Wir melden uns innerhalb von 2 Werktagen.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="Akademie.png" alt="ISH Akademie" class="logo-img logo-img--footer" />
+        <p>Systemisch Bildung gestalten.<br />ISH Akademie – Teil der ISH Gruppe.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer Navigation">
+        <div class="footer__col">
+          <strong>Kurs</strong>
+          <a href="#focus">Zielgruppe</a>
+          <a href="#inhalte">Seminarinhalte</a>
+          <a href="#stufen">Kursstufen</a>
+          <a href="#register">Anmeldung</a>
+        </div>
+        <div class="footer__col">
+          <strong>ISH Gruppe</strong>
+          <a href="#">ISH Gruppe</a>
+          <a href="#">ISH Campus</a>
+          <a href="#">ISH Schule</a>
+          <a href="#">ISH Manufaktur</a>
+        </div>
+        <div class="footer__col">
+          <strong>Rechtliches</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>&copy; 2024 ISH Akademie · ISH Gruppe. Alle Rechte vorbehalten.</span>
+        <span>Design gemäß ISH Brand Styleguide 2022</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

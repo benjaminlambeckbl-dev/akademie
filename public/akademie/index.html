@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISH Akademie – Systemische Weiterbildung für den Bildungsbereich</title>
+  <meta name="description" content="ISH Akademie: Drei Weiterbildungswege für den Bildungsbereich – Systemisch Coachen, Systemisch Moderieren und Systemisch Online Supervisieren. Bochum & Online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── OVERVIEW-SPEZIFISCH ─────────────────────── */
+
+    /* Überschreibe Lila mit Teal für diese Seite */
+    .hero .text-teal { color: var(--ish-teal); }
+
+    /* Neues Hero-Visual: 3 Mini-Karten */
+    .hero__cards-visual {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      width: 300px;
+    }
+    .hero__mini-card {
+      background: #fff;
+      border: 1px solid var(--ish-gray-200);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      transition: transform .2s;
+    }
+    .hero__mini-card:hover { transform: translateX(4px); }
+    .hero__mini-card--accent {
+      background: var(--ish-dark);
+      border-color: var(--ish-dark);
+    }
+    .hero__mini-num {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--ish-teal);
+      line-height: 1;
+      min-width: 2.2rem;
+      flex-shrink: 0;
+    }
+    .hero__mini-info { flex: 1; }
+    .hero__mini-title {
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--ish-dark);
+      line-height: 1.25;
+    }
+    .hero__mini-card--accent .hero__mini-title { color: #fff; }
+    .hero__mini-sub {
+      font-size: .75rem;
+      color: var(--ish-gray-400);
+      margin-top: .1rem;
+    }
+    .hero__mini-card--accent .hero__mini-sub { color: var(--ish-teal); }
+    .hero__mini-arrow {
+      color: var(--ish-gray-200);
+      flex-shrink: 0;
+    }
+    .hero__mini-card--accent .hero__mini-arrow { color: rgba(255,255,255,.3); }
+
+    /* ── OV-INTRO: Mission-Statement-Band ─────────── */
+    .ov-intro {
+      padding: 4rem 0;
+      background: var(--ish-dark);
+    }
+    .ov-intro__inner {
+      max-width: 720px;
+    }
+    .ov-intro .section-tag {
+      color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.1);
+    }
+    .ov-intro h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .ov-intro p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,.8);
+    }
+    .ov-intro p + p { margin-top: .75rem; }
+
+    /* ── PRODUKT: Outer section ────────────────────── */
+    .produkt {
+      padding: 3rem 0 4rem;
+      background: var(--ish-gray-50);
+    }
+    .produkt:nth-child(even) {
+      background: #fff;
+    }
+    /* Erste Produkt-Sektion direkt nach der dunklen Band:
+       die Karte "schwebt" aus der dunklen Fläche heraus */
+    .ov-intro + .produkt {
+      padding-top: 0;
+      margin-top: -2rem;
+    }
+    .ov-intro + .produkt .produkt__card {
+      margin-top: 0;
+    }
+
+    /* ── PRODUKT: Card wrapper ─────────────────────── */
+    .produkt__card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--ish-gray-200);
+      overflow: visible;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    }
+    /* clip header/body but not the CTA seal area */
+    .produkt__head,
+    .produkt__body { overflow: hidden; border-radius: 20px 20px 0 0; }
+    .produkt__body { border-radius: 0; }
+
+    /* ── PRODUKT: Dark header band ─────────────────── */
+    .produkt__head {
+      background: var(--ish-dark);
+      color: #fff;
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 0;
+    }
+    .produkt__num {
+      font-family: var(--font-head);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(255,255,255,.15);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .produkt__title-wrap h2 {
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      margin-bottom: .5rem;
+      color: #fff;
+    }
+    .produkt__title-wrap h2 em {
+      font-style: normal;
+      color: var(--ish-teal);
+    }
+    .produkt__intro-text {
+      font-size: .95rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.75);
+      max-width: 640px;
+    }
+    .produkt__intro-text + .produkt__intro-text { margin-top: .6rem; }
+
+    /* ── PRODUKT: Body – 3-column grid ─────────────── */
+    .produkt__body {
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .produkt__block h3 {
+      font-family: var(--font-head);
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ish-teal);
+      margin-bottom: .85rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--ish-gray-100);
+    }
+
+    /* ── Lists ─────────────────────────────────────── */
+    .produkt__ziel-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .produkt__ziel-list li {
+      font-size: .9rem;
+      color: var(--ish-gray-600);
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .produkt__ziel-list li::before {
+      content: '·';
+      position: absolute;
+      left: .25rem;
+      color: var(--ish-teal);
+      font-weight: 900;
+    }
+
+    .produkt__inhalt-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .produkt__inhalt-list li {
+      font-size: .9rem;
+      color: var(--ish-gray-600);
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .produkt__inhalt-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--ish-teal);
+      font-size: .78rem;
+    }
+
+    /* ── Aufbau steps ───────────────────────────────── */
+    .produkt__aufbau {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .produkt__stufe {
+      background: var(--ish-gray-50);
+      border-left: 3px solid var(--ish-teal);
+      border-radius: 0 10px 10px 0;
+      padding: .9rem 1.1rem;
+    }
+    .produkt__stufe--secondary { border-left-color: var(--ish-dark); }
+    .produkt__stufe-label {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--ish-teal);
+      margin-bottom: .2rem;
+    }
+    .produkt__stufe--secondary .produkt__stufe-label { color: var(--ish-dark); }
+    .produkt__stufe-title {
+      font-family: var(--font-head);
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--ish-dark);
+      margin-bottom: .3rem;
+    }
+    .produkt__stufe p {
+      font-size: .83rem;
+      color: var(--ish-gray-600);
+      line-height: 1.55;
+    }
+
+    /* ── Siegel ─────────────────────────────────────── */
+    .produkt__cta--with-seal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      overflow: visible;
+    }
+    .produkt__cta-actions { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
+    .seal-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      flex-shrink: 0;
+      padding: .5rem .75rem;
+    }
+    .seal-wrap__seals { display: flex; gap: .75rem; align-items: center; }
+    .seal-wrap__label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ish-teal);
+      text-align: center;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .3s, transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    /* trigger on full card hover */
+    .produkt__card:hover .seal-wrap__label { opacity: 1; transform: translateY(0); }
+    .ish-seal {
+      opacity: .75;
+      display: block;
+      width: 130px;
+      height: auto;
+      object-fit: contain;
+      transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .25s, filter .3s;
+    }
+    .seal-wrap__seals .ish-seal { width: 100px; }
+    .produkt__card:hover .ish-seal {
+      transform: scale(1.8);
+      opacity: 1;
+      filter: drop-shadow(0 10px 28px rgba(0,0,0,.18));
+    }
+
+    /* ── CTA bar ────────────────────────────────────── */
+    .produkt__cta {
+      padding: 1.25rem 2.5rem;
+      background: var(--ish-gray-50);
+      border-top: 1px solid var(--ish-gray-200);
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FORTBILDUNGEN ──────────────────────────────── */
+    .fortbildung {
+      padding: var(--space-xxl) 0;
+      background: var(--ish-dark);
+      color: #fff;
+    }
+    .fortbildung .section-tag { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
+    .fortbildung h2 { color: #fff; }
+    .fortbildung .section-intro { color: rgba(255,255,255,.75); }
+
+    .fort-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .fort-card__head {
+      padding: 1.75rem 2rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .fort-card__head h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .3rem;
+    }
+    .fort-card__sub {
+      font-size: .9rem;
+      color: var(--ish-teal);
+      font-weight: 600;
+    }
+    .fort-card__body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      padding: 1.75rem 2rem;
+    }
+    .fort-block h4 {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ish-teal);
+      margin-bottom: .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid rgba(255,255,255,.08);
+    }
+    .fort-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .fort-list li {
+      font-size: .88rem;
+      color: rgba(255,255,255,.8);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .fort-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--ish-teal);
+      font-size: .75rem;
+    }
+    .fort-card__rahmen {
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,.06);
+      border-radius: 8px;
+      font-size: .87rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.6;
+    }
+    .fort-card__cta {
+      padding: 1.25rem 2rem;
+      background: rgba(255,255,255,.04);
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── ZUSAMMENFASSUNG ────────────────────────────── */
+    .zusammenfassung {
+      padding: var(--space-xxl) 0;
+      background: var(--ish-gray-50);
+    }
+    .zusammenfassung__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .zusammenfassung__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .zusammenfassung__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .95rem;
+      color: var(--ish-gray-600);
+      line-height: 1.55;
+    }
+    .zusammenfassung__list li svg { flex-shrink: 0; margin-top: 2px; color: var(--ish-teal); }
+
+    /* Contact card – navy style */
+    .zusammenfassung__cta {
+      background: var(--ish-dark);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+    .zusammenfassung__cta .section-tag {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.6);
+    }
+    .zusammenfassung__cta h3 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      margin-bottom: .75rem;
+      color: #fff;
+    }
+    .zusammenfassung__cta p {
+      font-size: .9rem;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .zusammenfassung__cta .btn + .btn { margin-top: .75rem; }
+    .cta-stack { display: flex; flex-direction: column; gap: .75rem; }
+    .zusammenfassung__contact-note {
+      margin-top: 1rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .produkt__body { grid-template-columns: 1fr; }
+      .fort-card__body { grid-template-columns: 1fr; }
+      .zusammenfassung__inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .produkt__head {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding: 1.5rem 1.25rem;
+      }
+      .produkt__num { font-size: 2rem; }
+      .produkt__body { padding: 1.5rem 1.25rem; }
+      .produkt__cta { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo" aria-label="ISH Akademie">
+        <img src="Akademie.png" alt="ISH Akademie" class="logo-img" />
+      </a>
+      <nav class="nav__links" aria-label="Seitennavigation">
+        <a href="#coaching">Coaching</a>
+        <a href="#moderation">Moderation</a>
+        <a href="#online">Systemisch Online Supervisieren</a>
+        <a href="#fortbildung">Fortbildungen</a>
+      </nav>
+      <a href="#zusammenfassung" class="btn btn--primary nav__cta">Einstieg finden</a>
+      <button class="nav__burger" aria-label="Menü" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__deco-sq hero__deco-sq--1" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--2" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--3" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <div class="hero__badges">
+          <span class="badge badge--akademie">ISH Akademie</span>
+          <span class="badge badge--outline">Bochum &amp; Online</span>
+          <span class="badge badge--outline">SG-anerkannt</span>
+        </div>
+        <h1 class="hero__headline">
+          Systemische Weiterbildung<br />
+          <span class="text-teal">für den Bildungsbereich.</span>
+        </h1>
+        <p class="hero__sub">
+          Wir qualifizieren Menschen, die Schule und Bildungsprozesse wirksam gestalten wollen. Im Mittelpunkt steht die Frage, wie Veränderung in Schule gelingt – im Gespräch mit Einzelnen, in der Arbeit mit Gruppen und im digitalen Raum.
+        </p>
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Bochum &amp; Online</span>
+          </div>
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>SG-anerkannte Qualität</span>
+          </div>
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Drei Weiterbildungswege</span>
+          </div>
+        </div>
+        <div class="hero__actions">
+          <a href="#coaching" class="btn btn--primary">Übersicht aller Weiterbildungen</a>
+          <a href="#zusammenfassung" class="btn btn--outline">Einstieg finden</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__cards-visual">
+          <a href="systemischer-coach.html" class="hero__mini-card hero__mini-card--accent" style="text-decoration:none;">
+            <div class="hero__mini-num">01</div>
+            <div class="hero__mini-info">
+              <div class="hero__mini-title">Systemisch Coachen</div>
+              <div class="hero__mini-sub">im Bildungskontext</div>
+            </div>
+            <svg class="hero__mini-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="systemische-moderation.html" class="hero__mini-card" style="text-decoration:none;">
+            <div class="hero__mini-num">02</div>
+            <div class="hero__mini-info">
+              <div class="hero__mini-title">Systemisch Moderieren</div>
+              <div class="hero__mini-sub">im Bildungskontext</div>
+            </div>
+            <svg class="hero__mini-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="online-supervision.html" class="hero__mini-card" style="text-decoration:none;">
+            <div class="hero__mini-num">03</div>
+            <div class="hero__mini-info">
+              <div class="hero__mini-title">Systemisch Online Supervisieren</div>
+              <div class="hero__mini-sub">und Coaching</div>
+            </div>
+            <svg class="hero__mini-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <a href="#coaching" aria-label="Nach unten scrollen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRODUKT 1: COACHING -->
+  <section class="produkt" id="coaching">
+    <div class="container">
+      <div class="produkt__card">
+
+        <div class="produkt__head">
+          <div class="produkt__num">01</div>
+          <div class="produkt__title-wrap">
+            <h2>Systemisch Coachen <em>im Bildungskontext</em></h2>
+            <p class="produkt__intro-text">Im Fokus steht die systemische Arbeit mit Einzelnen und Teams im schulischen Kontext. Die Teilnehmenden lernen, Gespräche professionell zu führen, Perspektiven zu erweitern und Entwicklungsprozesse gezielt zu begleiten.</p>
+          </div>
+        </div>
+
+        <div class="produkt__body">
+
+          <div class="produkt__block">
+            <h3>Für wen</h3>
+            <p style="font-size:.9rem;color:var(--ish-gray-600);line-height:1.65;margin-bottom:.85rem;">Diese Weiterbildung richtet sich an Lehrkräfte, Schulleitungen und Fachkräfte im Bildungsbereich, die ihre Arbeit mit Schülerinnen und Schülern sowie im Kollegium reflektierter und wirksamer gestalten möchten. Ebenso angesprochen sind Beraterinnen und Berater, Schulbegleiter sowie Menschen aus Bildungsorganisationen.</p>
+            <ul class="produkt__ziel-list">
+              <li>Lehrkräfte, die ihre Gesprächsführung und Beziehungsgestaltung weiterentwickeln möchten</li>
+              <li>Schulleitungen, die systemische Perspektiven in ihrer Führungsarbeit nutzen wollen</li>
+              <li>Fachkräfte in Bildungsorganisationen, die Entwicklungsprozesse von außen begleiten</li>
+              <li>Berater:innen, die im schulischen Kontext tätig sind oder tätig werden möchten</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Inhalte</h3>
+            <ul class="produkt__inhalt-list">
+              <li>Grundlagen des Konstruktivismus und systemtheoretische Perspektiven</li>
+              <li>Systemische Haltung als Grundlage professionellen Handelns</li>
+              <li>Auftragsklärung und Zielarbeit im schulischen Kontext</li>
+              <li>Methoden der systemischen Gesprächsführung</li>
+              <li>Systemisches Coaching im schulischen Alltag</li>
+              <li>Systemisches Coaching als Führungskraft</li>
+              <li>Reflexion eigener Fälle und Transfer in die Praxis</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Aufbau der Weiterbildung</h3>
+            <div class="produkt__aufbau">
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Einstieg</div>
+                <div class="produkt__stufe-title">Kompaktreihen</div>
+                <p>Zweitägiger Einstieg in systemische Haltung und Methoden – online oder in Präsenz am Institut in Bochum. Die Teilnahme ist auf den Grundkurs anrechenbar.</p>
+              </div>
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Grundkurs</div>
+                <div class="produkt__stufe-title">Systemisches Coaching · Zertifikat</div>
+                <p>Fundierte Qualifizierung mit Zertifikat zum systemischen Coach im Bildungskontext.</p>
+              </div>
+              <div class="produkt__stufe produkt__stufe--secondary">
+                <div class="produkt__stufe-label">Aufbaukurs</div>
+                <div class="produkt__stufe-title">Systemisches Coaching · SG-anerkannt</div>
+                <p>Vertiefende Ausbildung mit dem Ziel einer anerkannten Qualifikation im Rahmen der Systemischen Gesellschaft.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="produkt__cta produkt__cta--with-seal">
+          <div class="produkt__cta-actions">
+            <a href="systemischer-coach.html" class="btn btn--primary">Weitere Informationen</a>
+            <a href="systemischer-coach.html#register" class="btn btn--outline">Jetzt anmelden</a>
+          </div>
+
+          <!-- ISH Zertifikat-Siegel -->
+          <div class="seal-wrap">
+            <span class="seal-wrap__label">Erfolgreicher Abschluss zum:</span>
+            <img src="Systemischer coach Sigel.png"
+                 class="ish-seal"
+                 width="120"
+                 alt="Zertifikat – Systemisch Coachen im Bildungskontext · ISH Akademie" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUKT 2: MODERATION -->
+  <section class="produkt" id="moderation">
+    <div class="container">
+      <div class="produkt__card">
+
+        <div class="produkt__head">
+          <div class="produkt__num">02</div>
+          <div class="produkt__title-wrap">
+            <h2>Systemisch Moderieren <em>im Bildungskontext</em></h2>
+            <p class="produkt__intro-text">Im Zentrum steht die professionelle Gestaltung von Gruppenprozessen und Lernräumen. Die Teilnehmenden lernen, sicher vor Gruppen zu stehen, Dynamiken zu steuern und Inhalte so zu vermitteln, dass sie nachhaltig wirksam werden.</p>
+          </div>
+        </div>
+
+        <div class="produkt__body">
+
+          <div class="produkt__block">
+            <h3>Für wen</h3>
+            <p style="font-size:.9rem;color:var(--ish-gray-600);line-height:1.65;margin-bottom:.85rem;">Diese Weiterbildung richtet sich an Menschen, die mit Gruppen arbeiten und Entwicklungsprozesse in Schulen aktiv gestalten wollen – insbesondere an Lehrkräfte, Fortbildner:innen sowie Berater:innen, die Veranstaltungen, Workshops oder schulische Entwicklungsprozesse moderieren.</p>
+            <ul class="produkt__ziel-list">
+              <li>Lehrkräfte, die Fortbildungen für Kollegien gestalten oder moderieren möchten</li>
+              <li>Multiplikator:innen in Schulen, die Entwicklungsprozesse begleiten</li>
+              <li>Trainer:innen im Bildungsbereich</li>
+              <li>Berater:innen, die mit Gruppen und Organisationen arbeiten</li>
+              <li>Schulleitungen, die Prozesse im Kollegium wirksam moderieren wollen</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Inhalte</h3>
+            <ul class="produkt__inhalt-list">
+              <li>Grundlagen systemischer Didaktik</li>
+              <li>Die Kunst der Vermittlung in Bildungsprozessen</li>
+              <li>Kooperatives Lernen in analogen und digitalen Settings</li>
+              <li>Großgruppenmoderation im schulischen Kontext</li>
+              <li>Umgang mit Widerständen und Störungen</li>
+              <li>Rhetorisches Handwerkszeug für überzeugendes Auftreten</li>
+              <li>Methodenvielfalt für lebendige und wirksame Veranstaltungen</li>
+              <li>Strukturierung und Dramaturgie von Fortbildungen</li>
+              <li>Steuerung von Gruppenprozessen und Dynamiken</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Aufbau der Weiterbildung</h3>
+            <div class="produkt__aufbau">
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Einstieg</div>
+                <div class="produkt__stufe-title">Kompaktkurs</div>
+                <p>Zweitägiger Einstieg in systemische Haltung und Methoden. Online oder in Präsenz am Institut in Bochum. Die Teilnahme ist auf den Grundkurs anrechenbar.</p>
+              </div>
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Grundkurs</div>
+                <div class="produkt__stufe-title">Systemisches Coaching · Zertifikat</div>
+                <p>Fundierte Qualifizierung mit Zertifikat zum systemischen Coach im Bildungskontext – die Grundlage für professionelle Moderation.</p>
+              </div>
+              <div class="produkt__stufe produkt__stufe--secondary">
+                <div class="produkt__stufe-label">Aufbaukurs</div>
+                <div class="produkt__stufe-title">Systemische Moderation · Zertifikat</div>
+                <p>Vertiefung der Moderationskompetenz mit Fokus auf komplexe Gruppenprozesse, Fortbildungsdesign und nachhaltige Wirkung in schulischen Kontexten.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="produkt__cta produkt__cta--with-seal">
+          <div class="produkt__cta-actions">
+            <a href="systemische-moderation.html" class="btn btn--primary">Weitere Informationen</a>
+            <a href="systemische-moderation.html#register" class="btn btn--outline">Jetzt anfragen</a>
+          </div>
+          <div class="seal-wrap">
+            <span class="seal-wrap__label">Erfolgreicher Abschluss zum:</span>
+            <img src="Systemische Moderieren.png"
+                 class="ish-seal"
+                 width="120"
+                 alt="Zertifikat – Systemisch Moderieren im Bildungskontext · ISH Akademie" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUKT 3: ONLINE SUPERVISION -->
+  <section class="produkt" id="online">
+    <div class="container">
+      <div class="produkt__card">
+
+        <div class="produkt__head">
+          <div class="produkt__num">03</div>
+          <div class="produkt__title-wrap">
+            <h2>Systemisch Online Supervisieren <em>und Coachen</em></h2>
+            <p class="produkt__intro-text">Im Fokus steht die Gestaltung professioneller Beratungsprozesse im Online Setting. Die Teilnehmenden lernen, wie Beziehung, Resonanz und Prozessqualität auch digital tragfähig gestaltet werden können. Im Unterschied zu den anderen Weiterbildungen steht hier nicht primär der schulische Kontext im Mittelpunkt – besonders angesprochen sind auch Menschen außerhalb des Bildungsbereichs.</p>
+          </div>
+        </div>
+
+        <div class="produkt__body">
+
+          <div class="produkt__block">
+            <h3>Für wen</h3>
+            <ul class="produkt__ziel-list">
+              <li>Systemische Coaches, die ihre Arbeit in den digitalen Raum erweitern möchten</li>
+              <li>Supervisor:innen, die Online Settings professionell gestalten wollen</li>
+              <li>Berater:innen, die digitale Formate in ihre Praxis integrieren</li>
+              <li>Trainer:innen, die online arbeiten und ihre Methoden erweitern möchten</li>
+              <li>Fachkräfte aus unterschiedlichen Branchen, die professionelle Online-Beratung anbieten möchten</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Inhalte</h3>
+            <ul class="produkt__inhalt-list">
+              <li>Online Aufstellungen und visuelle Methoden im digitalen Raum</li>
+              <li>Arbeit mit dem Inneren Team im Online Setting</li>
+              <li>Gestaltung von Beziehung und Resonanz in digitalen Formaten</li>
+              <li>Schriftbasierte Online Beratung</li>
+              <li>Datenschutz und professionelle Rahmung</li>
+              <li>Einsatzmöglichkeiten von KI in Coaching und Supervision</li>
+              <li>Arbeit mit der Plattform coachingspace</li>
+              <li>Stufenmodell professioneller Online Intervention</li>
+              <li>Theorie der drei Gestaltungsräume</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Aufbau der Weiterbildung</h3>
+            <div class="produkt__aufbau">
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Spezialisierung</div>
+                <div class="produkt__stufe-title">Systemisch Online Supervisieren und Coachen</div>
+                <p>Spezialisierte Qualifizierung für erfahrene Coaches und Supervisoren mit Fokus auf professionelle Arbeit im digitalen Raum und direkter Anwendung digitaler Methoden.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="produkt__cta produkt__cta--with-seal">
+          <div class="produkt__cta-actions">
+            <a href="online-supervision.html" class="btn btn--primary">Zur Weiterbildung</a>
+            <a href="online-supervision.html#register" class="btn btn--outline">Jetzt anfragen</a>
+          </div>
+          <div class="seal-wrap">
+            <span class="seal-wrap__label">Erfolgreicher Abschluss zum:</span>
+            <div class="seal-wrap__seals">
+              <img src="Systemischer Onlie-Supervidieren.png"
+                   class="ish-seal"
+                   width="110"
+                   alt="Zertifikat – Systemisch Online Supervisieren · ISH Akademie" />
+              <img src="Systemische Online-Coachen.png"
+                   class="ish-seal"
+                   width="110"
+                   alt="Zertifikat – Systemisch Online Coachen · ISH Akademie" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORTBILDUNGEN -->
+  <section class="produkt" id="fortbildung">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kompaktformat</span>
+        <h2>Fortbildungen für aktuelle Schulentwicklung.</h2>
+        <p class="section-intro">Neben unseren strukturierten Weiterbildungen bieten wir kompakte Fortbildungen zu aktuellen Themen der Schulentwicklung – direkter Einstieg, konkrete Impulse, anschlussfähig an weiterführende Qualifizierungen.</p>
+      </div>
+
+      <div class="produkt__card">
+
+        <div class="produkt__head">
+          <div class="produkt__num" style="font-size:1.1rem;letter-spacing:.05em;">K</div>
+          <div class="produkt__title-wrap">
+            <h2>Agile Schulentwicklung</h2>
+            <p class="produkt__intro-text">Veränderungsprozesse wirksam gestalten – zweitägige Fortbildung mit zusätzlichem Online-Termin zur Vertiefung und zum Transfer. Kleine Gruppengrößen für intensiven Austausch, am Institut in Bochum.</p>
+          </div>
+        </div>
+
+        <div class="produkt__body">
+
+          <div class="produkt__block">
+            <h3>Für wen</h3>
+            <ul class="produkt__ziel-list">
+              <li>Schulleitungen, die Veränderungsprozesse gezielt steuern möchten</li>
+              <li>Lehrkräfte, die aktiv an Schulentwicklung beteiligt sind</li>
+              <li>Steuergruppen und Projektteams in Schulen</li>
+              <li>Schulen, die konkrete Entwicklungsprojekte voranbringen wollen</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Inhalte</h3>
+            <ul class="produkt__inhalt-list">
+              <li>Veränderungsprozesse in Schule verstehen und strukturieren</li>
+              <li>Agile Arbeitsweisen im schulischen Kontext</li>
+              <li>Umgang mit Dynamiken, Widerständen und unklaren Zuständigkeiten</li>
+              <li>Konkrete Methoden zur Steuerung von Entwicklungsprozessen</li>
+              <li>Transfer in die eigene Schule und konkrete Umsetzungsschritte</li>
+            </ul>
+          </div>
+
+          <div class="produkt__block">
+            <h3>Rahmen</h3>
+            <div class="produkt__aufbau">
+              <div class="produkt__stufe">
+                <div class="produkt__stufe-label">Format</div>
+                <div class="produkt__stufe-title">2 Tage Präsenz + Online-Transfer</div>
+                <p>Kleine Gruppengröße für intensiven Austausch. Durchführung am Institut in Bochum, ergänzt durch einen Online-Termin zur Vertiefung.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="produkt__cta">
+          <a href="#" class="btn btn--primary">Platz sichern</a>
+          <a href="#" class="btn btn--outline">Mehr erfahren</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ZUSAMMENFASSUNG + CTA -->
+  <section class="zusammenfassung" id="zusammenfassung">
+    <div class="container">
+      <div class="zusammenfassung__inner">
+        <div>
+          <span class="section-tag">Zusammenfassung</span>
+          <h2>Ihren Einstieg finden.</h2>
+          <p style="font-size:.95rem;color:var(--ish-gray-600);margin-top:.75rem;line-height:1.7;">Die ISH Akademie bietet drei zentrale Zugänge zur systemischen Arbeit im Bildungsbereich – ergänzt durch kompakte Fortbildungen als niedrigschwelliger Einstieg und Impuls für die Praxis.</p>
+          <ul class="zusammenfassung__list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Systemisches Coaching</strong> – für die Arbeit mit Einzelnen und Teams</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Systemische Moderation</strong> – für die Gestaltung von Gruppen und Entwicklungsprozessen</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Systemisch Online Supervisieren und Coachen</strong> – für professionelle Beratung im digitalen Raum</span>
+            </li>
+          </ul>
+        </div>
+        <div class="zusammenfassung__cta">
+          <span class="section-tag">Kontakt &amp; Beratung</span>
+          <h3>Noch unsicher welcher Weg passt?</h3>
+          <p>Wir beraten Sie gerne persönlich – zu Inhalten, Terminen und dem richtigen Einstieg für Ihre Situation.</p>
+          <div class="cta-stack">
+            <a href="mailto:info@ish-akademie.de" class="btn btn--primary">Kontaktieren Sie uns</a>
+            <a href="systemischer-coach.html" class="btn btn--outline">Systemisch Coachen</a>
+          </div>
+          <p class="zusammenfassung__contact-note">info@ish-akademie.de · ISH Institut Bochum</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="Akademie.png" alt="ISH Akademie" class="logo-img logo-img--footer" />
+        <p>Systemische Weiterbildung für den Bildungsbereich.<br />ISH Akademie – Teil der ISH Gruppe.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer Navigation">
+        <div class="footer__col">
+          <strong>Weiterbildungen</strong>
+          <a href="systemischer-coach.html">Systemisch Coachen</a>
+          <a href="systemische-moderation.html">Systemisch Moderieren</a>
+          <a href="online-supervision.html">Systemisch Online Supervisieren</a>
+        </div>
+        <div class="footer__col">
+          <strong>ISH Gruppe</strong>
+          <a href="#">ISH Gruppe</a>
+          <a href="#">ISH Campus</a>
+          <a href="#">ISH Schule</a>
+          <a href="#">ISH Manufaktur</a>
+        </div>
+        <div class="footer__col">
+          <strong>Rechtliches</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>&copy; 2024 ISH Akademie · ISH Gruppe. Alle Rechte vorbehalten.</span>
+        <span>Design gemäß ISH Brand Styleguide 2022</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

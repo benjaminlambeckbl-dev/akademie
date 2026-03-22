@@ -1,0 +1,3268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systemisch Coachen im Bildungskontext | ISH Akademie</title>
+  <meta name="description" content="Weiterbildung zum systemischen Coach im schulischen Kontext. 150 UE, 4 Module, online & Präsenz. Start September 2026. ISH Akademie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+<style>
+  /* ── Hero Facts Visual ─────────────────────────── */
+  .hero__facts-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 280px;
+  }
+  .hero__facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+  .hero__fact {
+    background: #fff;
+    border: 1px solid var(--ish-gray-200);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    text-align: center;
+  }
+  .hero__fact--accent {
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    padding: 1rem 1.5rem;
+  }
+  .hero__fact--accent .hero__fact-num { color: var(--ish-teal); }
+  .hero__fact--accent .hero__fact-label { color: rgba(255,255,255,.7); }
+  .hero__fact-num {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--ish-dark);
+    line-height: 1;
+  }
+  .hero__fact--accent .hero__fact-num { font-size: 2.8rem; }
+  .hero__fact-label {
+    font-size: .78rem;
+    color: var(--ish-gray-400);
+    margin-top: .2rem;
+    line-height: 1.3;
+  }
+  /* Single logo tile — label on top, big logo below, zoom on hover */
+  .hero__fact--logo-single {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    padding: .9rem 1rem;
+    cursor: zoom-in;
+    overflow: visible;
+  }
+  .hero__fact--logo-single .hero__fact-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    order: -1; /* label first/above */
+  }
+  .hero__fact--logo-single img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), filter .3s;
+  }
+  .hero__fact--logo-single:hover img {
+    transform: scale(1.9);
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+  }
+  /* SG logo must stay white (inverted) and gets a light glow */
+  .hero__fact--logo-single:hover .hero__fact-logo-img--sg {
+    filter: brightness(0) invert(1) drop-shadow(0 6px 20px rgba(255,255,255,.25));
+  }
+
+  /* Logos row — full width dark tile with both seals (legacy, keep for safety) */
+  .hero__fact--logos {
+    grid-column: 1 / -1;
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 1rem 1.5rem;
+  }
+  .hero__fact-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    flex: 1;
+  }
+  .hero__fact-logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  .hero__fact-logo-img--sg {
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+  .hero__fact-logo-item span {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+  }
+  .hero__fact-logo-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,.12);
+    flex-shrink: 0;
+    margin: 0 .5rem;
+  }
+  /* Checklist tile — full width */
+  .hero__fact--checklist {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    padding: .9rem 1.25rem;
+    align-items: flex-start;
+  }
+  .hero__fact-check-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--ish-dark);
+  }
+  .hero__fact-check-item svg {
+    color: var(--ish-teal);
+    flex-shrink: 0;
+  }
+  .hero__fact-quote {
+    background: var(--ish-gray-50);
+    border-left: 3px solid var(--ish-teal);
+    border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem;
+    font-size: .82rem;
+    font-style: italic;
+    color: var(--ish-gray-600);
+    line-height: 1.6;
+  }
+
+  /* ── ZEITSTRAHL ─────────────────────────────────── */
+  .zeitstrahl {
+    padding: 3rem 0 2rem;
+  }
+  .zeitstrahl__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .zeitstrahl__header h3 {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin: .5rem 0 .4rem;
+  }
+  .zeitstrahl__subtitle {
+    font-size: .9rem;
+    color: rgba(255,255,255,.55);
+  }
+  .zeitstrahl__scroll-wrap {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .zeitstrahl__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 860px;
+    padding: 0 2rem;
+    position: relative;
+  }
+  .zeitstrahl__line {
+    position: absolute;
+    top: 45px;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: linear-gradient(to right,
+      transparent,
+      var(--ish-teal) 8%,
+      rgba(0,170,162,.4) 50%,
+      var(--ish-teal) 92%,
+      transparent
+    );
+    z-index: 0;
+  }
+
+  /* Stops */
+  .zeitstrahl__stop {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .zeitstrahl__date {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.45);
+    margin-bottom: .6rem;
+    white-space: nowrap;
+  }
+  .zeitstrahl__date--final { color: var(--ish-teal); }
+
+  /* Dots */
+  .zeitstrahl__dot {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255,255,255,.15);
+    margin-bottom: 1.25rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .zeitstrahl__dot--praesenz {
+    background: var(--ish-teal);
+    border-color: var(--ish-teal);
+    box-shadow: 0 0 0 6px rgba(0,170,162,.2);
+  }
+  .zeitstrahl__dot--online {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.25);
+  }
+  .zeitstrahl__dot--final {
+    background: var(--ish-teal);
+    border-color: var(--ish-teal);
+    box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1);
+    color: white;
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1); }
+    50%       { box-shadow: 0 0 0 8px rgba(0,170,162,.35), 0 0 0 18px rgba(0,170,162,.08); }
+  }
+  .zeitstrahl__dot-num {
+    font-family: var(--font-head);
+    font-size: .85rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .zeitstrahl__dot--online .zeitstrahl__dot-num { color: rgba(255,255,255,.6); }
+
+  /* Phase labels between stops */
+  .zeitstrahl__phase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 57px;
+    flex-shrink: 0;
+    width: 80px;
+    position: relative;
+    z-index: 1;
+  }
+  .zeitstrahl__phase span {
+    font-size: .58rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.3);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    text-align: center;
+    line-height: 1.5;
+    background: rgba(255,255,255,.05);
+    border: 1px dashed rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: .25rem .4rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Cards */
+  .zeitstrahl__card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 148px;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+  }
+  .zeitstrahl__card--praesenz { border-top: 2.5px solid var(--ish-teal); }
+  .zeitstrahl__card--online   { border-top: 2.5px solid rgba(255,255,255,.25); }
+  .zeitstrahl__card--final {
+    border-top: 2.5px solid var(--ish-teal);
+    text-align: center;
+    background: rgba(0,170,162,.08);
+  }
+  .zeitstrahl__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .35rem;
+    margin-bottom: .6rem;
+  }
+  .zeitstrahl__format-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .62rem;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: .15rem .5rem;
+  }
+  .zeitstrahl__format-badge--praesenz { background: rgba(0,170,162,.2); color: var(--ish-teal); }
+  .zeitstrahl__format-badge--online   { background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
+  .zeitstrahl__ue-pill {
+    font-size: .62rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.45);
+    white-space: nowrap;
+  }
+  .zeitstrahl__card-title {
+    font-family: var(--font-head);
+    font-size: .82rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0 0 .35rem;
+  }
+  .zeitstrahl__card-date {
+    font-size: .68rem;
+    color: rgba(255,255,255,.4);
+    line-height: 1.4;
+    margin: 0 0 .6rem;
+  }
+  .zeitstrahl__chip-row {
+    display: flex;
+    gap: .35rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .zeitstrahl__card--final .zeitstrahl__chip-row { justify-content: center; }
+  .zeitstrahl__seal {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .75rem;
+  }
+
+  /* Promise stat cards */
+  .promise__seal-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem 1.5rem;
+    background: var(--ish-gray-50);
+    border: 1px solid var(--ish-gray-200);
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+  }
+  .promise__seal-img {
+    width: 180px;
+    height: 180px;
+    cursor: zoom-in;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 8px 40px rgba(0,0,0,.1);
+  }
+  .promise__seal-caption {
+    font-size: .88rem;
+    color: var(--ish-gray-500, #6b7d8e);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .promise__seal-display:hover .promise__seal-img {
+    transform: scale(2.4);
+    box-shadow: 0 24px 80px rgba(0,0,0,.28);
+  }
+  .promise__seal-caption strong {
+    display: block;
+    color: var(--ish-dark);
+    margin-top: .2rem;
+  }
+
+  /* ── SG-Logo ────────────────────────────────────── */
+  .sg-logo-sm {
+    height: 40px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+  .overview__icon--sg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
+  .register__trust {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: .9rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .register__sg-logo {
+    height: 36px;
+    width: auto;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+    opacity: .85;
+  }
+  .register__trust span {
+    font-size: .82rem;
+    color: rgba(255,255,255,.55);
+    line-height: 1.5;
+  }
+
+  /* ── Kompakte Modul-Card-Body ───────────────────── */
+  .module-card__desc {
+    font-size: .93rem;
+    color: rgba(255,255,255,.62);
+    line-height: 1.7;
+    margin-bottom: 1.1rem;
+    font-style: italic;
+  }
+  .module-card__highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin: 0;
+    padding: 0;
+  }
+  .module-card__highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+    font-size: .9rem;
+    color: rgba(255,255,255,.82);
+    line-height: 1.5;
+  }
+  .module-card__highlights li::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--ish-teal);
+    flex-shrink: 0;
+    margin-top: .42rem;
+  }
+  .module-card--final .module-card__highlights li::before {
+    background: #f9c84b;
+  }
+
+  @media (max-width: 768px) {
+    .hero__facts-wrap { width: 100%; }
+    .zeitstrahl__inner { min-width: 700px; }
+  }
+
+  /* ── Stufenübersicht ──────────────────────────── */
+  .stufen-uebersicht {
+    background: var(--ish-dark);
+    padding: 3.5rem 0;
+  }
+  .stufen-uebersicht .section-header { margin-bottom: 2.5rem; }
+  .stufen-uebersicht .section-header h2 { color: #fff; }
+  .stufen-uebersicht .section-tag { color: var(--ish-teal); }
+  .stufen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    position: relative;
+    align-items: stretch;
+  }
+  .stufen-grid::before,
+  .stufen-grid::after {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--ish-teal);
+    z-index: 2;
+  }
+  .stufen-grid::before { left: calc(33.33% - .75rem); }
+  .stufen-grid::after  { left: calc(66.66% - .75rem); }
+  .stufen-card {
+    padding: 2rem 1.75rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    position: relative;
+  }
+  .stufen-card--entry {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .stufen-card--main {
+    background: #fff;
+    border: 2px solid var(--ish-teal);
+    box-shadow: 0 8px 40px rgba(0,170,162,.25);
+    z-index: 1;
+  }
+  .stufen-card--aufbau {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .stufen-card__badge {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: .2rem .7rem;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .stufen-card--entry .stufen-card__badge {
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.6);
+  }
+  .stufen-card--main .stufen-card__badge {
+    background: var(--ish-teal);
+    color: #fff;
+  }
+  .stufen-card--aufbau .stufen-card__badge {
+    background: rgba(120,136,254,.2);
+    color: var(--akademie);
+  }
+  .stufen-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0;
+  }
+  .stufen-card--entry h3,
+  .stufen-card--aufbau h3 { color: #fff; }
+  .stufen-card--main h3  { color: var(--ish-dark); }
+  .stufen-card p {
+    font-size: .87rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .stufen-card--entry p,
+  .stufen-card--aufbau p { color: rgba(255,255,255,.55); }
+  .stufen-card--main p   { color: #5a6a7a; }
+  .stufen-card__facts {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .stufen-card__facts span {
+    font-size: .75rem;
+    font-weight: 600;
+    padding: .2rem .65rem;
+    border-radius: 20px;
+  }
+  .stufen-card--entry .stufen-card__facts span,
+  .stufen-card--aufbau .stufen-card__facts span {
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.55);
+  }
+  .stufen-card--main .stufen-card__facts span {
+    background: var(--ish-gray-100, #eef2f6);
+    color: var(--ish-dark);
+  }
+  .stufen-card__zert {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 10px;
+    margin-top: auto;
+  }
+  .stufen-card--main .stufen-card__zert {
+    background: #f0fdfc;
+    border: 1px solid rgba(0,170,162,.2);
+  }
+  .stufen-card--aufbau .stufen-card__zert {
+    background: rgba(120,136,254,.08);
+    border: 1px solid rgba(120,136,254,.15);
+  }
+  .stufen-card__zert-seal {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .stufen-card__zert-text {
+    font-size: .8rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  .stufen-card--main .stufen-card__zert-text { color: var(--ish-dark); }
+  .stufen-card--aufbau .stufen-card__zert-text { color: rgba(255,255,255,.8); }
+  .stufen-card__sg-logo-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--ish-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .stufen-card__sg-logo {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: .85;
+  }
+  /* All three entry cards get uniform cert tile */
+  .stufen-card--entry .stufen-card__zert {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    justify-content: center;
+    text-align: center;
+  }
+  .stufen-card--entry .stufen-card__zert-text {
+    color: rgba(255,255,255,.5);
+    font-size: .78rem;
+    font-style: italic;
+  }
+  /* Hoverable cert tile: popup seal on hover */
+  .stufen-card__zert--hoverable {
+    cursor: zoom-in;
+    position: relative;
+    overflow: visible;
+  }
+  .stufen-card__zert-popup {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) scale(.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .32s cubic-bezier(.34,1.56,.64,1);
+    z-index: 9999;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 0 24px 80px rgba(0,0,0,.45);
+    object-fit: contain;
+  }
+  .stufen-card__zert-popup--sg {
+    background: var(--ish-dark);
+    padding: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 16px 60px rgba(0,0,0,.4), 0 0 0 3px rgba(120,136,254,.3);
+  }
+  .stufen-card__zert--hoverable:hover .stufen-card__zert-popup {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  .stufen-card__sg-logo-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ish-dark);
+    border: 2px solid rgba(120,136,254,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(120,136,254,.15);
+  }
+  @media (max-width: 900px) {
+    .stufen-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .stufen-grid::before,
+    .stufen-grid::after { display: none; }
+    .stufen-card--entry { margin-right: 0; }
+    .stufen-card--aufbau { margin-left: 0; }
+  }
+
+  /* ── Focus Split (Vorschlag A) ─────────────────── */
+  .focus-split {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 3.5rem 0;
+  }
+  .focus-split__eyebrow {
+    display: block;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ish-teal);
+    margin-bottom: .75rem;
+  }
+  .focus-split__left h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--ish-dark);
+    line-height: 1.2;
+    margin: 0 0 1.1rem;
+  }
+  .focus-split__zielgruppe-img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-top: 1.75rem;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0,0,0,.1);
+  }
+  .focus-split__intro {
+    color: #5a6a7a;
+    font-size: .97rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .focus-who-list {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    margin-bottom: 1.75rem;
+  }
+  .focus-who-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--ish-teal);
+    background: #f7f9fb;
+    border-radius: 0 10px 10px 0;
+  }
+  .focus-who-icon {
+    color: var(--ish-teal);
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .focus-who-item strong {
+    display: block;
+    font-size: .93rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin-bottom: .2rem;
+  }
+  .focus-who-item p {
+    font-size: .85rem;
+    color: #6b7d8e;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .focus-quote {
+    margin: 0;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--akademie);
+    background: #f7f9fb;
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: .88rem;
+    color: #6b7d8e;
+    line-height: 1.65;
+  }
+  .focus-quote cite {
+    display: block;
+    margin-top: .5rem;
+    font-style: normal;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--ish-teal);
+    letter-spacing: .05em;
+  }
+
+  /* ── UE Tiles ─────────────────────────────────── */
+  .ue-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .ue-tile {
+    background: #f7f9fb;
+    border: 1px solid #e3eaf0;
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ue-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ish-teal);
+  }
+  .ue-tile--accent {
+    background: var(--ish-dark);
+    border-color: var(--ish-dark);
+  }
+  .ue-tile--accent::before { background: var(--ish-teal); }
+  .ue-tile--accent h4 { color: rgba(255,255,255,.85); }
+  .ue-tile--accent p  { color: rgba(255,255,255,.5); }
+  .ue-tile--accent .ue-tile__num  { color: var(--ish-teal); }
+  .ue-tile--accent .ue-tile__unit { color: rgba(255,255,255,.45); }
+  .ue-tile__num {
+    font-family: var(--font-head);
+    font-size: 3.8rem;
+    font-weight: 900;
+    color: var(--ish-dark);
+    line-height: 1;
+    display: block;
+  }
+  .ue-tile__unit {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--ish-teal);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .75rem;
+  }
+  .ue-tile h4 {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin: 0 0 .4rem;
+  }
+  .ue-tile p {
+    font-size: .82rem;
+    color: #6b7d8e;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Modul Accordion ──────────────────────────── */
+  .mod-accordion {
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid #e3eaf0;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  }
+  .mod-accordion__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #fff;
+    border: none;
+    border-left: 4px solid var(--ish-teal);
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
+  }
+  .mod-accordion__trigger:hover { background: #f4f8fa; }
+  .mod-accordion__bg-num {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-head);
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(0,0,0,.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -.02em;
+  }
+  .mod-accordion__num {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--ish-teal);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 3.2rem;
+  }
+  .mod-accordion__summary { flex: 1; }
+  .mod-accordion__summary h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin: 0 0 .55rem;
+    line-height: 1.3;
+  }
+  .mod-accordion__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+  .mod-accordion__chevron {
+    flex-shrink: 0;
+    color: #a0aab4;
+    transition: transform .3s ease, color .2s;
+  }
+  .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron {
+    transform: rotate(180deg);
+    color: var(--ish-teal);
+  }
+  .mod-accordion__panel { background: #fff; }
+  .mod-panel__cols {
+    display: grid;
+    grid-template-columns: 1.1fr 1.1fr .9fr;
+    border-top: 1px solid #e3eaf0;
+  }
+  .mod-panel__col {
+    padding: 1.75rem 1.6rem;
+    border-right: 1px solid #e3eaf0;
+  }
+  .mod-panel__col:last-child { border-right: none; }
+  .mod-panel__label {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    color: var(--ish-teal);
+    margin-bottom: 1rem;
+  }
+  .mod-panel__check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+  .mod-panel__check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .87rem;
+    color: #3a4a58;
+    line-height: 1.5;
+  }
+  .mod-panel__check-list li::before {
+    content: '✓';
+    color: var(--ish-teal);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .mod-panel__arrow-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .mod-panel__arrow-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    font-size: .87rem;
+    color: #3a4a58;
+    line-height: 1.5;
+  }
+  .mod-panel__arrow-list li::before {
+    content: '→';
+    color: var(--ish-dark);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .mod-panel__format-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .mod-panel__format-item {
+    padding-left: .85rem;
+    border-left: 3px solid var(--ish-teal);
+  }
+  .mod-panel__format-item .fmt-label {
+    display: block;
+    font-size: .64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ish-teal);
+    margin-bottom: .2rem;
+  }
+  .mod-panel__format-item strong {
+    display: block;
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--ish-dark);
+    margin-bottom: .1rem;
+  }
+  .mod-panel__format-item span {
+    font-size: .81rem;
+    color: #6b7d8e;
+    line-height: 1.4;
+  }
+  .mod-panel__note {
+    padding: .65rem 1.6rem;
+    font-size: .77rem;
+    color: #8a9bab;
+    background: #f7f9fb;
+    border-top: 1px solid #e3eaf0;
+    font-style: italic;
+  }
+  @media (max-width: 900px) {
+    .focus-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .ue-tiles { grid-template-columns: 1fr; }
+    .mod-panel__cols { grid-template-columns: 1fr; }
+    .mod-panel__col { border-right: none; border-bottom: 1px solid #e3eaf0; }
+    .mod-panel__col:last-child { border-bottom: none; }
+    .mod-accordion__trigger { padding: 1.25rem 1.25rem; gap: 1rem; }
+    .mod-accordion__bg-num { display: none; }
+  }
+
+/* ── Produkt-Divider (Abschnittskopf je Produkt) ── */
+.prod-divider {
+  background: var(--ish-dark);
+  padding: 2.5rem 0 2rem;
+}
+.prod-divider__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.prod-divider__eyebrow {
+  display: block;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.45);
+  margin-bottom: .4rem;
+}
+.prod-divider__title {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+.prod-divider__title em {
+  font-style: normal;
+  color: var(--ish-teal);
+}
+.prod-divider__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .3rem .9rem;
+  border-radius: 20px;
+  margin-left: auto;
+}
+.prod-divider__badge--optional {
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.6);
+  border: 1px dashed rgba(255,255,255,.25);
+}
+.prod-divider__badge--ish {
+  background: rgba(0,170,162,.2);
+  color: var(--ish-teal);
+}
+.prod-divider__badge--sg {
+  background: rgba(120,136,254,.2);
+  color: var(--akademie);
+}
+
+/* ── Zeitstrahl Erweiterungen ─────────────────────── */
+.zeitstrahl__dot--optional {
+  background: rgba(255,255,255,.06);
+  border: 2px dashed rgba(255,255,255,.25);
+}
+.zeitstrahl__dot--optional .zeitstrahl__dot-num { color: rgba(255,255,255,.35); font-size: .72rem; }
+.zeitstrahl__card--optional {
+  border-top: 2px dashed rgba(255,255,255,.25);
+  background: rgba(255,255,255,.03);
+}
+.zeitstrahl__dot--ish {
+  background: var(--ish-teal);
+  border-color: var(--ish-teal);
+  box-shadow: 0 0 0 6px rgba(0,170,162,.25), 0 0 0 12px rgba(0,170,162,.1);
+  color: white;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+.zeitstrahl__dot--aufbau {
+  background: rgba(120,136,254,.12);
+  border-color: rgba(120,136,254,.35);
+}
+.zeitstrahl__dot--aufbau .zeitstrahl__dot-num { color: var(--akademie); }
+.zeitstrahl__card--aufbau { border-top: 2.5px solid rgba(120,136,254,.4); }
+.zeitstrahl__dot--sg {
+  background: var(--akademie);
+  border-color: var(--akademie);
+  box-shadow: 0 0 0 6px rgba(120,136,254,.25), 0 0 0 12px rgba(120,136,254,.1);
+  color: white;
+  animation: pulse-dot-sg 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot-sg {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(120,136,254,.25), 0 0 0 12px rgba(120,136,254,.1); }
+  50%       { box-shadow: 0 0 0 8px rgba(120,136,254,.35), 0 0 0 18px rgba(120,136,254,.08); }
+}
+.zeitstrahl__card--sg {
+  border-top: 2.5px solid var(--akademie);
+  text-align: center;
+  background: rgba(120,136,254,.08);
+}
+.zeitstrahl__card--sg .zeitstrahl__seal { justify-content: center; }
+.zeitstrahl__optional-badge {
+  display: block;
+  font-size: .6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.35);
+  border: 1px dashed rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: .15rem .5rem;
+  margin-bottom: .5rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Kompaktkurs Varianten ────────────────────────── */
+.kompakt-variants {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.kompakt-variant {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: background .22s, border-color .22s, transform .22s, box-shadow .22s;
+  cursor: pointer;
+}
+.kompakt-variant:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--ish-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,0,0,.25), 0 0 0 1px rgba(0,170,162,.3);
+}
+.kompakt-variant__label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ish-teal);
+  margin-bottom: .6rem;
+  display: block;
+}
+.kompakt-variant h4 {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+.kompakt-variant__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.kompakt-variant__list li {
+  font-size: .85rem;
+  color: rgba(255,255,255,.65);
+  display: flex;
+  gap: .5rem;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.kompakt-variant__list li::before {
+  content: '·';
+  color: var(--ish-teal);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.kompakt-variant__price {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ish-teal);
+  line-height: 1;
+}
+.kompakt-variant__price span {
+  font-size: .85rem;
+  color: rgba(255,255,255,.4);
+  font-weight: 400;
+  font-family: var(--font-body, sans-serif);
+}
+.kompakt-section {
+  background: var(--ish-dark);
+  padding: 3rem 0 3.5rem;
+}
+.aufbaukurs-section {
+  background: var(--ish-dark);
+  padding: 3rem 0 3.5rem;
+}
+.prod-section-cta {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin-top: 2rem;
+}
+@media (max-width: 700px) {
+  .kompakt-variants { grid-template-columns: 1fr; }
+}
+
+/* ── Grundkurs prod-divider: weiß wie Modules ─── */
+#grundkurs {
+  background: #fff;
+}
+#grundkurs .prod-divider__eyebrow { color: #8a9aaa; }
+#grundkurs .prod-divider__title { color: var(--ish-dark); }
+#grundkurs .prod-divider__badge--ish { background: rgba(0,170,162,.1); color: var(--ish-teal); }
+
+/* ── Aufbaukurs accordions: dark (zurück zum alten Stil) ── */
+.aufbaukurs-section .mod-accordion {
+  border: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,.22);
+}
+.aufbaukurs-section .mod-accordion__trigger {
+  background: var(--ish-dark);
+  border-left: none;
+}
+.aufbaukurs-section .mod-accordion__trigger:hover { background: #0d3548; }
+.aufbaukurs-section .mod-accordion__summary h3 { color: #fff; }
+.aufbaukurs-section .mod-accordion__bg-num { color: rgba(255,255,255,.04); }
+.aufbaukurs-section .mod-accordion__chevron { color: rgba(255,255,255,.4); }
+.aufbaukurs-section .mod-accordion__trigger[aria-expanded="true"] .mod-accordion__chevron { color: var(--ish-teal); }
+
+/* ── SG-QUALIFIZIERUNGSWEG TIMELINE ─────────────── */
+.sg-weg {
+  background: #fff;
+  padding: 4rem 0 3.5rem;
+  border-top: 1px solid #e3eaf0;
+}
+.sg-weg__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.sg-weg__eyebrow {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--akademie);
+  margin-bottom: .6rem;
+}
+.sg-weg__title {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0;
+}
+.sg-weg__track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+/* horizontal connector lines between nodes */
+.sg-weg__track::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right,
+    #e3eaf0 0%,
+    rgba(0,170,162,.5) 35%,
+    rgba(120,136,254,.6) 70%,
+    #e3eaf0 100%);
+  z-index: 0;
+}
+.sg-weg__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+  padding: 0 .5rem;
+}
+.sg-weg__dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: .85rem;
+  position: relative;
+}
+.sg-weg__dot--k {
+  background: #f4f7fa;
+  border: 2px dashed #c8d4dd;
+}
+.sg-weg__dot--k::after {
+  content: 'K';
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #a0aab4;
+}
+.sg-weg__dot--gk {
+  background: rgba(0,170,162,.1);
+  border: 2.5px solid var(--ish-teal);
+  box-shadow: 0 0 0 5px rgba(0,170,162,.12);
+}
+.sg-weg__dot--gk img {
+  width: 28px;
+}
+.sg-weg__dot--ak {
+  background: var(--akademie);
+  border: 2.5px solid var(--akademie);
+  box-shadow: 0 0 0 5px rgba(120,136,254,.15);
+}
+.sg-weg__dot--ak img {
+  width: 28px;
+  filter: brightness(0) invert(1);
+}
+.sg-weg__label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  margin-bottom: .3rem;
+}
+.sg-weg__name {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin-bottom: .35rem;
+  line-height: 1.3;
+}
+.sg-weg__node--k .sg-weg__name { color: #8a9aaa; }
+.sg-weg__sub {
+  font-size: .75rem;
+  color: #6b7d8e;
+  line-height: 1.45;
+  max-width: 130px;
+}
+.sg-weg__optional-badge {
+  display: inline-block;
+  margin-top: .4rem;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  border: 1px dashed #c8d4dd;
+  border-radius: 20px;
+  padding: .2rem .55rem;
+}
+.sg-weg__cert {
+  margin-top: .5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .3rem .7rem;
+  border-radius: 20px;
+}
+.sg-weg__cert--ish {
+  background: rgba(0,170,162,.1);
+  color: var(--ish-teal);
+  border: 1px solid rgba(0,170,162,.3);
+}
+.sg-weg__cert--sg {
+  background: rgba(120,136,254,.1);
+  color: var(--akademie);
+  border: 1px solid rgba(120,136,254,.3);
+}
+.sg-weg__arrow {
+  align-self: center;
+  flex-shrink: 0;
+  color: #ccd5dd;
+  margin: 0 .25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+@media (max-width: 700px) {
+  .sg-weg__track { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .sg-weg__track::before { display: none; }
+  .sg-weg__arrow { transform: rotate(90deg); margin: 0; }
+  .sg-weg__node { max-width: 260px; }
+}
+
+/* ── VERTICAL TIMELINE ───────────────────────────── */
+.vtl-wrapper {
+  background: var(--ish-dark);
+}
+.vtl-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+}
+.vtl-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3.5rem;
+}
+.vtl-dot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.vtl-dot--k {
+  background: rgba(255,255,255,.05);
+  border: 2px dashed rgba(255,255,255,.25);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.5);
+}
+.vtl-dot--ish {
+  background: var(--ish-dark);
+  border: 2.5px solid var(--ish-teal);
+  box-shadow: 0 0 0 5px rgba(0,170,162,.1), 0 0 24px rgba(0,170,162,.2);
+}
+.vtl-dot--ish img {
+  width: 26px;
+  filter: brightness(0) invert(1);
+}
+.vtl-dot--sg {
+  background: var(--ish-dark);
+  border: 2.5px solid var(--akademie);
+  box-shadow: 0 0 0 5px rgba(120,136,254,.1), 0 0 24px rgba(120,136,254,.2);
+}
+.vtl-dot--sg img {
+  width: 26px;
+}
+.vtl-connector {
+  flex: 1;
+  width: 2px;
+  min-height: 60px;
+  background: linear-gradient(to bottom, rgba(0,170,162,.25), rgba(120,136,254,.2));
+  margin: 8px 0;
+}
+.vtl-connector--k {
+  background: linear-gradient(to bottom, rgba(255,255,255,.1), rgba(0,170,162,.3));
+}
+.vtl-content {
+  min-width: 0;
+}
+@media (max-width: 860px) {
+  .vtl-row { grid-template-columns: 1fr; }
+  .vtl-spine { display: none; }
+}
+
+/* ── BUCHUNGSOPTIONEN ────────────────────────────── */
+.register__intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 3rem;
+}
+.register__intro h2 { color: var(--ish-dark); margin: .5rem 0 .75rem; }
+.register__intro p { color: var(--ish-gray-500, #6b7d8e); font-size: .95rem; }
+.buchung-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.buchung-card {
+  background: #fff;
+  border: 1.5px solid var(--ish-gray-200);
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: box-shadow .2s, transform .2s;
+}
+.buchung-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,.1); transform: translateY(-2px); }
+.buchung-card--sg { border-color: var(--akademie); box-shadow: 0 4px 20px rgba(120,136,254,.15); }
+.buchung-card__badge {
+  display: inline-block;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  padding: .2rem .65rem;
+  border-radius: 20px;
+  width: fit-content;
+  background: var(--ish-gray-100, #eef2f6);
+  color: var(--ish-gray-500, #6b7d8e);
+}
+.buchung-card__badge--highlight {
+  background: rgba(120,136,254,.15);
+  color: var(--akademie);
+}
+.buchung-card--gk .buchung-card__badge {
+  background: rgba(0,170,162,.1);
+  color: var(--ish-teal);
+}
+.buchung-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ish-dark);
+  margin: 0;
+  line-height: 1.25;
+}
+.buchung-card p {
+  font-size: .82rem;
+  color: var(--ish-gray-500, #6b7d8e);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.buchung-card__facts {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.buchung-card__facts span {
+  font-size: .68rem;
+  font-weight: 600;
+  background: var(--ish-gray-50, #f5f7f9);
+  color: var(--ish-gray-600, #4a5a68);
+  padding: .15rem .55rem;
+  border-radius: 20px;
+}
+.buchung-card__price {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--ish-dark);
+  line-height: 1;
+  margin-top: .25rem;
+}
+.buchung-card__price span {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--ish-gray-400, #8a9bab);
+  font-family: var(--font-body);
+}
+.buchung-card__btn {
+  margin-top: .25rem;
+  font-size: .82rem;
+  padding: .6rem .9rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.buchung-card__btn--k  { background: transparent; border: 1.5px solid var(--ish-gray-300, #c0ccd8); color: var(--ish-dark); }
+.buchung-card__btn--gk { background: var(--ish-teal); color: #fff; border: none; }
+.buchung-card__btn--ak { background: transparent; border: 1.5px solid var(--ish-gray-300, #c0ccd8); color: var(--ish-dark); }
+.buchung-card__btn--sg { background: var(--akademie); color: #fff; border: none; }
+.buchung-card__btn--k:hover  { border-color: var(--ish-dark); }
+.buchung-card__btn--ak:hover { border-color: var(--akademie); color: var(--akademie); }
+.register__form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+#buchung-selected-label {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ish-teal);
+  min-height: 1.2em;
+  margin: 0 0 .5rem;
+}
+@media (max-width: 900px) {
+  .buchung-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .buchung-grid { grid-template-columns: 1fr; }
+}
+
+/* ── ISH SEAL MODAL ──────────────────────────────── */
+.seal-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+.seal-modal.is-open { display: flex; }
+.seal-modal__inner {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  animation: seal-pop .25s ease;
+}
+@keyframes seal-pop {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+.seal-modal__img { width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 0 60px rgba(0,170,162,.4); }
+.seal-modal__caption { margin-top: 1rem; color: #fff; font-size: .9rem; opacity: .8; }
+.seal-modal__close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seal-modal__close:hover { background: rgba(255,255,255,.25); }
+.prod-divider__badge--ish {
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.prod-divider__badge--ish:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 12px rgba(0,170,162,.3);
+}
+
+/* Zertifikate Section */
+.zert-section {
+  background: #fff;
+  padding: 3rem 0 2.5rem;
+  border-top: 1px solid #e3eaf0;
+}
+.zert-section__lead {
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  margin-bottom: 2rem;
+}
+.zert-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .zert-section__grid { grid-template-columns: 1fr; }
+}
+.zert-section__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f7fafc;
+  border: 1px solid #e3eaf0;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  gap: 1.25rem;
+  transition: box-shadow .25s, transform .25s;
+}
+.zert-section__card:hover {
+  box-shadow: 0 12px 40px rgba(0,170,162,.12);
+  transform: translateY(-4px);
+}
+.zert-section__card--sg {
+  background: var(--ish-dark);
+  border-color: var(--ish-dark);
+}
+.zert-section__img-wrap {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.zert-section__img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.zert-section__card:hover .zert-section__img {
+  transform: scale(1.12);
+}
+.zert-section__img--sg {
+  filter: brightness(0) invert(1);
+}
+.zert-section__info { display: flex; flex-direction: column; gap: .35rem; }
+.zert-section__stufe {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ish-teal);
+}
+.zert-section__card--sg .zert-section__stufe { color: rgba(255,255,255,.55); }
+.zert-section__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0;
+}
+.zert-section__card--sg .zert-section__name { color: #fff; }
+.zert-section__desc {
+  font-size: .82rem;
+  color: #6b7d8e;
+  margin: 0;
+  line-height: 1.5;
+}
+.zert-section__card--sg .zert-section__desc { color: rgba(255,255,255,.55); }
+
+/* Grundkurs price hint in prod-divider */
+.prod-divider__price-hint {
+  display: inline-block;
+  margin-top: .45rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ish-teal);
+  letter-spacing: .01em;
+}
+
+/* Stufen-card: Empfohlen / Featured */
+.stufen-card--featured {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,170,162,.18), 0 0 0 2px var(--ish-teal);
+}
+.stufen-card__badge--empfohlen {
+  background: var(--ish-teal);
+  color: #fff;
+}
+.stufen-card__price-tag {
+  margin-top: .9rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+}
+.stufen-card__price-tag span {
+  font-size: .78rem;
+  font-weight: 400;
+  color: #7a8fa0;
+}
+
+/* Erst-Grundkurs hint */
+.erst-grundkurs-hint {
+  background: #f0f8f8;
+  border-top: 1px solid #d0eae9;
+  padding: 1.1rem 0;
+}
+.erst-grundkurs-hint__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  font-size: .88rem;
+  color: #3a5a5a;
+  line-height: 1.5;
+}
+.erst-grundkurs-hint__inner svg {
+  flex-shrink: 0;
+  margin-top: .1rem;
+  stroke: var(--ish-teal);
+}
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 8000;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.sticky-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.sticky-cta__btn {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  background: var(--ish-teal);
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 700;
+  padding: .8rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(0,170,162,.4);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.sticky-cta__btn:hover {
+  background: #009990;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,170,162,.5);
+}
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo" aria-label="ISH Akademie">
+      </a>
+      <a href="index.html" class="nav__back">← Alle Weiterbildungen</a>
+      <nav class="nav__links" aria-label="Seitennavigation">
+        <a href="#stufen">Ihr Weg</a>
+        <a href="#kompaktkurs">Kompaktkurs</a>
+        <a href="#grundkurs">Grundkurs</a>
+        <a href="#aufbaukurs">Aufbaukurs</a>
+        <a href="#register">Anmeldung</a>
+      </nav>
+      <a href="#register" class="btn btn--primary nav__cta">Jetzt anmelden</a>
+      <button class="nav__burger" aria-label="Menü" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__deco-sq hero__deco-sq--1" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--2" aria-hidden="true"></div>
+    <div class="hero__deco-sq hero__deco-sq--3" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <div class="hero__badges">
+          <span class="badge badge--akademie">ISH Akademie</span>
+          <span class="badge badge--outline">Kompaktkurs · Grundkurs · Aufbaukurs</span>
+          <span class="badge badge--outline">SG-anerkannt</span>
+        </div>
+        <h1 class="hero__headline">
+          Systemisch Coachen<br />
+          <span class="text-teal">im Bildungskontext.</span>
+        </h1>
+        <p class="hero__sub">
+          Die vollständige Qualifizierung – vom zweitägigen Einstieg bis zur SG-anerkannten Zertifizierung. Berufsbegleitend, praxisnah und für alle, die in Schule und Bildung professionell begleiten wollen.
+        </p>
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Berufsbegleitend · 2 Qualifizierungsstufen</span>
+          </div>
+          <div class="hero__meta-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Bochum &amp; Online</span>
+          </div>
+        </div>
+        <div class="hero__actions">
+          <a href="#stufen" class="btn btn--primary">Zur Stufenübersicht</a>
+          <a href="#focus" class="btn btn--outline">Für wen ist das?</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+  <div class="hero__facts-wrap">
+    <div class="hero__facts-grid">
+
+      <!-- Stufen: volle Breite -->
+      <div class="hero__fact hero__fact--accent">
+        <div class="hero__fact-num">2</div>
+        <div class="hero__fact-label">Qualifizierungs&shy;stufen</div>
+      </div>
+
+      <!-- Checkliste: volle Breite -->
+      <div class="hero__fact hero__fact--checklist">
+        <div class="hero__fact-check-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Berufsbegleitend
+        </div>
+        <div class="hero__fact-check-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Spezialisiert für Schule &amp; Bildung
+        </div>
+        <div class="hero__fact-check-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Praxisnah &amp; systemisch fundiert
+        </div>
+      </div>
+
+    </div>
+    <div class="hero__fact-quote">
+      „Von der ersten Idee zur anerkannten Qualifikation – Schritt für Schritt."
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="hero__scroll">
+      <a href="#focus" aria-label="Nach unten scrollen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ZERTIFIKATE SECTION -->
+  <section class="zert-section">
+    <div class="container">
+      <p class="zert-section__lead">Nach erfolgreichem Abschluss erhalten Sie:</p>
+      <div class="zert-section__grid">
+
+        <div class="zert-section__card">
+          <div class="zert-section__img-wrap">
+            <img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen im Bildungskontext" class="zert-section__img" />
+          </div>
+          <div class="zert-section__info">
+            <span class="zert-section__stufe">Grundkurs · Stufe 2</span>
+            <h3 class="zert-section__name">ISH-Akademie-Zertifikat</h3>
+            <p class="zert-section__desc">Systemisch Coachen im Bildungskontext – ausgestellt durch die ISH Akademie.</p>
+          </div>
+        </div>
+
+        <div class="zert-section__card zert-section__card--sg">
+          <div class="zert-section__img-wrap">
+            <img src="logo_sg-weiss.png" alt="Systemische Gesellschaft – SG-anerkannte Qualifikation" class="zert-section__img zert-section__img--sg" />
+          </div>
+          <div class="zert-section__info">
+            <span class="zert-section__stufe">Grundkurs + Aufbaukurs · Stufe 3</span>
+            <h3 class="zert-section__name">SG-Zertifizierung</h3>
+            <p class="zert-section__desc">Systemischer Coach – anerkannt durch die Systemische Gesellschaft (SG). Die höchste Anerkennung im Berufsfeld.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STUFENÜBERSICHT -->
+  <section class="stufen-uebersicht" id="stufen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ihr Qualifizierungsweg</span>
+        <h2>Von der ersten Idee zur anerkannten Qualifikation.</h2>
+      </div>
+
+      <div class="stufen-grid">
+
+        <!-- STUFE 1: Kompaktkurs -->
+        <div class="stufen-card stufen-card--entry">
+          <span class="stufen-card__badge">Einstieg</span>
+          <h3>Kompaktkurs</h3>
+          <p>Zwei Tage systemisches Coaching kennenlernen – online oder in Präsenz am Institut in Bochum. Die WE werden als Selbstlernzeit vollständig auf den Grundkurs angerechnet.</p>
+          <div class="stufen-card__facts">
+            <span>2 Tage</span>
+            <span>Online oder Präsenz</span>
+            <span>Anrechenbar</span>
+          </div>
+          <div class="stufen-card__zert">
+            <span class="stufen-card__zert-text">WE als Selbstlernzeit vollständig anrechenbar auf den Grundkurs</span>
+          </div>
+        </div>
+
+        <!-- STUFE 2: Grundkurs -->
+        <div class="stufen-card stufen-card--main stufen-card--featured">
+          <span class="stufen-card__badge stufen-card__badge--empfohlen">&#10003; Empfohlen</span>
+          <h3>Systemisch Coachen<br />im Bildungskontext</h3>
+          <p>Fundierte Qualifizierung in 150 UE über 9 Monate. Mit Abschluss erhalten Sie das ISH-Akademie-Zertifikat als Systemisch Coachen im Bildungskontext.</p>
+          <div class="stufen-card__facts">
+            <span>150 UE · 9 Monate</span>
+            <span>Präsenz + Online</span>
+            <span>Berufsbegleitend</span>
+          </div>
+          <div class="stufen-card__price-tag">ab 2.450 € <span>zzgl. MwSt.</span></div>
+          <div class="stufen-card__zert stufen-card__zert--hoverable">
+            <img src="Systemischer coach Sigel.png" class="stufen-card__zert-popup" alt="ISH-Akademie-Zertifikat" />
+            <span class="stufen-card__zert-text">ISH-Akademie-Zertifikat:<br />Systemisch Coachen im Bildungskontext</span>
+          </div>
+        </div>
+
+        <!-- STUFE 3: Aufbaukurs -->
+        <div class="stufen-card stufen-card--aufbau">
+          <span class="stufen-card__badge">Aufbaukurs</span>
+          <h3>Systemisch Coachen<br />im Bildungskontext</h3>
+          <p>Grundkurs + Aufbaukurs zusammen ergeben die vollständige SG-anerkannte Qualifikation – die höchste Anerkennung im Berufsfeld.</p>
+          <div class="stufen-card__facts">
+            <span>130 WE · 13 Monate</span>
+            <span>Präsenz + Online</span>
+            <span>Berufsbegleitend</span>
+          </div>
+          <div class="stufen-card__zert stufen-card__zert--hoverable">
+            <img src="logo_sg-weiss.png" class="stufen-card__zert-popup stufen-card__zert-popup--sg" alt="SG-Zertifizierung" />
+            <span class="stufen-card__zert-text">SG-Zertifizierung:<br />Grundkurs + Aufbaukurs</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHULKONTEXT-FOKUS -->
+  <section class="focus" id="focus">
+    <div class="container">
+      <div class="focus-split">
+
+        <div class="focus-split__left">
+          <span class="focus-split__eyebrow">Für wen ist das?</span>
+          <h2>Diese Weiterbildung ist für Sie – wenn Schule Ihr System ist.</h2>
+          <p class="focus-split__intro">Sie arbeiten im Bildungskontext und wollen wirksamer werden – für sich, für andere und für Ihre Schule als Ganzes. Systemisches Coaching ist Ihr Handwerkszeug: präzise, haltungsorientiert und unmittelbar anwendbar.</p>
+          <img src="Zielgruppe.webp" alt="Zielgruppe – Menschen im Bildungskontext" class="focus-split__zielgruppe-img" />
+        </div>
+
+        <div class="focus-split__right">
+          <div class="focus-who-list">
+
+            <div class="focus-who-item">
+              <div class="focus-who-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="21" x2="23" y2="19"/><line x1="19" y1="19" x2="23" y2="19"/></svg>
+              </div>
+              <div>
+                <strong>Lehrkräfte</strong>
+                <p>Die Schüler:innen systemisch begleiten, Entwicklungsgespräche auf Augenhöhe führen und Beziehungsgestaltung als Professionalität verstehen.</p>
+              </div>
+            </div>
+
+            <div class="focus-who-item">
+              <div class="focus-who-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div>
+                <strong>Schulleitungen</strong>
+                <p>Die ihr Kollegium mit systemischem Blick führen, Veränderungsprozesse begleiten und Schule als lebendiges System weiterentwickeln.</p>
+              </div>
+            </div>
+
+            <div class="focus-who-item">
+              <div class="focus-who-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <strong>Fachkräfte in Bildungsorganisationen</strong>
+                <p>Fortbildungsmoderator:innen, Schulberater:innen und alle, die Entwicklungsprozesse von außen begleiten und gestalten.</p>
+              </div>
+            </div>
+
+            <div class="focus-who-item">
+              <div class="focus-who-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <strong>Coaches mit Bildungsfokus</strong>
+                <p>Die ihre Coaching-Kompetenz gezielt im Schulkontext ausbauen und mit SG-anerkannter Qualifikation positionieren möchten.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <blockquote class="focus-quote">
+            „Schule ist mehr als Unterricht. Sie ist ein komplexes soziales System – mit Dynamiken, Mustern und Potenzialen. Wer systemisch denkt, kann Schule wirklich verändern."
+            <cite>ISH Akademie · Systemisch Schule machen</cite>
+          </blockquote>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VERTIKALE TIMELINE: alle Produkte -->
+
+
+  <!-- KOMPAKTKURS -->
+  <section class="kompakt-section" id="kompaktkurs">
+    <div class="container">
+
+      <div class="prod-divider__inner" style="margin-bottom:2rem;">
+        <div>
+          <span class="prod-divider__eyebrow">Stufe 1 · Optional &amp; Anrechenbar</span>
+          <h2 class="prod-divider__title">Kompaktkurs</h2>
+        </div>
+        <span class="prod-divider__badge prod-divider__badge--optional">2 Tage · WE als Selbstlernzeit anrechenbar</span>
+      </div>
+
+      <p style="font-size:.97rem;color:rgba(255,255,255,.6);line-height:1.75;max-width:680px;margin-bottom:2.5rem;">Der ideale Einstieg – zwei intensive Tage, um systemisches Coaching wirklich zu erleben. Die WE werden als Selbstlernzeit vollständig auf den Grundkurs angerechnet. Wählbar als Online- oder Präsenzformat.</p>
+
+      <div class="kompakt-variants">
+
+        <!-- ONLINE -->
+        <div class="kompakt-variant">
+          <span class="kompakt-variant__label">Online-Seminar</span>
+          <h4>Systemisches Coaching kompakt · Online</h4>
+          <ul class="kompakt-variant__list">
+            <li>21. und 22. August 2026</li>
+            <li>Jeweils 9 – 18 Uhr · via Zoom</li>
+            <li>Referent: Benjamin Lambeck</li>
+            <li>Kleine Gruppengröße · max. 12 TN</li>
+          </ul>
+          <div class="kompakt-variant__price">690 € <span>zzgl. MwSt.</span></div>
+          <div style="margin-top:1rem;">
+            <a href="#register" class="btn btn--primary" style="font-size:.85rem;padding:.55rem 1.1rem;">Online buchen →</a>
+          </div>
+        </div>
+
+        <!-- PRÄSENZ -->
+        <div class="kompakt-variant">
+          <span class="kompakt-variant__label">Präsenzseminar · Bochum</span>
+          <h4>Systemisches Coaching kompakt · Präsenz</h4>
+          <ul class="kompakt-variant__list">
+            <li>16. und 17. September 2026</li>
+            <li>Jeweils 9 – 18 Uhr · ISH Bochum</li>
+            <li>Referent: Dennis Sawatzki</li>
+            <li>Kleine Gruppengröße · max. 12 TN</li>
+          </ul>
+          <div class="kompakt-variant__price">690 € <span>zzgl. MwSt.</span></div>
+          <div style="margin-top:1rem;">
+            <a href="#register" class="btn btn--primary" style="font-size:.85rem;padding:.55rem 1.1rem;">Präsenz buchen →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.55);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ish-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Die WE des Kompaktkurses werden als Selbstlernzeit vollständig auf den Grundkurs angerechnet – ein echter Einstieg ohne Umwege.
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- GRUNDKURS -->
+  <div class="prod-divider" id="grundkurs">
+    <div class="container">
+      <div class="prod-divider__inner">
+        <div>
+          <span class="prod-divider__eyebrow">Stufe 2 · ISH-Zertifikat</span>
+          <h2 class="prod-divider__title">Grundkurs <em>Systemisch Coachen</em></h2>
+          <span class="prod-divider__price-hint">ab 2.450 € zzgl. MwSt.</span>
+        </div>
+        <span class="prod-divider__badge prod-divider__badge--ish">ISH-Akademie-Zertifikat</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE GRUNDKURS -->
+  <section class="modules" id="modules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Grundkurs · Termine 2026–2027</span>
+        <h2>Die vier Module.</h2>
+        <p class="section-intro">Aufeinander aufbauend, durchgehend mit Schulkontext-Fokus – berufsbegleitend in 9 Monaten.</p>
+      </div>
+
+      <div class="modules__list">
+
+        <!-- MODUL 1 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-01">
+            <span class="mod-accordion__bg-num" aria-hidden="true">01</span>
+            <span class="mod-accordion__num">01</span>
+            <div class="mod-accordion__summary">
+              <h3>Grundlagen systemischen Coachings</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">24.–26. Sep 2026 · Do–Sa</span>
+                <span class="tag tag--format tag--inperson">Präsenz · Bochum</span>
+                <span class="tag tag--ue">30 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-01" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Eine systemische Grundhaltung bewusst einnehmen und im Gespräch spürbar machen</li>
+                  <li>Erste echte Coaching-Gespräche strukturieren und souverän führen</li>
+                  <li>Den Coaching-Kontrakt professionell gestalten – klar und verbindlich</li>
+                  <li>Die eigene Wirkung als Coach erkennen und reflektieren</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Systemtheorie &amp; Konstruktivismus – lebendig, nicht trocken</li>
+                  <li>Systemische Haltung als Grundlage professionellen Handelns</li>
+                  <li>Auftragsklärung und Coaching-Kontrakt</li>
+                  <li>Erste Coaching-Gespräche in der Peergruppe</li>
+                  <li>Eigene Muster und Ressourcen als Coach entdecken</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>24.–26. September 2026</strong>
+                    <span>Donnerstag bis Samstag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Präsenz · Bochum</strong>
+                    <span>3 intensive Präsenztage</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>30 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dennis Sawatzki</strong>
+                    <span>Dr. Lukas Mundelsee</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODUL 2 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-02">
+            <span class="mod-accordion__bg-num" aria-hidden="true">02</span>
+            <span class="mod-accordion__num">02</span>
+            <div class="mod-accordion__summary">
+              <h3>Systemische Gesprächsführung im Coaching</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">20.–21. Nov 2026 · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-02" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Systemische Fragetechniken situativ und sicher einsetzen</li>
+                  <li>Hypothesen bilden ohne zu bewerten oder zu lenken</li>
+                  <li>Klienten von der Problem-Trance in Lösungsräume begleiten</li>
+                  <li>Coaching-Gespräche souverän strukturieren und abschließen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Wunderfrage, Skalierung &amp; zirkuläre Fragen</li>
+                  <li>Hypothesenbildung ohne Bewertung</li>
+                  <li>Reframing und Perspektivwechsel</li>
+                  <li>Live-Rollenspiele in Breakout-Räumen mit Trainer-Feedback</li>
+                  <li>Gesprächsstruktur und professioneller Abschluss</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>20.–21. November 2026</strong>
+                    <span>Freitag bis Samstag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                    <span>2 Tage mit Breakout-Sessions</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Benjamin Lambeck</strong>
+                    <span>Dr. Lukas Mundelsee (Sa)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODUL 3 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-03">
+            <span class="mod-accordion__bg-num" aria-hidden="true">03</span>
+            <span class="mod-accordion__num">03</span>
+            <div class="mod-accordion__summary">
+              <h3>Coaching im Kontext von Organisationen &amp; Teams</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">26.–27. Feb 2027 · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-03" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Teamprozesse und Entwicklungsphasen systemisch einschätzen</li>
+                  <li>Als Schulleitung systemisch führen – statt zu verwalten</li>
+                  <li>Mit Widerstand und Dynamiken im Kollegium professionell umgehen</li>
+                  <li>Komplexe Aufträge im Dreiecksvertrag klar klären</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Teamentwicklungsphasen &amp; Belbin-Rollen</li>
+                  <li>Systemische Führung im Schulkontext</li>
+                  <li>Der Dreiecksvertrag: Klarheit in komplexen Situationen</li>
+                  <li>Widerstand und Dynamiken verstehen und nutzen</li>
+                  <li>Coaching als Instrument der Schulentwicklung</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>26.–27. Februar 2027</strong>
+                    <span>Freitag bis Samstag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                    <span>2 Tage mit Fallarbeit</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dennis Sawatzki</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SELBSTERFAHRUNG & ABSCHLUSS -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-04">
+            <span class="mod-accordion__bg-num" aria-hidden="true">04</span>
+            <span class="mod-accordion__num">04</span>
+            <div class="mod-accordion__summary">
+              <h3>Selbsterfahrung &amp; Abschluss</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">9.–11. Apr 2027 · Fr–So</span>
+                <span class="tag tag--format tag--inperson">Präsenz · Bochum</span>
+                <span class="tag tag--ue">25 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-04" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Die eigene Systembiografie als Ressource und Coach verstehen</li>
+                  <li>9 Monate Wachstum reflektieren und integrieren</li>
+                  <li>Eine gefestigte Coaching-Identität für den Schulalltag entwickeln</li>
+                  <li>Als zertifizierter Systemischer Coach (SG) abschließen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Genogramm und eigene Systembiografie erkunden</li>
+                  <li>Reflexion: Was hat sich in 9 Monaten verändert?</li>
+                  <li>Coaching-Identität und professionelles Selbstbild festigen</li>
+                  <li>Zertifikatsübergabe: Systemisch Coachen im Bildungskontext (SG)</li>
+                  <li>Ausblick: Aufbaukurs Systemische Moderation</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>9.–11. April 2027</strong>
+                    <span>Freitag bis Sonntag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Präsenz · Bochum</strong>
+                    <span>3 intensive Abschlusstage</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>25 WE</strong>
+                    <span>10 WE Abschluss + 15 WE Selbsterfahrung</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dennis Sawatzki</strong>
+                    <span>Antonia* (So, je nach Verfügbarkeit)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mod-panel__note">* Antonia je nach Verfügbarkeit am Sonntag</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SG-QUALIFIZIERUNGSWEG -->
+  <section class="sg-weg">
+    <div class="container">
+      <div class="sg-weg__header">
+        <span class="sg-weg__eyebrow">Systemische Gesellschaft</span>
+        <h2 class="sg-weg__title">Ihr Weg zur Zertifizierung durch die Systemische Gesellschaft</h2>
+      </div>
+
+      <div class="sg-weg__track">
+
+        <!-- Kompaktkurs (optional) -->
+        <div class="sg-weg__node sg-weg__node--k">
+          <div class="sg-weg__dot sg-weg__dot--k"></div>
+          <span class="sg-weg__label">Einstieg</span>
+          <span class="sg-weg__name">Kompaktkurs</span>
+          <span class="sg-weg__sub">2 Tage systemisches Coaching erleben</span>
+          <span class="sg-weg__optional-badge">Optional · Anrechenbar</span>
+        </div>
+
+        <span class="sg-weg__arrow">›</span>
+
+        <!-- Grundkurs -->
+        <div class="sg-weg__node sg-weg__node--gk">
+          <div class="sg-weg__dot sg-weg__dot--gk">
+            <img src="Akademie.png" alt="ISH Akademie" />
+          </div>
+          <span class="sg-weg__label">Stufe 2</span>
+          <span class="sg-weg__name">Grundkurs abschließen</span>
+          <span class="sg-weg__sub">150 UE · 9 Monate berufsbegleitend</span>
+          <span class="sg-weg__cert sg-weg__cert--ish">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Systemischer Coach (ISH-Zertifikat)
+          </span>
+        </div>
+
+        <span class="sg-weg__arrow">›</span>
+
+        <!-- Aufbaukurs -->
+        <div class="sg-weg__node sg-weg__node--ak">
+          <div class="sg-weg__dot sg-weg__dot--ak">
+            <img src="logo_sg-weiss.png" alt="Systemische Gesellschaft" />
+          </div>
+          <span class="sg-weg__label">Stufe 3</span>
+          <span class="sg-weg__name">Aufbaukurs abschließen</span>
+          <span class="sg-weg__sub">Grundkurs + Aufbaukurs = SG-Qualifikation</span>
+          <span class="sg-weg__cert sg-weg__cert--sg">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Systemischer Coach (SG-zertifiziert)
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ERST GRUNDKURS HINT -->
+  <div class="erst-grundkurs-hint">
+    <div class="container">
+      <div class="erst-grundkurs-hint__inner">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Gut zu wissen:</strong> Sie müssen sich jetzt noch nicht für den Aufbaukurs entscheiden. Starten Sie mit dem Grundkurs – und entscheiden Sie danach, ob Sie den Weg zur SG-Zertifizierung weitergehen möchten.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUFBAUKURS -->
+  <div class="prod-divider" id="aufbaukurs">
+    <div class="container">
+      <div class="prod-divider__inner">
+        <div>
+          <span class="prod-divider__eyebrow">Stufe 3 · SG-Zertifizierung</span>
+          <h2 class="prod-divider__title">Aufbaukurs <em>Systemisch Coachen</em></h2>
+        </div>
+        <span class="prod-divider__badge prod-divider__badge--sg">Grundkurs + Aufbaukurs = SG-Zertifikat</span>
+      </div>
+    </div>
+  </div>
+  <section class="aufbaukurs-section">
+    <div class="container">
+
+      <p style="font-size:.97rem;color:rgba(255,255,255,.6);line-height:1.75;max-width:680px;margin-bottom:2.5rem;">Wer nach dem Grundkurs weitermacht, erwirbt die volle Qualifikation der Systemischen Gesellschaft (SG). Der Aufbaukurs umfasst weitere 7 Module mit Lehrcoachings, Selbsterfahrung und Abschlusskolloquium.</p>
+
+      <div class="modules__list">
+
+        <!-- MODUL 04 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-04b">
+            <span class="mod-accordion__bg-num" aria-hidden="true">04</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);">04</span>
+            <div class="mod-accordion__summary">
+              <h3>Systemisch führen</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">17.–18. September 2027 · Do–Fr</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-04b" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Führung als systemischen Gestaltungsraum verstehen und nutzen</li>
+                  <li>Personalentwicklungsgespräche systemisch führen</li>
+                  <li>Führungskultur als Coaching-Instrument einsetzen</li>
+                  <li>Das Werte-Entwicklungsquadrat im Führungskontext anwenden</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Werte-Entwicklungsquadrat als Feedback-Tool</li>
+                  <li>Stufen der Partizipation und Führungskultur</li>
+                  <li>Aufstellung in Coachingspace zur Organisation</li>
+                  <li>Delegation-Poker und Führen &amp; Folgen</li>
+                  <li>Dynafin-Modell und Organigramm systemisch lesen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>17.–18. September 2027</strong>
+                    <span>Donnerstag bis Freitag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dr. Lukas Mundelsee</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODUL 05 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-05">
+            <span class="mod-accordion__bg-num" aria-hidden="true">05</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);">05</span>
+            <div class="mod-accordion__summary">
+              <h3>Coaching-Methoden &amp; Formate</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">19.–20. November 2027 · Di–Mi</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-05" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Online-Coaching professionell von Präsenz-Coaching unterscheiden</li>
+                  <li>Digitale Methoden sicher und wirkungsvoll einsetzen</li>
+                  <li>Blended-Coaching-Konzepte entwickeln und umsetzen</li>
+                  <li>KI-Tools sinnvoll in Coaching-Prozesse integrieren</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Online-Coaching vs. Präsenz-Coaching – Unterschiede und Chancen</li>
+                  <li>ABC des Online-Coachings und Stufenmodell</li>
+                  <li>Werte- und Entwicklungsquadrat digital</li>
+                  <li>Inneres Team und Systemaufstellung online</li>
+                  <li>Blended Coaching, Datenschutz &amp; Videokonferenzsysteme</li>
+                  <li>Schriftbasierte Online-Beratung</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>19.–20. November 2027</strong>
+                    <span>Dienstag bis Mittwoch</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Benjamin Lambeck</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODUL 06 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-06">
+            <span class="mod-accordion__bg-num" aria-hidden="true">06</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);">06</span>
+            <div class="mod-accordion__summary">
+              <h3>Konflikt</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">10.–11. März 2028 · Fr–Sa</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-06" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Konflikte im schulischen System systemisch einordnen und bearbeiten</li>
+                  <li>Inneren Konflikt als Lernfeld verstehen und nutzen</li>
+                  <li>Wertequadrat als Deeskalationsinstrument einsetzen</li>
+                  <li>Tetralemma-Methoden sicher anwenden</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Konfliktstufen nach Glasl</li>
+                  <li>Innerer Konflikt und Wertequadrat</li>
+                  <li>Zitronen-Szenario und Tetralemma mit Schuhen</li>
+                  <li>Tetralemma mit dem Systembrett</li>
+                  <li>Abigail &amp; William – systemische Fallarbeit</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>10.–11. März 2028</strong>
+                    <span>Freitag bis Samstag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dr. Lukas Mundelsee</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SELBSTERFAHRUNGSWOCHE II -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-se2">
+            <span class="mod-accordion__bg-num" aria-hidden="true">SE</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);font-size:1.4rem;">SE II</span>
+            <div class="mod-accordion__summary">
+              <h3>Selbsterfahrungswoche II</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">26.–30. April 2028 · Mo–Fr</span>
+                <span class="tag tag--format tag--inperson">Präsenz · extern</span>
+                <span class="tag tag--ue">50 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-se2" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Eigene Coachingbiografie und Systembiografie vertiefen</li>
+                  <li>Persönliche Wachstumsprozesse in der Gruppe erleben</li>
+                  <li>Die eigene Coaching-Identität weiterentwickeln</li>
+                  <li>Genogramm als Selbstreflexionsinstrument nutzen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Clownsübung und Wanderung in der Natur</li>
+                  <li>Gemälde, Teamkochen, Genogramm</li>
+                  <li>3 Felder stumme Aufstellung</li>
+                  <li>Abigail &amp; William – vertiefte Bearbeitung</li>
+                  <li>Beratung im Stillen</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>26.–30. April 2028</strong>
+                    <span>Montag bis Freitag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Präsenz · extern</strong>
+                    <span>Außerhalb Bochums (Ort folgt)</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>50 Weiterbildungseinheiten</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODUL 07 -->
+        <div class="mod-accordion">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-07">
+            <span class="mod-accordion__bg-num" aria-hidden="true">07</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);">07</span>
+            <div class="mod-accordion__summary">
+              <h3>Mein Marktstand</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">9.–10. Juni 2028 · So–Mo</span>
+                <span class="tag tag--format tag--online">Online</span>
+                <span class="tag tag--ue">20 WE</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-07" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Das eigene Coaching-Profil klar und anziehend formulieren</li>
+                  <li>Zielgruppen und Kernkompetenzen schärfen</li>
+                  <li>Honorargestaltung und Vertrag professionell aufstellen</li>
+                  <li>Mit ChatGPT das eigene Profil weiterentwickeln</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Meine Kernkompetenzen und Zielgruppen</li>
+                  <li>Themenbereiche und Touching Points</li>
+                  <li>Vertragsgestaltung und Honorar</li>
+                  <li>Stalk &amp; Talk! – Marktpositionierung üben</li>
+                  <li>Denkhüte nach de Bono zur Profilschärfung</li>
+                  <li>ChatGPT als Profiler und Marketingexperte</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>9.–10. Juni 2028</strong>
+                    <span>Sonntag bis Montag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Online · Zoom</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Umfang</span>
+                    <strong>20 Weiterbildungseinheiten</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Dr. Lukas Mundelsee</strong>
+                    <span>ggf. Dennis Sawatzki</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABSCHLUSSKOLLOQUIUM -->
+        <div class="mod-accordion module-card--final">
+          <button class="mod-accordion__trigger" aria-expanded="false" aria-controls="mod-panel-abschluss" style="background:linear-gradient(135deg, #1a2a5e 0%, var(--ish-dark) 100%);">
+            <span class="mod-accordion__bg-num" aria-hidden="true" style="color:rgba(120,136,254,.08);">SG</span>
+            <span class="mod-accordion__num" style="color:var(--akademie);font-size:1.2rem;">AB</span>
+            <div class="mod-accordion__summary">
+              <h3>Abschlusskolloquium &amp; SG-Zertifizierung</h3>
+              <div class="mod-accordion__tags">
+                <span class="tag tag--date">12.–14. Oktober 2028 · Fr–So</span>
+                <span class="tag tag--format tag--inperson">Präsenz · Bochum</span>
+              </div>
+            </div>
+            <svg class="mod-accordion__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mod-accordion__panel" id="mod-panel-abschluss" hidden>
+            <div class="mod-panel__cols">
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Lernziele</span>
+                <ul class="mod-panel__check-list">
+                  <li>Den gesamten Lernweg reflektieren und integrieren</li>
+                  <li>Die eigene Coaching-Identität abschließend präsentieren</li>
+                  <li>SG-Zertifizierung Systemisch Coachen erwerben</li>
+                  <li>Als vollwertig qualifizierter Coach in die Praxis starten</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Inhalte</span>
+                <ul class="mod-panel__arrow-list">
+                  <li>Abschlusspräsentation und gemeinsame Reflexion</li>
+                  <li>Fallbesprechung und Peer-Feedback</li>
+                  <li>Übergabe des SG-anerkannten Zertifikats</li>
+                  <li>Feierlicher Abschluss in Bochum</li>
+                </ul>
+              </div>
+              <div class="mod-panel__col">
+                <span class="mod-panel__label">Format &amp; Umfang</span>
+                <div class="mod-panel__format-block">
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Wann</span>
+                    <strong>12.–14. Oktober 2028</strong>
+                    <span>Freitag bis Sonntag</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Format</span>
+                    <strong>Präsenz · Bochum</strong>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Zertifikat</span>
+                    <strong style="color:#3a4a58;">SG-anerkannte Qualifikation</strong>
+                    <span>Systemischer Coach (SG)</span>
+                  </div>
+                  <div class="mod-panel__format-item">
+                    <span class="fmt-label">Lehrende</span>
+                    <strong>Benjamin Lambeck</strong>
+                    <span>Dr. Lukas Mundelsee</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="prod-section-cta">
+        <a href="#register" class="btn btn--primary">Zum Aufbaukurs anmelden</a>
+        <a href="#register" class="btn btn--outline" style="border-color:rgba(255,255,255,.35);color:#fff;">Direkt für SG-Qualifizierung (Grundkurs + Aufbaukurs)</a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- VERSPRECHEN -->
+  <section class="promise" id="promise">
+    <div class="container promise__inner">
+      <div class="promise__visual">
+        <div class="promise__seal-display">
+          <img src="Systemischer coach Sigel.png"
+               alt="ISH-Akademie-Zertifikat Systemisch Coachen im Bildungskontext"
+               class="promise__seal-img" />
+          <p class="promise__seal-caption">ISH-Akademie-Zertifikat<br /><strong>Systemisch Coachen im Bildungskontext</strong></p>
+        </div>
+      </div>
+      <div class="promise__content">
+        <span class="section-tag">Unser Versprechen</span>
+        <h2>Was Sie mitnehmen.</h2>
+        <p>Das Angebot der Weiterbildung zielt insbesondere darauf ab:</p>
+        <ul class="promise__list">
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Entwickeln Sie eine systemische Haltung und erweitern Sie Ihre methodische Kompetenz.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Gewinnen Sie Know-how zur Schulentwicklung und gestalten Sie Veränderungsprozesse kompetent.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Spezialisieren Sie sich auf Coaching im Bildungssektor und erweitern Sie Ihre Fähigkeiten gezielt.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Lernen Sie die effektive Anwendung von Online-Coaching und Blended-Formaten.</li>
+          <li><div class="promise__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>Profitieren Sie von unserer Expertise in der virtuellen Beratung und umfangreichen Kartensets zu Online- und Blended-Coaching.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINER -->
+  <section class="trainers" id="trainers">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ihr Weiterbildungsteam</span>
+        <h2>Ihre Trainer:innen.</h2>
+        <p class="section-intro">Erfahren, leidenschaftlich und auf Augenhöhe – alle mit tiefem Verständnis für das System Schule.</p>
+      </div>
+      <div class="trainers__grid trainers__grid--bio">
+
+        <div class="trainer-card trainer-card--bio">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar" data-initials="B"><div class="trainer-card__sq"></div><img src="Benjamin-Lambeck.webp" alt="Benjamin Lambeck" /></div>
+            <div>
+              <h3>Benjamin Lambeck</h3>
+              <p class="trainer-card__role">Systemischer Berater (SG, DGSF) · Modul 2 &amp; Abschluss</p>
+            </div>
+          </div>
+          <p class="trainer-card__bio">Systemischer Berater (SG, DGSF), Potenzialmanager, systemischer Business Coach (SG), Train-the-Trainer Ausbildung, Geschäftsführer und Gründer von Coachingspace, Bereichsleitung ISH-Akademie und Gründungsmitglied des Instituts für Schulentwicklung und Hochschuldidaktik GmbH.</p>
+          <div class="trainer-card__focus">
+            <strong>Schwerpunkte:</strong>
+            <div class="trainer-tags"><span>Online-Coaching</span><span>Führungskräftecoaching</span><span>Teamentwicklung</span><span>Unternehmertum</span></div>
+          </div>
+        </div>
+
+        <div class="trainer-card trainer-card--bio">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar" data-initials="D"><div class="trainer-card__sq"></div><img src="ish-gruppe-dennis-sawatzki-geschaeftsfuehrer-1-e1695956252461.webp" alt="Dennis Sawatzki" /></div>
+            <div>
+              <h3>Dennis Sawatzki</h3>
+              <p class="trainer-card__role">Systemischer (Business-)Coach (SG) · Modul 1, 3 &amp; Abschluss</p>
+            </div>
+          </div>
+          <p class="trainer-card__bio">Systemischer (Business-)Coach (SG), Supervisor &amp; Coach (DGSv), Counselor grad. (BVPPT), Green-Trainer für Kooperatives Lehren, Lernen und Leiten, Gründer und Geschäftsführer des Instituts für Schulentwicklung und Hochschuldidaktik, Mitgründer von Coachingspace, Fortbildungs- und Veranstaltungsmoderator, Buchautor.</p>
+          <div class="trainer-card__focus">
+            <strong>Schwerpunkte:</strong>
+            <div class="trainer-tags"><span>Online-Coaching</span><span>Leitbildentwicklung</span><span>Feedback-Kultur</span><span>Kooperatives Lernen</span><span>Salutogene Schulentwicklung</span></div>
+          </div>
+        </div>
+
+        <div class="trainer-card trainer-card--bio">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar" data-initials="L"><div class="trainer-card__sq"></div><img src="Lukas-Mundelsee.webp" alt="Dr. Lukas Mundelsee" /></div>
+            <div>
+              <h3>Dr. Lukas Mundelsee</h3>
+              <p class="trainer-card__role">Systemischer Coach (SG) · Modul 1, 2 &amp; Abschluss</p>
+            </div>
+          </div>
+          <p class="trainer-card__bio">Studium der Psychologie in Landau (B.Sc.) und Münster (M.Sc.) mit Schwerpunkten pädagogische und klinische Psychologie. Moderatoren- und Trainerfortbildung an der Reflaction Akademie, SG-Zertifizierung zum Systemischen Berater am WISL Wiesloch, DOSB A-Lizenz Leistungssport Schwimmen, Systemischer Coach (SG).</p>
+          <div class="trainer-card__focus">
+            <strong>Schwerpunkte:</strong>
+            <div class="trainer-tags"><span>Lernstrategien</span><span>Motivation</span><span>Kommunikationskompetenz</span><span>Selbstmanagement</span><span>Systemische Beratung</span></div>
+          </div>
+        </div>
+
+        <div class="trainer-card trainer-card--bio">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar" data-initials="A"><div class="trainer-card__sq"></div><img src="Antonia.jpg" alt="Antonia Klein Nikolaidis" /></div>
+            <div>
+              <h3>Antonia Klein Nikolaidis</h3>
+              <p class="trainer-card__role">Mastercoach &amp; Lehrcoach (DGfC) · Modul 4 &amp; Abschluss</p>
+            </div>
+          </div>
+          <p class="trainer-card__bio">Sozialpädagogin, Mastercoach und Lehrcoach (DGfC) mit über 15 Jahren Coaching-Erfahrung. Gründerin von Coachingcard by Niko und Erfinderin der weitverbreiteten „Karten der Befindlichkeiten". Lehrbeauftragte an der Evangelischen Hochschule RWL (Bochum) und der FH Südwestfalen. Referentin u. a. für das BMAS, die Cornelsen Akademie und die IHK Düsseldorf. Ausgezeichnet mit dem European Training Prize 2021 und dem HR Excellence Award 2021. Buchautorin (Verlag an der Ruhr). Ihr Ansatz verbindet ästhetische Methoden mit systemischem Coaching.</p>
+          <div class="trainer-card__focus">
+            <strong>Schwerpunkte:</strong>
+            <div class="trainer-tags"><span>Kreative Coaching-Tools</span><span>Organisationsentwicklung</span><span>Führungskräftecoaching</span><span>Resilienz</span><span>Teamentwicklung</span><span>Change Management</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ANMELDUNG -->
+  <section class="register" id="register">
+    <div class="register__deco" aria-hidden="true">
+      <div class="register__sq register__sq--1"></div>
+      <div class="register__sq register__sq--2"></div>
+    </div>
+    <div class="container">
+
+      <div class="register__intro">
+        <span class="section-tag">Jetzt sichern</span>
+        <h2>Starten Sie Ihre Reise mit<br /><span class="text-teal">Systemisch Coachen im Bildungskontext.</span></h2>
+        <p>Wählen Sie Ihren Einstieg – alle Optionen können einzeln gebucht werden. Plätze sind begrenzt.</p>
+      </div>
+
+      <!-- 4 BUCHUNGSOPTIONEN -->
+      <div class="buchung-grid">
+
+        <div class="buchung-card buchung-card--k">
+          <span class="buchung-card__badge">Optional · Anrechenbar</span>
+          <h3>Kompaktkurs</h3>
+          <p>Zweitägiger Einstieg in systemisches Coaching – online oder in Präsenz. WE als Selbstlernzeit vollständig auf den Grundkurs anrechenbar.</p>
+          <div class="buchung-card__facts">
+            <span>2 Tage</span>
+            <span>Online oder Präsenz</span>
+          </div>
+          <div class="buchung-card__price">690 <span>€ zzgl. MwSt.</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--k" data-option="Kompaktkurs">Kompaktkurs buchen</button>
+        </div>
+
+        <div class="buchung-card buchung-card--gk">
+          <span class="buchung-card__badge">ISH-Zertifikat</span>
+          <h3>Grundkurs</h3>
+          <p>150 UE über 9 Monate berufsbegleitend. Abschluss mit dem ISH-Akademie-Zertifikat.</p>
+          <div class="buchung-card__facts">
+            <span>150 UE · 9 Monate</span>
+            <span>Berufsbegleitend</span>
+          </div>
+          <div class="buchung-card__price">2.450 <span>€ zzgl. MwSt.</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--gk" data-option="Grundkurs">Grundkurs buchen</button>
+        </div>
+
+        <div class="buchung-card buchung-card--ak">
+          <span class="buchung-card__badge">Aufbaukurs</span>
+          <h3>Aufbaukurs</h3>
+          <p>130 WE über 13 Monate – aufbauend auf dem Grundkurs. Vertiefung und SG-Qualifikation.</p>
+          <div class="buchung-card__facts">
+            <span>130 WE · 13 Monate</span>
+            <span>Aufbauend auf Grundkurs</span>
+          </div>
+          <div class="buchung-card__price">4.950 <span>€ zzgl. MwSt.</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--ak" data-option="Aufbaukurs">Aufbaukurs buchen</button>
+        </div>
+
+        <div class="buchung-card buchung-card--sg">
+          <span class="buchung-card__badge buchung-card__badge--highlight">SG-Zertifizierung · Vorteilspreis</span>
+          <h3>Grundkurs + Aufbaukurs</h3>
+          <p>Die vollständige SG-anerkannte Qualifikation – Grundkurs und Aufbaukurs gemeinsam buchen und den kompletten Weg gehen.</p>
+          <div class="buchung-card__facts">
+            <span>Gesamtpaket</span>
+            <span>SG-zertifiziert</span>
+          </div>
+          <div class="buchung-card__price">6.900 <span>€ zzgl. MwSt.</span></div>
+          <button class="btn buchung-card__btn buchung-card__btn--sg" data-option="Grundkurs + Aufbaukurs (SG-Qualifikation)">Gesamtpaket buchen</button>
+        </div>
+
+      </div><!-- /buchung-grid -->
+
+      <!-- FORM -->
+      <div class="register__form-wrap">
+        <form class="register__form" novalidate>
+          <h3>Anmeldung &amp; Anfrage</h3>
+          <p class="register__form-sub" id="buchung-selected-label"></p>
+          <input type="hidden" id="reg-buchung" name="buchung" value="" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-firstname">Vorname *</label>
+              <input type="text" id="reg-firstname" name="firstname" placeholder="Vorname" required />
+            </div>
+            <div class="form-group">
+              <label for="reg-lastname">Nachname *</label>
+              <input type="text" id="reg-lastname" name="lastname" placeholder="Nachname" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">E-Mail-Adresse *</label>
+            <input type="email" id="reg-email" name="email" placeholder="ihre@email.de" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-role">Ich bin / ich arbeite als</label>
+            <select id="reg-role" name="role">
+              <option value="">Bitte wählen...</option>
+              <option>Lehrkraft / Hochschullehrende:r</option>
+              <option>Schulleitung</option>
+              <option>Schulentwicklungsberater:in / Fortbildungsmoderator:in</option>
+              <option>Coach / Berater:in</option>
+              <option>Sonstige Bildungseinrichtung</option>
+              <option>Studierende:r</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="reg-message">Fragen oder Anmerkungen</label>
+            <textarea id="reg-message" name="message" rows="4" placeholder="Haben Sie Fragen oder möchten Sie uns etwas mitteilen?"></textarea>
+          </div>
+          <div class="form-group form-group--check">
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacy" required />
+              <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme zu. *</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Jetzt anmelden</button>
+          <p class="form-note">* Pflichtfelder. Wir melden uns innerhalb von 2 Werktagen.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p>Systemisch Schule machen.<br />ISH Akademie – Teil der ISH Gruppe.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer Navigation">
+        <div class="footer__col">
+          <strong>Kurs</strong>
+          <a href="#focus">Schulkontext</a>
+          <a href="#grundkurs">Grundkurs</a>
+          <a href="#aufbaukurs">Aufbaukurs</a>
+          <a href="#trainers">Trainer:innen</a>
+          <a href="#register">Anmeldung</a>
+        </div>
+        <div class="footer__col">
+          <strong>ISH Gruppe</strong>
+          <a href="#">ISH Gruppe</a>
+          <a href="#">ISH Campus</a>
+          <a href="#">ISH Schule</a>
+          <a href="#">ISH Manufaktur</a>
+        </div>
+        <div class="footer__col">
+          <strong>Rechtliches</strong>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>&copy; 2024 ISH Akademie · ISH Gruppe. Alle Rechte vorbehalten.</span>
+        <span>Design gemäß ISH Brand Styleguide 2022</span>
+      </div>
+    </div>
+  </footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#register" class="sticky-cta__btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    Jetzt anmelden
+  </a>
+</div>
+
+<!-- ISH SEAL MODAL -->
+<div class="seal-modal" id="sealModal" role="dialog" aria-modal="true" aria-label="ISH-Akademie-Zertifikat">
+  <div class="seal-modal__inner">
+    <button class="seal-modal__close" id="sealModalClose" aria-label="Schließen">✕</button>
+    <img src="Systemischer coach Sigel.png" alt="ISH-Akademie-Zertifikat Systemisch Coachen" class="seal-modal__img" />
+    <p class="seal-modal__caption">ISH-Akademie-Zertifikat<br />Systemisch Coachen im Bildungskontext</p>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+  <script>
+    // Sticky CTA – show after scrolling past hero
+    (function(){
+      const cta = document.getElementById('stickyCta');
+      const hero = document.querySelector('.hero');
+      if (!cta || !hero) return;
+      function update(){
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        cta.classList.toggle('is-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+
+    // ISH seal modal
+    (function(){
+      const badge = document.querySelector('.prod-divider__badge--ish');
+      const modal = document.getElementById('sealModal');
+      const closeBtn = document.getElementById('sealModalClose');
+      if (!badge || !modal) return;
+      badge.setAttribute('role','button');
+      badge.setAttribute('tabindex','0');
+      badge.title = 'Zertifikat anzeigen';
+      function open(){ modal.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function close(){ modal.classList.remove('is-open'); document.body.style.overflow=''; }
+      badge.addEventListener('click', open);
+      badge.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') open(); });
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', e => { if(e.target===modal) close(); });
+      document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
+    })();
+
+    // Buchungskarten → Formular
+    (function(){
+      document.querySelectorAll('.buchung-card__btn').forEach(btn => {
+        btn.addEventListener('click', function(){
+          const option = this.getAttribute('data-option');
+          document.getElementById('reg-buchung').value = option;
+          const label = document.getElementById('buchung-selected-label');
+          if(label) label.textContent = 'Gewählte Option: ' + option;
+          const form = document.querySelector('.register__form-wrap');
+          if(form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
+
+    // Modul-Accordion
+    document.querySelectorAll('.mod-accordion__trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+      });
+    });
+  </script>
+</body>
+</html>

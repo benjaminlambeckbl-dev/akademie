@@ -1,0 +1,218 @@
+<div class="quadrat-wrapper">
+  <div class="quadrat-header">
+    <h3 class="quadrat-titel">{{ quadrat.kernwert }}</h3>
+    <div class="quadrat-header-actions">
+      <button mat-icon-button
+              matTooltip="Als PDF exportieren"
+              [disabled]="exportLaedt()"
+              (click)="exportAlsPdf()">
+        @if (exportLaedt()) {
+          <mat-spinner diameter="18"></mat-spinner>
+        } @else {
+          <mat-icon>picture_as_pdf</mat-icon>
+        }
+      </button>
+      @if (showDeleteButton) {
+        <button mat-icon-button
+                color="warn"
+                matTooltip="Quadrat löschen"
+                (click)="loeschen.emit(quadrat.id)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="quadrat-grid">
+    <!-- Legende oben -->
+    <div class="legende legende-positiv">
+      <mat-icon>add_circle_outline</mat-icon>
+      Tugenden
+    </div>
+    <div class="legende legende-negativ">
+      <mat-icon>remove_circle_outline</mat-icon>
+      Zu viel des Guten
+    </div>
+
+    <!-- Zeile 1: Kernwert und Schwestertugend -->
+    <div class="zelle zelle-kern">
+      <div class="zelle-label">Kernwert</div>
+      <div class="zelle-wert">{{ quadrat.kernwert }}</div>
+      <div class="zelle-hinweis">Ausgangspunkt</div>
+    </div>
+
+    <div class="pfeil-horizontal">
+      <div class="pfeil-linie">
+        <span class="pfeil-text">Produktive Spannung</span>
+      </div>
+      <div class="pfeil-symbol">↔</div>
+    </div>
+
+    <div class="zelle zelle-schwester">
+      <div class="zelle-label">Schwestertugend</div>
+      <div class="zelle-wert">{{ quadrat.schwestertugend }}</div>
+      <div class="zelle-hinweis">Ergänzungswert</div>
+    </div>
+
+    <!-- Pfeile vertikal + Diagonale Mitte -->
+    <div class="pfeil-vertikal pfeil-links">
+      <div class="pfeil-symbol">↕</div>
+      <div class="pfeil-text">Übertreibung</div>
+    </div>
+
+    <div class="diagonale-center">
+      <div class="diagonale diagonale-1"
+           matTooltip="Entwicklungsrichtung: Bei zu viel Kernwert hilft die Schwestertugend als Korrektiv">
+        ↗
+      </div>
+      <div class="diagonale diagonale-2"
+           matTooltip="Entwicklungsrichtung: Bei zu viel Schwestertugend hilft der Kernwert als Korrektiv">
+        ↙
+      </div>
+    </div>
+
+    <div class="pfeil-vertikal pfeil-rechts">
+      <div class="pfeil-symbol">↕</div>
+      <div class="pfeil-text">Übertreibung</div>
+    </div>
+
+    <!-- Zeile 2: Übertreibungen -->
+    <div class="zelle zelle-uebertreibung-kern">
+      <div class="zelle-label">Übertreibung</div>
+      <div class="zelle-wert">{{ quadrat.uebertreibungKernwert }}</div>
+      <div class="zelle-hinweis">Zu viel Kernwert</div>
+    </div>
+
+    <div class="pfeil-horizontal pfeil-negativ">
+      <div class="pfeil-symbol">↔</div>
+    </div>
+
+    <div class="zelle zelle-uebertreibung-schwester">
+      <div class="zelle-label">Übertreibung</div>
+      <div class="zelle-wert">{{ quadrat.uebertreibungSchwestertugend }}</div>
+      <div class="zelle-hinweis">Zu viel Schwestertugend</div>
+    </div>
+  </div>
+
+  @if (quadrat.beschreibung) {
+    <div class="quadrat-beschreibung">
+      <mat-icon>info_outline</mat-icon>
+      <span>{{ quadrat.beschreibung }}</span>
+    </div>
+  }
+
+  @if (quadrat.hinweise; as h) {
+    <div class="quadrat-hinweise">
+      <div class="hinweis-card bestaerkung">
+        <span class="hinweis-icon">💚</span>
+        <div class="hinweis-body">
+          @if (quadrat.typ === 'konflikt') {
+            <strong>Positiver Kern im Verhalten</strong>
+          } @else if (quadrat.typ === 'innerkonflikt') {
+            <strong>Beide Seiten sind berechtigt</strong>
+          } @else if (quadrat.typ === 'schatz') {
+            <strong>Dein verborgener Schatz</strong>
+          } @else {
+            <strong>Was hat dir das schon gebracht?</strong>
+          }
+          <p>{{ h.bestaerkung }}</p>
+        </div>
+        <button mat-icon-button class="karte-refresh-btn"
+                matTooltip="Diese Reflexion neu generieren"
+                [disabled]="kartenLaden()['bestaerkung']"
+                (click)="karteNeuGenerieren('bestaerkung')">
+          @if (kartenLaden()['bestaerkung']) {
+            <mat-spinner diameter="14"></mat-spinner>
+          } @else {
+            <mat-icon>refresh</mat-icon>
+          }
+        </button>
+      </div>
+      <div class="hinweis-card uebertreibung">
+        <span class="hinweis-icon">⚠️</span>
+        <div class="hinweis-body">
+          @if (quadrat.typ === 'konflikt') {
+            <strong>Was verrät meine Reaktion über mich?</strong>
+          } @else if (quadrat.typ === 'innerkonflikt') {
+            <strong>Wenn eine Seite die Überhand gewinnt</strong>
+          } @else if (quadrat.typ === 'schatz') {
+            <strong>Wenn der Schatz zu weit geht</strong>
+          } @else {
+            <strong>Dein Frühwarnsystem</strong>
+          }
+          <p>{{ h.uebertreibung }}</p>
+        </div>
+        <button mat-icon-button class="karte-refresh-btn"
+                matTooltip="Diese Reflexion neu generieren"
+                [disabled]="kartenLaden()['uebertreibung']"
+                (click)="karteNeuGenerieren('uebertreibung')">
+          @if (kartenLaden()['uebertreibung']) {
+            <mat-spinner diameter="14"></mat-spinner>
+          } @else {
+            <mat-icon>refresh</mat-icon>
+          }
+        </button>
+      </div>
+      <div class="hinweis-card entwicklung">
+        <span class="hinweis-icon">🌱</span>
+        <div class="hinweis-body">
+          @if (quadrat.typ === 'konflikt') {
+            <strong>Meine eigene Entwicklungschance</strong>
+          } @else if (quadrat.typ === 'innerkonflikt') {
+            <strong>Die Spannung halten statt auflösen</strong>
+          } @else if (quadrat.typ === 'schatz') {
+            <strong>{{ quadrat.schwestertugend }} als Korrektiv</strong>
+          } @else {
+            <strong>Mehr {{ quadrat.schwestertugend }} zulassen</strong>
+          }
+          <p>{{ h.entwicklung }}</p>
+        </div>
+        <button mat-icon-button class="karte-refresh-btn"
+                matTooltip="Diese Reflexion neu generieren"
+                [disabled]="kartenLaden()['entwicklung']"
+                (click)="karteNeuGenerieren('entwicklung')">
+          @if (kartenLaden()['entwicklung']) {
+            <mat-spinner diameter="14"></mat-spinner>
+          } @else {
+            <mat-icon>refresh</mat-icon>
+          }
+        </button>
+      </div>
+      <div class="hinweis-card trigger">
+        <span class="hinweis-icon">🔄</span>
+        <div class="hinweis-body">
+          @if (quadrat.typ === 'konflikt') {
+            <strong>Meine eigene Beteiligung</strong>
+          } @else if (quadrat.typ === 'innerkonflikt') {
+            <strong>Wann kippt das Gleichgewicht?</strong>
+          } @else if (quadrat.typ === 'schatz') {
+            <strong>Von anderen lernen</strong>
+          } @else {
+            <strong>Mit dem Gegenextrem umgehen</strong>
+          }
+          <p>{{ h.triggerhinweis }}</p>
+        </div>
+        <button mat-icon-button class="karte-refresh-btn"
+                matTooltip="Diese Reflexion neu generieren"
+                [disabled]="kartenLaden()['triggerhinweis']"
+                (click)="karteNeuGenerieren('triggerhinweis')">
+          @if (kartenLaden()['triggerhinweis']) {
+            <mat-spinner diameter="14"></mat-spinner>
+          } @else {
+            <mat-icon>refresh</mat-icon>
+          }
+        </button>
+      </div>
+    </div>
+  }
+
+  @if (quadrat.hinweise?.wahrnehmungsauftrag) {
+    <div class="wahrnehmungsauftrag">
+      <div class="wahrnehmungsauftrag-titel">
+        <span>🔭</span>
+        <strong>Wahrnehmungsauftrag für die nächste Woche</strong>
+      </div>
+      <p>{{ quadrat.hinweise!.wahrnehmungsauftrag }}</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,191 @@
+// Institut-Farbe: Schulz von Thun #1a5f8f
+$svt-blue: #1a5f8f;
+$svt-blue-dark: #154f78;
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $svt-blue !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toolbar-logo {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.toolbar-titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.toolbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: white;
+}
+
+.toolbar-subtitle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-style: italic;
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.neu-button {
+  background: rgba(255,255,255,0.15) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  &:hover { background: rgba(255,255,255,0.25) !important; }
+}
+
+.app-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: calc(100vh - 120px);
+}
+
+.quadrate-header {
+  margin-bottom: 24px;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0;
+  }
+}
+
+.anzahl-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 8px;
+  background: $svt-blue;
+  color: white;
+  border-radius: 13px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.quadrate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 24px;
+}
+
+// Leerer Zustand
+.leer-zustand {
+  text-align: center;
+  padding: 60px 20px;
+
+  h2 {
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+}
+
+.leer-logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+.leer-attribution {
+  color: $svt-blue;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0 0 20px 0;
+}
+
+.leer-beschreibung {
+  color: #777;
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.modell-erklaerung {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  grid-template-rows: auto 40px auto;
+  gap: 4px;
+  margin: 0 auto 36px;
+  max-width: 400px;
+  align-items: center;
+}
+
+.erklaer-zelle {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  &.positiv {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    border: 2px solid #81c784;
+    color: #388e3c;
+  }
+
+  &.negativ {
+    background: linear-gradient(135deg, #fff3e0, #fce4ec);
+    border: 2px solid #ef9a9a;
+    color: #c62828;
+  }
+}
+
+.erklaer-pfeil, .erklaer-pfeil-v, .erklaer-diag {
+  text-align: center;
+  color: #bbb;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.erklaer-diag {
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #90caf9;
+  line-height: 1.2;
+}
+
+.start-button {
+  background: $svt-blue !important;
+  color: white !important;
+  height: 48px;
+  font-size: 1rem;
+  padding: 0 28px;
+
+  &:hover {
+    background: $svt-blue-dark !important;
+  }
+}
+
+.app-footer {
+  text-align: center;
+  padding: 16px;
+  color: #aaa;
+  font-size: 0.8rem;
+  border-top: 1px solid #eee;
+}

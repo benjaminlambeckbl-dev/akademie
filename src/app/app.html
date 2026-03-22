@@ -1,0 +1,68 @@
+<mat-toolbar class="app-toolbar">
+  <img src="svt-logo.svg" class="toolbar-logo" alt="Schulz von Thun Institut Logo">
+  <div class="toolbar-titles">
+    <span class="toolbar-title">Werte-Entwicklungsquadrat</span>
+    <span class="toolbar-subtitle">nach Schulz von Thun</span>
+  </div>
+  <span class="spacer"></span>
+  <button mat-flat-button
+          class="neu-button"
+          (click)="neuesQuadrat()"
+          matTooltip="Neues Quadrat erstellen">
+    <mat-icon>add</mat-icon>
+    Neues Quadrat
+  </button>
+</mat-toolbar>
+
+<div class="app-content">
+
+  @if (service.quadrate().length === 0) {
+    <div class="leer-zustand">
+      <img src="svt-logo.svg" class="leer-logo" alt="Schulz von Thun Institut">
+      <h2>Werte-Entwicklungsquadrat</h2>
+      <p class="leer-attribution">nach Friedemann Schulz von Thun</p>
+      <p class="leer-beschreibung">
+        Jeder positive Wert braucht eine ergänzende Schwestertugend –
+        sonst kippt er ins Gegenteil. Das Wertequadrat macht diese Spannung sichtbar.
+      </p>
+      <div class="modell-erklaerung">
+        <div class="erklaer-zelle positiv">Kernwert</div>
+        <div class="erklaer-pfeil">↔</div>
+        <div class="erklaer-zelle positiv">Schwestertugend</div>
+        <div class="erklaer-pfeil-v">↕</div>
+        <div class="erklaer-diag">↗↙</div>
+        <div class="erklaer-pfeil-v">↕</div>
+        <div class="erklaer-zelle negativ">Übertreibung</div>
+        <div class="erklaer-pfeil">↔</div>
+        <div class="erklaer-zelle negativ">Übertreibung</div>
+      </div>
+      <button mat-flat-button class="start-button" (click)="neuesQuadrat()">
+        <mat-icon>add</mat-icon>
+        Erstes Quadrat erstellen
+      </button>
+    </div>
+  }
+
+  @if (service.quadrate().length > 0) {
+    <div class="quadrate-header">
+      <h2>Meine Wertequadrate
+        <span class="anzahl-badge">{{ service.quadrate().length }}</span>
+      </h2>
+    </div>
+
+    <div class="quadrate-grid">
+      @for (quadrat of service.quadrate(); track quadrat.id) {
+        <app-quadrat-view
+          [quadrat]="quadrat"
+          (loeschen)="loeschen($event)">
+        </app-quadrat-view>
+      }
+    </div>
+  }
+
+</div>
+
+<footer class="app-footer">
+  <img src="svt-logo.svg" width="20" height="20" alt="" style="vertical-align:middle; margin-right:6px; opacity:0.5">
+  Modell nach <strong>Friedemann Schulz von Thun</strong> – Werte- und Entwicklungsquadrat
+</footer>
