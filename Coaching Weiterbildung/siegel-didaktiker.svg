@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+
+  <!-- Hintergrund -->
+  <rect width="480" height="320" fill="white"/>
+
+  <!-- Eck-Klammern oben links -->
+  <polyline points="108,72 108,88 124,88" fill="none" stroke="#0f1e2e" stroke-width="2" stroke-linecap="square"/>
+  <!-- Eck-Klammern oben rechts -->
+  <polyline points="372,72 372,88 356,88" fill="none" stroke="#0f1e2e" stroke-width="2" stroke-linecap="square"/>
+  <!-- Eck-Klammern unten links -->
+  <polyline points="108,192 108,176 124,176" fill="none" stroke="#0f1e2e" stroke-width="2" stroke-linecap="square"/>
+  <!-- Eck-Klammern unten rechts -->
+  <polyline points="372,192 372,176 356,176" fill="none" stroke="#0f1e2e" stroke-width="2" stroke-linecap="square"/>
+
+  <!-- SYSTEMISCHER -->
+  <text
+    x="240" y="128"
+    text-anchor="middle"
+    font-family="'Rubik', 'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="34"
+    letter-spacing="5"
+    fill="#0f1e2e"
+  >SYSTEMISCHER</text>
+
+  <!-- DIDAKTIKER -->
+  <text
+    x="240" y="168"
+    text-anchor="middle"
+    font-family="'Rubik', 'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="34"
+    letter-spacing="5"
+    fill="#00aaa2"
+  >DIDAKTIKER</text>
+
+  <!-- im Bildungskontext -->
+  <text
+    x="240" y="222"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="16"
+    fill="#6b7280"
+  >im Bildungskontext</text>
+
+  <!-- Trennlinie -->
+  <line x1="190" y1="242" x2="290" y2="242" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- ISH AKADEMIE -->
+  <text
+    x="240" y="272"
+    text-anchor="middle"
+    font-family="'Rubik', Arial, sans-serif"
+    font-weight="500"
+    font-size="11"
+    letter-spacing="4"
+    fill="#9ca3af"
+  >ISH AKADEMIE</text>
+
+</svg>
