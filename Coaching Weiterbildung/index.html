@@ -463,6 +463,38 @@
       color: rgba(255,255,255,.45);
     }
 
+    /* ── KONTAKTFORMULAR ────────────────────────────── */
+    .ish-form { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+    .ish-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .ish-form input,
+    .ish-form select,
+    .ish-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 10px;
+      padding: .7rem 1rem;
+      font-size: .9rem;
+      color: #fff;
+      font-family: var(--font-body, sans-serif);
+      outline: none;
+      transition: border-color .2s, background .2s;
+      box-sizing: border-box;
+    }
+    .ish-form input::placeholder,
+    .ish-form textarea::placeholder { color: rgba(255,255,255,.35); }
+    .ish-form input:focus,
+    .ish-form select:focus,
+    .ish-form textarea:focus {
+      border-color: var(--ish-teal);
+      background: rgba(255,255,255,.12);
+    }
+    .ish-form select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.2rem; }
+    .ish-form select option { background: #1a2e3b; color: #fff; }
+    .ish-form__submit { margin-top: .25rem; width: 100%; justify-content: center; }
+    .ish-form__success { display: none; background: rgba(0,170,162,.15); border: 1px solid rgba(0,170,162,.4); border-radius: 10px; padding: .9rem 1rem; font-size: .88rem; color: var(--ish-teal); text-align: center; }
+    @media (max-width: 600px) { .ish-form__row { grid-template-columns: 1fr; } }
+
     /* ── RESPONSIVE ────────────────────────────────── */
     @media (max-width: 900px) {
       .produkt__body { grid-template-columns: 1fr; }
@@ -929,13 +961,29 @@
           </ul>
         </div>
         <div class="zusammenfassung__cta">
-          <span class="section-tag">Kontakt &amp; Beratung</span>
-          <h3>Noch unsicher welcher Weg passt?</h3>
-          <p>Wir beraten Sie gerne persönlich – zu Inhalten, Terminen und dem richtigen Einstieg für Ihre Situation.</p>
-          <div class="cta-stack">
-            <a href="mailto:info@ish-akademie.de" class="btn btn--primary">Kontaktieren Sie uns</a>
-            <a href="systemischer-coach.html" class="btn btn--outline">Systemisch Coachen</a>
-          </div>
+          <span class="section-tag">Kontakt &amp; Anmeldung</span>
+          <h3>Interesse geweckt?</h3>
+          <p>Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+
+          <form id="ish-kontakt" class="ish-form" novalidate>
+            <div class="ish-form__row">
+              <input type="text" id="form-name" name="name" placeholder="Ihr Name" required />
+              <input type="email" id="form-email" name="email" placeholder="Ihre E-Mail" required />
+            </div>
+            <select id="form-produkt" name="produkt" required>
+              <option value="">Für welche Weiterbildung interessieren Sie sich?</option>
+              <option value="coaching">Systemisches Coaching – Kompaktkurs oder Grundkurs</option>
+              <option value="coaching-aufbau">Systemisches Coaching – Aufbaukurs (SG)</option>
+              <option value="didaktik">Systemische Didaktik – Kompaktkurs oder Grundkurs</option>
+              <option value="didaktik-aufbau">Systemische Didaktik – Aufbaukurs</option>
+              <option value="online">Systemisch Online Supervisieren und Coachen</option>
+              <option value="fortbildung">Fortbildung: Agile Schulentwicklung</option>
+              <option value="beratung">Ich bin noch unentschlossen – bitte beraten Sie mich</option>
+            </select>
+            <button type="submit" class="btn btn--primary ish-form__submit">Anfrage senden →</button>
+            <div class="ish-form__success" id="form-success">Vielen Dank! Wir melden uns bald bei Ihnen.</div>
+          </form>
+
           <p class="zusammenfassung__contact-note">info@ish-akademie.de · ISH Institut Bochum</p>
         </div>
       </div>
@@ -980,5 +1028,72 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // ── Formular: Auto-Vorauswahl basierend auf zuletzt sichtbarer Produkt-Sektion
+    (function () {
+      const select = document.getElementById('form-produkt');
+      if (!select) return;
+
+      // Mapping: Abschnitts-ID → Dropdown-Wert
+      const sectionMap = {
+        coaching:    'coaching',
+        moderation:  'didaktik',
+        online:      'online',
+        fortbildung: 'fortbildung'
+      };
+
+      let lastProduct = '';
+
+      // 1. URL-Parameter auslesen (?produkt=coaching etc.)
+      const urlParam = new URLSearchParams(window.location.search).get('produkt');
+      if (urlParam && select.querySelector(`option[value="${urlParam}"]`)) {
+        select.value = urlParam;
+        lastProduct = urlParam;
+      }
+
+      // 2. IntersectionObserver: welche Sektion war zuletzt sichtbar?
+      const productSections = Object.keys(sectionMap)
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            lastProduct = sectionMap[entry.target.id] || '';
+          }
+        });
+      }, { threshold: 0.25 });
+
+      productSections.forEach(el => sectionObserver.observe(el));
+
+      // 3. Sobald das Formular sichtbar wird, Dropdown vorauswählen
+      const formSection = document.getElementById('zusammenfassung');
+      if (formSection) {
+        new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && lastProduct && !select.value) {
+              select.value = lastProduct;
+            }
+          });
+        }, { threshold: 0.3 }).observe(formSection);
+      }
+
+      // 4. Formular absenden (mailto-Fallback)
+      document.getElementById('ish-kontakt').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name    = document.getElementById('form-name').value.trim();
+        const email   = document.getElementById('form-email').value.trim();
+        const produkt = select.options[select.selectedIndex]?.text || '';
+        if (!name || !email || !select.value) {
+          select.style.borderColor = 'rgba(255,80,80,.7)';
+          return;
+        }
+        const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nInteresse: ${produkt}`);
+        window.location.href = `mailto:info@ish-akademie.de?subject=Anfrage%20ISH%20Akademie&body=${body}`;
+        document.getElementById('form-success').style.display = 'block';
+        this.reset();
+      });
+    })();
+  </script>
 </body>
 </html>
