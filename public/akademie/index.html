@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISH Akademie – Systemische Weiterbildung für den Bildungsbereich</title>
-  <meta name="description" content="ISH Akademie: Drei Weiterbildungswege für den Bildungsbereich – Systemisches Coaching, Systemische Didaktik und Systemisch Online Supervisieren. Bochum & Online." />
+  <meta name="description" content="ISH Akademie: Drei Weiterbildungswege für den Bildungsbereich – Systemisch Coachen, Systemisch Moderieren und Systemisch Online Supervisieren. Bochum & Online." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
@@ -463,6 +463,38 @@
       color: rgba(255,255,255,.45);
     }
 
+    /* ── KONTAKTFORMULAR ────────────────────────────── */
+    .ish-form { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+    .ish-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .ish-form input,
+    .ish-form select,
+    .ish-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 10px;
+      padding: .7rem 1rem;
+      font-size: .9rem;
+      color: #fff;
+      font-family: var(--font-body, sans-serif);
+      outline: none;
+      transition: border-color .2s, background .2s;
+      box-sizing: border-box;
+    }
+    .ish-form input::placeholder,
+    .ish-form textarea::placeholder { color: rgba(255,255,255,.35); }
+    .ish-form input:focus,
+    .ish-form select:focus,
+    .ish-form textarea:focus {
+      border-color: var(--ish-teal);
+      background: rgba(255,255,255,.12);
+    }
+    .ish-form select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.2rem; }
+    .ish-form select option { background: #1a2e3b; color: #fff; }
+    .ish-form__submit { margin-top: .25rem; width: 100%; justify-content: center; }
+    .ish-form__success { display: none; background: rgba(0,170,162,.15); border: 1px solid rgba(0,170,162,.4); border-radius: 10px; padding: .9rem 1rem; font-size: .88rem; color: var(--ish-teal); text-align: center; }
+    @media (max-width: 600px) { .ish-form__row { grid-template-columns: 1fr; } }
+
     /* ── RESPONSIVE ────────────────────────────────── */
     @media (max-width: 900px) {
       .produkt__body { grid-template-columns: 1fr; }
@@ -530,7 +562,7 @@
       </a>
       <nav class="nav__links" aria-label="Seitennavigation">
         <a href="#coaching">Coaching</a>
-        <a href="#moderation">Moderation</a>
+        <a href="#moderation">Systemische Didaktik</a>
         <a href="#online">Systemisch Online Supervisieren</a>
         <a href="#fortbildung">Fortbildungen</a>
       </nav>
@@ -586,7 +618,7 @@
           <a href="systemischer-coach.html" class="hero__mini-card hero__mini-card--accent" style="text-decoration:none;">
             <div class="hero__mini-num">01</div>
             <div class="hero__mini-info">
-              <div class="hero__mini-title">Systemisches Coaching</div>
+              <div class="hero__mini-title">Systemisch Coachen</div>
               <div class="hero__mini-sub">im Bildungskontext</div>
             </div>
             <svg class="hero__mini-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -594,7 +626,7 @@
           <a href="systemische-moderation.html" class="hero__mini-card" style="text-decoration:none;">
             <div class="hero__mini-num">02</div>
             <div class="hero__mini-info">
-              <div class="hero__mini-title">Systemische Didaktik</div>
+              <div class="hero__mini-title">Systemisch Moderieren</div>
               <div class="hero__mini-sub">im Bildungskontext</div>
             </div>
             <svg class="hero__mini-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -626,7 +658,7 @@
         <div class="produkt__head">
           <div class="produkt__num">01</div>
           <div class="produkt__title-wrap">
-            <h2>Systemisches Coaching <em>im Bildungskontext</em></h2>
+            <h2>Systemisch Coachen <em>im Bildungskontext</em></h2>
             <p class="produkt__intro-text">Im Fokus steht die systemische Arbeit mit Einzelnen und Teams im schulischen Kontext. Die Teilnehmenden lernen, Gespräche professionell zu führen, Perspektiven zu erweitern und Entwicklungsprozesse gezielt zu begleiten.</p>
           </div>
         </div>
@@ -661,14 +693,17 @@
             <h3>Aufbau der Weiterbildung</h3>
             <div class="produkt__aufbau">
               <div class="produkt__stufe">
-                <div class="produkt__stufe-label">Einstieg</div>
-                <div class="produkt__stufe-title">Kompaktreihen</div>
-                <p>Zweitägiger Einstieg in systemische Haltung und Methoden – online oder in Präsenz am Institut in Bochum. Die Teilnahme ist auf den Grundkurs anrechenbar.</p>
+                <div class="produkt__stufe-label">Einstieg · Unser Hauptangebot</div>
+                <div class="produkt__stufe-title">Kompaktseminar Systemisches Coaching</div>
+                <p>Zwei Tage, die verändern, wie Sie Gespräche führen und Menschen begleiten. Sie erleben systemische Haltung nicht als Theorie, sondern als echte Verschiebung Ihres professionellen Blicks – und verlassen das Seminar mit Methoden, die Sie am nächsten Tag einsetzen können.</p>
+                <p style="margin-top:.55rem;font-size:.83rem;color:var(--ish-gray-600);line-height:1.55;"><strong style="color:var(--ish-dark);">Tag 1 – Systemisch denken:</strong> Konstruktivismus als Grundlage, systemische Haltung, zirkuläre Fragen, ressourcenorientierte Gesprächsführung und erste praktische Übungen in der Gruppe.</p>
+                <p style="margin-top:.4rem;font-size:.83rem;color:var(--ish-gray-600);line-height:1.55;"><strong style="color:var(--ish-dark);">Tag 2 – Coaching erleben:</strong> Auftragsklärung und Zielarbeit, eigene Coaching-Sequenzen mit direktem Feedback, Transfer in den schulischen Alltag und konkrete nächste Schritte.</p>
+                <p style="margin-top:.55rem;font-size:.8rem;color:var(--ish-teal);font-weight:600;">Online oder in Präsenz in Bochum · Teilnahme wird auf den Grundkurs angerechnet.</p>
               </div>
               <div class="produkt__stufe">
                 <div class="produkt__stufe-label">Grundkurs</div>
-                <div class="produkt__stufe-title">Systemisch Denken &amp; Wirken · Zertifikat</div>
-                <p>Fundierte Qualifizierung mit Zertifikat im systemischen Grundkurs.</p>
+                <div class="produkt__stufe-title">Systemisches Coaching · Zertifikat</div>
+                <p>Fundierte Qualifizierung mit Zertifikat zum systemischen Coach im Bildungskontext.</p>
               </div>
               <div class="produkt__stufe produkt__stufe--secondary">
                 <div class="produkt__stufe-label">Aufbaukurs</div>
@@ -691,13 +726,6 @@
     </div>
   </section>
 
-  <!-- SIEGEL: Coaching -->
-  <div class="inter-seal-display" aria-hidden="true">
-    <div class="inter-seal-display__inner">
-      <span class="inter-seal-display__label">Erfolgreicher Abschluss zum:</span>
-      <img src="Systemischer coach Sigel.png" class="inter-seal-display__img" alt="ISH-Zertifikat Systemisch Coachen" />
-    </div>
-  </div>
 
   <!-- PRODUKT 2: MODERATION -->
   <section class="produkt" id="moderation">
@@ -707,7 +735,7 @@
         <div class="produkt__head">
           <div class="produkt__num">02</div>
           <div class="produkt__title-wrap">
-            <h2>Systemische Didaktik <em>im Bildungskontext</em></h2>
+            <h2>Systemisch Moderieren <em>im Bildungskontext</em></h2>
             <p class="produkt__intro-text">Im Zentrum steht die professionelle Gestaltung von Gruppenprozessen und Lernräumen. Die Teilnehmenden lernen, sicher vor Gruppen zu stehen, Dynamiken zu steuern und Inhalte so zu vermitteln, dass sie nachhaltig wirksam werden.</p>
           </div>
         </div>
@@ -745,19 +773,22 @@
             <h3>Aufbau der Weiterbildung</h3>
             <div class="produkt__aufbau">
               <div class="produkt__stufe">
-                <div class="produkt__stufe-label">Einstieg</div>
-                <div class="produkt__stufe-title">Kompaktkurs</div>
-                <p>Zweitägiger Einstieg in systemische Haltung und Methoden. Online oder in Präsenz am Institut in Bochum. Die Teilnahme ist auf den Grundkurs anrechenbar.</p>
+                <div class="produkt__stufe-label">Einstieg · Unser Hauptangebot</div>
+                <div class="produkt__stufe-title">Kompaktseminar Systemische Didaktik</div>
+                <p>Zwei Tage, die Ihre Wirkung vor Gruppen grundlegend verändern. Sie entdecken, wie systemische Didaktik Lernprozesse lebendig, beteiligungsorientiert und nachhaltig wirksam macht – und erproben Methoden, die in jeder Fortbildung und jedem Klassenraum funktionieren.</p>
+                <p style="margin-top:.55rem;font-size:.83rem;color:var(--ish-gray-600);line-height:1.55;"><strong style="color:var(--ish-dark);">Tag 1 – Systemisch lehren:</strong> Konstruktivistisches Lernverständnis, systemische Didaktik als Haltung, aktivierende Methoden für analoge und digitale Settings, Präsenz und Wirkung vor der Gruppe.</p>
+                <p style="margin-top:.4rem;font-size:.83rem;color:var(--ish-gray-600);line-height:1.55;"><strong style="color:var(--ish-dark);">Tag 2 – Praxis und Dramaturgie:</strong> Eigene Lehrsequenzen entwickeln und erproben, Struktur und Spannungsbogen von Fortbildungen, Umgang mit Widerständen und schwierigen Gruppendynamiken.</p>
+                <p style="margin-top:.55rem;font-size:.8rem;color:var(--ish-teal);font-weight:600;">Online oder in Präsenz in Bochum · Teilnahme wird auf den Grundkurs angerechnet.</p>
               </div>
               <div class="produkt__stufe">
                 <div class="produkt__stufe-label">Grundkurs</div>
-                <div class="produkt__stufe-title">Systemisch Denken &amp; Wirken · Zertifikat</div>
-                <p>Fundierte Qualifizierung im gemeinsamen Grundkurs – die Grundlage für den Aufbaukurs Systemische Didaktik.</p>
+                <div class="produkt__stufe-title">Systemisches Coaching · Zertifikat</div>
+                <p>Fundierte Qualifizierung mit Zertifikat zum systemischen Coach im Bildungskontext – die Grundlage für professionelle Moderation.</p>
               </div>
               <div class="produkt__stufe produkt__stufe--secondary">
                 <div class="produkt__stufe-label">Aufbaukurs</div>
-                <div class="produkt__stufe-title">Systemische Didaktik · Zertifikat</div>
-                <p>4 einzeln buchbare Module mit Zertifikat zum Systemischen Didaktiker – für professionelles Lehren, Vermitteln und Gestalten von Lernprozessen.</p>
+                <div class="produkt__stufe-title">Systemische Moderation · Zertifikat</div>
+                <p>Vertiefung der Moderationskompetenz mit Fokus auf komplexe Gruppenprozesse, Fortbildungsdesign und nachhaltige Wirkung in schulischen Kontexten.</p>
               </div>
             </div>
           </div>
@@ -775,13 +806,6 @@
     </div>
   </section>
 
-  <!-- SIEGEL: Moderation -->
-  <div class="inter-seal-display" aria-hidden="true">
-    <div class="inter-seal-display__inner">
-      <span class="inter-seal-display__label">Erfolgreicher Abschluss zum:</span>
-      <img src="Systemische Moderieren.png" class="inter-seal-display__img" alt="ISH-Zertifikat Systemische Didaktik" />
-    </div>
-  </div>
 
   <!-- PRODUKT 3: ONLINE SUPERVISION -->
   <section class="produkt" id="online">
@@ -848,16 +872,6 @@
     </div>
   </section>
 
-  <!-- SIEGEL: Online Supervision -->
-  <div class="inter-seal-display" aria-hidden="true">
-    <div class="inter-seal-display__inner">
-      <span class="inter-seal-display__label">Erfolgreicher Abschluss zum:</span>
-      <div style="display:flex;gap:.75rem;align-items:center;">
-        <img src="Systemischer Onlie-Supervidieren.png" class="inter-seal-display__img" alt="ISH-Zertifikat Online Supervisieren" />
-        <img src="logo_sg-weiss.png" class="inter-seal-display__img inter-seal-display__img--dark" alt="SG-Zertifizierung" />
-      </div>
-    </div>
-  </div>
 
   <!-- FORTBILDUNGEN -->
   <section class="produkt" id="fortbildung">
@@ -938,7 +952,7 @@
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Systemische Didaktik</strong> – für die Gestaltung von Gruppen, Lernprozessen und Entwicklungsprozessen</span>
+              <span><strong>Systemische Moderation</strong> – für die Gestaltung von Gruppen und Entwicklungsprozessen</span>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -947,13 +961,29 @@
           </ul>
         </div>
         <div class="zusammenfassung__cta">
-          <span class="section-tag">Kontakt &amp; Beratung</span>
-          <h3>Noch unsicher welcher Weg passt?</h3>
-          <p>Wir beraten Sie gerne persönlich – zu Inhalten, Terminen und dem richtigen Einstieg für Ihre Situation.</p>
-          <div class="cta-stack">
-            <a href="mailto:info@ish-akademie.de" class="btn btn--primary">Kontaktieren Sie uns</a>
-            <a href="systemischer-coach.html" class="btn btn--outline">Systemisches Coaching</a>
-          </div>
+          <span class="section-tag">Kontakt &amp; Anmeldung</span>
+          <h3>Interesse geweckt?</h3>
+          <p>Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+
+          <form id="ish-kontakt" class="ish-form" novalidate>
+            <div class="ish-form__row">
+              <input type="text" id="form-name" name="name" placeholder="Ihr Name" required />
+              <input type="email" id="form-email" name="email" placeholder="Ihre E-Mail" required />
+            </div>
+            <select id="form-produkt" name="produkt" required>
+              <option value="">Für welche Weiterbildung interessieren Sie sich?</option>
+              <option value="coaching">Systemisches Coaching – Kompaktkurs oder Grundkurs</option>
+              <option value="coaching-aufbau">Systemisches Coaching – Aufbaukurs (SG)</option>
+              <option value="didaktik">Systemische Didaktik – Kompaktkurs oder Grundkurs</option>
+              <option value="didaktik-aufbau">Systemische Didaktik – Aufbaukurs</option>
+              <option value="online">Systemisch Online Supervisieren und Coachen</option>
+              <option value="fortbildung">Fortbildung: Agile Schulentwicklung</option>
+              <option value="beratung">Ich bin noch unentschlossen – bitte beraten Sie mich</option>
+            </select>
+            <button type="submit" class="btn btn--primary ish-form__submit">Anfrage senden →</button>
+            <div class="ish-form__success" id="form-success">Vielen Dank! Wir melden uns bald bei Ihnen.</div>
+          </form>
+
           <p class="zusammenfassung__contact-note">info@ish-akademie.de · ISH Institut Bochum</p>
         </div>
       </div>
@@ -970,8 +1000,8 @@
       <nav class="footer__nav" aria-label="Footer Navigation">
         <div class="footer__col">
           <strong>Weiterbildungen</strong>
-          <a href="systemischer-coach.html">Systemisches Coaching</a>
-          <a href="systemische-moderation.html">Systemische Didaktik</a>
+          <a href="systemischer-coach.html">Systemisch Coachen</a>
+          <a href="systemische-moderation.html">Systemisch Moderieren</a>
           <a href="online-supervision.html">Systemisch Online Supervisieren</a>
         </div>
         <div class="footer__col">
@@ -998,5 +1028,72 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // ── Formular: Auto-Vorauswahl basierend auf zuletzt sichtbarer Produkt-Sektion
+    (function () {
+      const select = document.getElementById('form-produkt');
+      if (!select) return;
+
+      // Mapping: Abschnitts-ID → Dropdown-Wert
+      const sectionMap = {
+        coaching:    'coaching',
+        moderation:  'didaktik',
+        online:      'online',
+        fortbildung: 'fortbildung'
+      };
+
+      let lastProduct = '';
+
+      // 1. URL-Parameter auslesen (?produkt=coaching etc.)
+      const urlParam = new URLSearchParams(window.location.search).get('produkt');
+      if (urlParam && select.querySelector(`option[value="${urlParam}"]`)) {
+        select.value = urlParam;
+        lastProduct = urlParam;
+      }
+
+      // 2. IntersectionObserver: welche Sektion war zuletzt sichtbar?
+      const productSections = Object.keys(sectionMap)
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            lastProduct = sectionMap[entry.target.id] || '';
+          }
+        });
+      }, { threshold: 0.25 });
+
+      productSections.forEach(el => sectionObserver.observe(el));
+
+      // 3. Sobald das Formular sichtbar wird, Dropdown vorauswählen
+      const formSection = document.getElementById('zusammenfassung');
+      if (formSection) {
+        new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && lastProduct && !select.value) {
+              select.value = lastProduct;
+            }
+          });
+        }, { threshold: 0.3 }).observe(formSection);
+      }
+
+      // 4. Formular absenden (mailto-Fallback)
+      document.getElementById('ish-kontakt').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name    = document.getElementById('form-name').value.trim();
+        const email   = document.getElementById('form-email').value.trim();
+        const produkt = select.options[select.selectedIndex]?.text || '';
+        if (!name || !email || !select.value) {
+          select.style.borderColor = 'rgba(255,80,80,.7)';
+          return;
+        }
+        const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nInteresse: ${produkt}`);
+        window.location.href = `mailto:info@ish-akademie.de?subject=Anfrage%20ISH%20Akademie&body=${body}`;
+        document.getElementById('form-success').style.display = 'block';
+        this.reset();
+      });
+    })();
+  </script>
 </body>
 </html>
