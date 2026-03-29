@@ -2057,6 +2057,82 @@
   background: #f7fafc;
   border: none;
 }
+
+/* ── Begleitende Lernformate ──────────────────────── */
+.begleit-lernformate {
+  margin-top: 2.5rem;
+  background: #f4f8fa;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e3eaf0;
+}
+.begleit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 700px) { .begleit-grid { grid-template-columns: 1fr; } }
+.begleit-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3eaf0;
+  padding: 1.1rem 1.25rem;
+}
+.begleit-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .85rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid #e8eff5;
+}
+.begleit-card__title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+}
+/* ── Gesamtstruktur ───────────────────────────────── */
+.gesamt-struktur {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e3eaf0;
+  padding: 1.25rem 1.5rem;
+}
+.gesamt-struktur__title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--ish-dark);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.gesamt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+.gesamt-table td {
+  padding: .5rem .75rem;
+  border-bottom: 1px solid #f0f4f8;
+  color: #4a5a6a;
+}
+.gesamt-table td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ish-teal);
+  font-weight: 600;
+}
+.gesamt-table__total td {
+  border-top: 2px solid #e3eaf0;
+  border-bottom: none;
+  padding-top: .75rem;
+  color: var(--ish-dark);
+}
+.gesamt-table__total td:last-child {
+  color: var(--ish-dark);
+}
 </style>
 </head>
 <body>
@@ -3174,6 +3250,78 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- BEGLEITENDE LERNFORMATE -->
+      <div class="begleit-lernformate">
+        <h3 class="module-termine__title">Begleitende Lernformate</h3>
+        <div class="begleit-grid">
+
+          <div class="begleit-card">
+            <div class="begleit-card__header">
+              <span class="begleit-card__title">Lehrcoaching &amp; Supervision</span>
+              <span class="tag tag--ue">50 WE</span>
+            </div>
+            <ul class="mod-panel__arrow-list">
+              <li>Kontinuierlich über die gesamte Ausbildungsdauer</li>
+              <li>Einzel- und Gruppensettings</li>
+              <li>Reflexive Begleitung der eigenen Coachingpraxis</li>
+            </ul>
+          </div>
+
+          <div class="begleit-card">
+            <div class="begleit-card__header">
+              <span class="begleit-card__title">Intervision</span>
+              <span class="tag tag--ue">50 LE</span>
+            </div>
+            <ul class="mod-panel__arrow-list">
+              <li>Selbstorganisierte Peergruppen</li>
+              <li>Kontinuierliche Fallarbeit</li>
+              <li>Dokumentierte Treffen</li>
+            </ul>
+          </div>
+
+          <div class="begleit-card">
+            <div class="begleit-card__header">
+              <span class="begleit-card__title">Coachingpraxis</span>
+              <span class="tag tag--ue">75 LE</span>
+            </div>
+            <ul class="mod-panel__arrow-list">
+              <li>Eigenständige Arbeit mit Klient:innen</li>
+              <li>Dokumentierte Coachingprozesse</li>
+              <li>Kontinuierliche Reflexion</li>
+            </ul>
+          </div>
+
+          <div class="begleit-card">
+            <div class="begleit-card__header">
+              <span class="begleit-card__title">Eigenarbeit</span>
+              <span class="tag tag--ue">40 LE</span>
+            </div>
+            <ul class="mod-panel__arrow-list">
+              <li>Literaturstudium</li>
+              <li>Vertiefung systemischer Konzepte</li>
+              <li>Transfer in die eigene Praxis</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- GESAMTSTRUKTUR -->
+        <div class="gesamt-struktur">
+          <h4 class="gesamt-struktur__title">Gesamtstruktur im Überblick</h4>
+          <table class="gesamt-table">
+            <tbody>
+              <tr><td>Theorie &amp; Methoden</td><td>200 WE</td></tr>
+              <tr><td>Selbsterfahrung</td><td>65 WE</td></tr>
+              <tr><td>Lehrcoaching</td><td>50 WE</td></tr>
+              <tr><td>Intervision</td><td>75 LE</td></tr>
+              <tr><td>Coachingpraxis</td><td>75 LE</td></tr>
+              <tr><td>Eigenarbeit</td><td>60 LE</td></tr>
+              <tr class="gesamt-table__total"><td><strong>Gesamt</strong></td><td><strong>525 WE/LE</strong></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
